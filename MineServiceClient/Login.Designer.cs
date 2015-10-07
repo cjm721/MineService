@@ -45,16 +45,19 @@
             this.comboBox1.Items.AddRange(new object[] {
             "Select Server",
             "portalnumber9.com:56552"});
-            this.comboBox1.Location = new System.Drawing.Point(12, 174);
+            this.comboBox1.SelectedIndex = 0;
+            this.comboBox1.Location = new System.Drawing.Point(11, 182);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(240, 24);
+            this.comboBox1.Size = new System.Drawing.Size(194, 21);
             this.comboBox1.TabIndex = 0;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::MineServiceClient.Properties.Resources.Small_Logo;
-            this.pictureBox1.Location = new System.Drawing.Point(29, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(2, 11);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(240, 156);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -63,9 +66,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(259, 174);
+            this.button1.Location = new System.Drawing.Point(214, 181);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(22, 23);
+            this.button1.Size = new System.Drawing.Size(16, 21);
             this.button1.TabIndex = 2;
             this.button1.Text = "+";
             this.button1.UseVisualStyleBackColor = true;
@@ -73,45 +77,50 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 223);
+            this.textBox1.Location = new System.Drawing.Point(10, 219);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(268, 22);
+            this.textBox1.Size = new System.Drawing.Size(220, 20);
             this.textBox1.TabIndex = 3;
             this.textBox1.Text = "Username";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 280);
+            this.textBox2.Location = new System.Drawing.Point(10, 258);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(269, 22);
+            this.textBox2.Size = new System.Drawing.Size(220, 20);
             this.textBox2.TabIndex = 4;
             this.textBox2.Text = "Password";
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(80, 318);
+            this.checkBox1.Location = new System.Drawing.Point(70, 292);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(138, 21);
+            this.checkBox1.Size = new System.Drawing.Size(106, 17);
             this.checkBox1.TabIndex = 6;
             this.checkBox1.Text = "Remember Login";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(171, 377);
+            this.button2.Location = new System.Drawing.Point(131, 323);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 55);
+            this.button2.Size = new System.Drawing.Size(74, 45);
             this.button2.TabIndex = 7;
             this.button2.Text = "Login";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(29, 377);
+            this.button3.Location = new System.Drawing.Point(25, 323);
+            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(101, 55);
+            this.button3.Size = new System.Drawing.Size(76, 45);
             this.button3.TabIndex = 8;
             this.button3.Text = "Cancel";
             this.button3.UseVisualStyleBackColor = true;
@@ -119,9 +128,9 @@
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 458);
+            this.ClientSize = new System.Drawing.Size(241, 385);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.checkBox1);
@@ -131,7 +140,9 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.comboBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
