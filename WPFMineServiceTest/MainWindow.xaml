@@ -1,0 +1,55 @@
+﻿<Window x:Class="WPFMineServiceTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFMineServiceTest"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <TabControl x:Name="tabControl" TabStripPlacement="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TabItem Header="Home">
+                <Grid Background="#FFE5E5E5">
+                    <TabControl x:Name="tabControl1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TabStripPlacement="Left">
+                        <TabItem Header="Overview">
+                            <Grid Background="#FFE5E5E5"/>
+                        </TabItem>
+                        <TabItem Header="FTP">
+                            <Grid Background="#FFE5E5E5"/>
+                        </TabItem>
+                        <TabItem Header="Users">
+                            <Grid Background="#FFE5E5E5"/>
+                        </TabItem>
+                        <TabItem Header="Settings">
+                            <Grid Background="#FFE5E5E5"/>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Monster">
+                <Grid Background="#FFE5E5E5">
+                    <TabControl x:Name="tabControl2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabStripPlacement="Left">
+                        <TabItem Header="Overview">
+                            <Grid Background="#FFE5E5E5"/>
+                        </TabItem>
+                        <TabItem Header="Console">
+                            <Grid Background="#FFE5E5E5"/>
+                        </TabItem>
+                        <TabItem Header="Settings">
+                            <Grid Background="#FFE5E5E5"/>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <Image Source="pack://siteoforigin:,,,/Resources/Plus Sign.png" Width="20px"></Image>
+                </TabItem.Header>
+                <Grid Background="#FFE5E5E5">
+                    <Label x:Name="newServerlabel" Content="New Server" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

@@ -22,7 +22,7 @@ namespace MineServiceClient
         private void tcpConnectButton_Click(object sender, EventArgs e)
         {
             TcpClient clientSocket = new TcpClient();
-            clientSocket.Connect("127.0.0.1", 56552);
+            clientSocket.Connect("millerc5-1.wlan.rose-hulman.edu", 56552);
 
 
             StreamReader reader = new StreamReader(clientSocket.GetStream(), Encoding.ASCII);
@@ -32,6 +32,16 @@ namespace MineServiceClient
             Console.WriteLine("Message: " + line);
             writer.WriteLine("I Recived: " + line);
             writer.Flush();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new Login().ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            new MainWindow().ShowDialog();
         }
     }
 }
