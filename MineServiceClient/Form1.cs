@@ -22,8 +22,8 @@ namespace MineServiceClient
         private void tcpConnectButton_Click(object sender, EventArgs e)
         {
             TcpClient clientSocket = new TcpClient();
-            clientSocket.Connect("millerc5-1.wlan.rose-hulman.edu", 56552);
-
+            clientSocket.Connect("localhost", 56552);
+            //millerc5-1.wlan.rose-hulman.edu
 
             StreamReader reader = new StreamReader(clientSocket.GetStream(), Encoding.ASCII);
             StreamWriter writer = new StreamWriter(clientSocket.GetStream(), Encoding.ASCII);
