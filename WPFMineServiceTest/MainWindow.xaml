@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFMineServiceTest"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="378.194" Width="570.282">
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <TabControl x:Name="tabControl" TabStripPlacement="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="13*"/>
+            <RowDefinition Height="336*"/>
+        </Grid.RowDefinitions>
+        <TabControl x:Name="tabControl" TabStripPlacement="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,-0.2" Grid.RowSpan="2">
             <TabItem Header="Home">
                 <Grid Background="#FFE5E5E5">
                     <TabControl x:Name="tabControl1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TabStripPlacement="Left">
@@ -36,7 +40,21 @@
                             <Grid Background="#FFE5E5E5"/>
                         </TabItem>
                         <TabItem Header="Settings">
-                            <Grid Background="#FFE5E5E5"/>
+                            <Grid Background="#FFE5E5E5">
+                                <DataGrid x:Name="graph_dataGrid" HorizontalAlignment="Left" Margin="0,0,-0.2,-0.4" VerticalAlignment="Bottom" RenderTransformOrigin="-12.108,7.763" Height="135" Width=""/>
+                                <Grid HorizontalAlignment="Left" Height="195" VerticalAlignment="Top" Width="421" Margin="0,0,-0.2,0">
+                                    <Grid HorizontalAlignment="Left" Height="100" Margin="142,62,0,0" VerticalAlignment="Top" Width="100"/>
+                                </Grid>
+                                <Grid Name="grid_container_server_history" HorizontalAlignment="Left" Height="195" Margin="198,0,-0.2,0" VerticalAlignment="Top" Width="223">
+                                    <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Height="171" Width="223"/>
+                                    <Label x:Name="label_history" Content="Server History"  HorizontalContentAlignment="Center" HorizontalAlignment="Center" 
+                                           VerticalAlignment="Top" Height="24" Width="223" />
+                                </Grid>
+                                <Grid Name="grid_container_server_current" HorizontalAlignment="Left" Height="149" Margin="0,46,0,0" VerticalAlignment="Top" Width="198"/>
+                                <Viewbox HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="198">
+                                    <TextBlock x:Name="textBlock_server_name" TextWrapping="Wrap" Text="Server1" Width="70"/>
+                                </Viewbox>
+                            </Grid>
                         </TabItem>
                     </TabControl>
                 </Grid>

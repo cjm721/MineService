@@ -56,6 +56,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="login_window.xaml.cs">
+      <DependentUpon>login_window.xaml</DependentUpon>
+    </Compile>
+    <Page Include="login_window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -100,6 +107,24 @@
     <None Include="Resources\Plus Sign.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Small Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mem Usage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Full Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Full Logo.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Disk Usage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CPU Usage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
