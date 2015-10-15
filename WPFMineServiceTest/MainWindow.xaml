@@ -41,7 +41,7 @@
                         </TabItem>
                         <TabItem Header="Settings">
                             <Grid Background="#FFE5E5E5">
-                                <DataGrid x:Name="graph_dataGrid" HorizontalAlignment="Left" Margin="0,0,-0.2,-0.4" VerticalAlignment="Bottom" RenderTransformOrigin="-12.108,7.763" Height="135" Width=""/>
+                                <DataGrid x:Name="graph_dataGrid" HorizontalAlignment="Left" Margin="0,0,-0.2,-0.4" VerticalAlignment="Bottom" RenderTransformOrigin="-12.108,7.763" Height="135" Width="100"/>
                                 <Grid HorizontalAlignment="Left" Height="195" VerticalAlignment="Top" Width="421" Margin="0,0,-0.2,0">
                                     <Grid HorizontalAlignment="Left" Height="100" Margin="142,62,0,0" VerticalAlignment="Top" Width="100"/>
                                 </Grid>

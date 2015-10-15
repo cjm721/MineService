@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,6 +24,26 @@ namespace WPFMineServiceTest
         public Window1()
         {
             InitializeComponent();
+        }
+
+        private void login_button_click(object sender, RoutedEventArgs e)
+        {
+            TcpClient client = new TcpClient();
+            String temp = cluster_select_combobox.Text.Trim();
+            string[] all = temp.Split(':');
+            string user = username.Text;
+            string pass = password.SecurePassword.ToString();
+
+            try
+            {
+                client.Connect(all[0], Convert.ToInt32(all[1]));
+                Console.WriteLine("conncetion successfull");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("error");
+                client.Close();
+            }
         }
     }
 }
