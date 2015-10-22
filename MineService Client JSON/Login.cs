@@ -10,5 +10,11 @@ namespace MineService_Client_JSON
     {
         public String Username;
         public String Password;
+
+        public Login(String Username, String Password)
+        {
+            this.Username = Username;
+            this.Password = Password;
+        }
     }
 }

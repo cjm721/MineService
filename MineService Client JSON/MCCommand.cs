@@ -11,5 +11,12 @@ namespace MineService_Client_JSON
         public States.MCCommandTYPE type;
         public String Server;
         public String args;
+
+        public MCCommand(States.MCCommandTYPE type, String Server, String args)
+        {
+            this.type = type;
+            this.Server = Server;
+            this.args = args;
+        }
     }
 }
