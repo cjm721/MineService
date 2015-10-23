@@ -83,6 +83,36 @@ namespace WPFMineServiceTest.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Disk_Usage_pt1 {
+            get {
+                object obj = ResourceManager.GetObject("Disk_Usage_pt1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Disk_Usage_pt2 {
+            get {
+                object obj = ResourceManager.GetObject("Disk_Usage_pt2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fake_terminal {
+            get {
+                object obj = ResourceManager.GetObject("fake_terminal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Full_Logo {
             get {
                 object obj = ResourceManager.GetObject("Full_Logo", resourceCulture);
@@ -93,9 +123,9 @@ namespace WPFMineServiceTest.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Full_Logo1 {
+        internal static System.Drawing.Bitmap Mem_Usage {
             get {
-                object obj = ResourceManager.GetObject("Full_Logo1", resourceCulture);
+                object obj = ResourceManager.GetObject("Mem_Usage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +133,9 @@ namespace WPFMineServiceTest.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Mem_Usage {
+        internal static System.Drawing.Bitmap obref001 {
             get {
-                object obj = ResourceManager.GetObject("Mem_Usage", resourceCulture);
+                object obj = ResourceManager.GetObject("obref001", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

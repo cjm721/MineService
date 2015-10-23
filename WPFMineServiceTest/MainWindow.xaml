@@ -11,51 +11,237 @@
             <RowDefinition Height="13*"/>
             <RowDefinition Height="336*"/>
         </Grid.RowDefinitions>
-        <TabControl x:Name="tabControl" TabStripPlacement="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,-0.2" Grid.RowSpan="2">
+        <TabControl x:Name="cluster_TabControl" TabStripPlacement="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" Grid.RowSpan="2">
             <TabItem Header="Home">
-                <Grid Background="#FFE5E5E5">
-                    <TabControl x:Name="tabControl1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TabStripPlacement="Left">
-                        <TabItem Header="Overview">
-                            <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0">
+                    <TabControl x:Name="home_TabControl" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TabStripPlacement="Left">
+                        <TabItem Name="overview_TabItem" Header="Overview">
+                            <Grid Background="#FFE5E5E5" Margin="-3,-3,-4.2,-3.4">
+                                <TextBlock x:Name="cluster_overview_TextBlock" HorizontalAlignment="Center" FontSize="25"  TextWrapping="Wrap" TextAlignment="Center" Text="Cluster Overview" 
+                                           VerticalAlignment="Top" Height="40" Margin="0,0,0,0" Width="421" />
+                                <Grid Name="home_overview_data_table_container" HorizontalAlignment="Right" Height="296" Margin="0,40,0,0" VerticalAlignment="Top" Width="428">
+                                    <TextBlock x:Name="home_overview_data_table_header" HorizontalAlignment="Left" TextWrapping="Wrap" TextAlignment="Center" FontSize="20" Text="General Server Usage" VerticalAlignment="Top" Height="30" Width="428"/>
+                                    <Border BorderBrush="Black" BorderThickness="2">
+                                        <Grid Name="home_overview_data_table" HorizontalAlignment="Left" Height="261" Margin="0,35,0,0" VerticalAlignment="Top" Width="428">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="20" />
+                                                <RowDefinition Height="1*" />
+                                                <RowDefinition Height="1*" />
+                                                <RowDefinition Height="1*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="1*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Grid.Row="0" Text="Server Name" TextAlignment="Center" />
+                                            <TextBlock Grid.Column="1" Grid.Row="0" Text="Server Name" TextAlignment="Center" />
+
+                                            <Border Grid.Column="0" Grid.Row="0" BorderBrush="Black" BorderThickness=".5"></Border>
+                                            <Border Grid.Column="2" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
+                                            <Border Grid.Column="2" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
+                                            <Border Grid.Column="2" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
+                                            <Border Grid.Column="2" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
+                                            <Border Grid.Column="2" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
+                                            <Border Grid.Column="2" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
+                                            <Border Grid.Column="2" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
+
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+
+                            </Grid>
                         </TabItem>
-                        <TabItem Header="FTP">
-                            <Grid Background="#FFE5E5E5"/>
+                        <TabItem Name="FTP_TabItem" Header="FTP">
+                            <Grid Background="#FFE5E5E5">
+                                <Image x:Name="image1" HorizontalAlignment="Left" Height="330" Margin="0,0,-0.2,-0.4" VerticalAlignment="Top" Width="421" Source="pack://siteoforigin:,,,/Resources/obref001.gif"/>
+                            </Grid>
                         </TabItem>
-                        <TabItem Header="Users">
-                            <Grid Background="#FFE5E5E5"/>
+                        <TabItem Name="users_TabItem" Header="Users">
+                            <Grid Background="#FFE5E5E5">
+                                <Grid Name="users_and_groups_container" HorizontalAlignment="Left" Height="285" Margin="47,10,0,0" VerticalAlignment="Top" Width="320">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="1*" />
+                                        <RowDefinition Height="1*" />
+                                        <RowDefinition Height="1*" />
+                                        <RowDefinition Height="1*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="1*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" FontSize="20" Grid.Row="0" TextWrapping="Wrap" Text="User" TextAlignment="Center" />
+                                    <TextBlock Grid.Column="1" Grid.Row="0" FontSize="20" TextWrapping="Wrap" Text="Groups" TextAlignment="Center" />
+                                    <TextBlock Grid.Column="0" Grid.Row="1" FontSize="15" TextWrapping="Wrap" Text="max_l33t_sk1llz420" TextAlignment="Center" />
+                                    <TextBlock Grid.Column="1" Grid.Row="1" FontSize="15" TextWrapping="Wrap" Text="max_iz_#1
+                                               420forlyfe
+                                               Rose-Hulman yea boiii" TextAlignment="Center" />
+                                    <TextBlock Grid.Column="0" Grid.Row="2" FontSize="15" TextWrapping="Wrap" Text="cj_l33t3st_sk1llz420" TextAlignment="Center" />
+                                    <TextBlock Grid.Column="1" Grid.Row="2" FontSize="15" TextWrapping="Wrap" Text="cj_da_man
+                                               420forlyfe
+                                               Rose-Hulman yea boiii" TextAlignment="Center" />
+                                    <TextBlock Grid.Column="0" Grid.Row="3" FontSize="15" TextWrapping="Wrap" Text="Jeremy_HR_420" TextAlignment="Center" />
+                                    <TextBlock Grid.Column="1" Grid.Row="3" FontSize="15" TextWrapping="Wrap" Text="Its_mr_grandslam
+                                               420forlyfe
+                                               Rose-Hulman yea boiii" TextAlignment="Center" />
+                                    <TextBlock Grid.Column="0" Grid.Row="4" FontSize="15" TextWrapping="Wrap" Text="Ishank_cooldude_420" TextAlignment="Center" />
+                                    <TextBlock Grid.Column="1" Grid.Row="4" FontSize="15" TextWrapping="Wrap" Text="Ishank_dude
+                                               420forlyfe
+                                               Rose-Hulman yea boiii" TextAlignment="Center" />
+                                    <Border Grid.Column="0" Grid.Row="0" BorderBrush="Black" BorderThickness=".5"></Border>
+                                    <Border Grid.Column="0" Grid.Row="1" BorderBrush="Black" BorderThickness=".5"></Border>
+                                    <Border Grid.Column="0" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
+                                    <Border Grid.Column="0" Grid.Row="3" BorderBrush="Black" BorderThickness=".5"></Border>
+                                    <Border Grid.Column="1" Grid.Row="0" BorderBrush="Black" BorderThickness=".5"></Border>
+                                    <Border Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness=".5"></Border>
+                                    <Border Grid.Column="1" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
+                                    <Border Grid.Column="1" Grid.Row="3" BorderBrush="Black" BorderThickness=".5"></Border>
+                                    <Border Grid.Column="0" Grid.Row="4" BorderBrush="Black" BorderThickness=".5"></Border>
+                                    <Border Grid.Column="1" Grid.Row="4" BorderBrush="Black" BorderThickness=".5"></Border>
+                                </Grid>
+                            </Grid>
                         </TabItem>
-                        <TabItem Header="Settings">
-                            <Grid Background="#FFE5E5E5"/>
+                        <TabItem Name="settings_TabItem" Header="Settings">
+                            <Grid Background="#FFE5E5E5" Margin="-4,0,3.8,-0.4">
+                                <Grid HorizontalAlignment="Left" Height="55" Margin="21,48,0,0" VerticalAlignment="Top" Width="197">
+                                    <ComboBox x:Name="cluster_select_combobox_settings" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" IsEditable="True" Height="23" Width="193"/>
+                                    <TextBlock x:Name="label_cluster_select_combobox_settings" TextAlignment="Center" FontSize="16" HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" Text="Specify cluster port" VerticalAlignment="Top" Height="23" Width="193"/>
+                                </Grid>
+                            </Grid>
                         </TabItem>
                     </TabControl>
                 </Grid>
             </TabItem>
             <TabItem Header="Monster">
                 <Grid Background="#FFE5E5E5">
-                    <TabControl x:Name="tabControl2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabStripPlacement="Left">
-                        <TabItem Header="Overview">
-                            <Grid Background="#FFE5E5E5"/>
-                        </TabItem>
-                        <TabItem Header="Console">
-                            <Grid Background="#FFE5E5E5"/>
-                        </TabItem>
-                        <TabItem Header="Settings">
+                    <TabControl x:Name="server_TabControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabStripPlacement="Left" Margin="0,0,0,0" SelectionChanged="tabControl2_SelectionChanged">
+                        <TabItem Name="Status_TabItem"  Header="Status">
                             <Grid Background="#FFE5E5E5">
-                                <DataGrid x:Name="graph_dataGrid" HorizontalAlignment="Left" Margin="0,0,-0.2,-0.4" VerticalAlignment="Bottom" RenderTransformOrigin="-12.108,7.763" Height="135" Width="100"/>
-                                <Grid HorizontalAlignment="Left" Height="195" VerticalAlignment="Top" Width="421" Margin="0,0,-0.2,0">
-                                    <Grid HorizontalAlignment="Left" Height="100" Margin="142,62,0,0" VerticalAlignment="Top" Width="100"/>
+                                <Grid Background="#FFE5E5E5">
+                                    <Grid HorizontalAlignment="Left" Height="195" VerticalAlignment="Top" Width="421">
+                                        <Grid HorizontalAlignment="Left" Height="100" Margin="142,62,0,0" VerticalAlignment="Top" Width="100"/>
+                                    </Grid>
+                                    <Grid x:Name="grid_container_server_history1" HorizontalAlignment="Left" Height="195" 
+                                          Margin="198,0,-0.2,0" VerticalAlignment="Top" Width="223">
+                                        <Label x:Name="label_history1" Content="Server History" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" 
+                                                   HorizontalAlignment="Center" VerticalAlignment="Top" Height="35" Width="223" FontSize="18" Margin="0"/>
+                                        <Grid Name="server_history_data" HorizontalAlignment="Right" Height="181" Margin="0,24,0,-10" VerticalAlignment="Top" Width="223">
+                                            <Grid Name="server_history_data_table" HorizontalAlignment="Left" Margin="2,12,0,0" VerticalAlignment="Top" Height="169" Width="221">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="40" />
+                                                    <RowDefinition Height="1*" />
+                                                    <RowDefinition Height="1*" />
+                                                    <RowDefinition Height="1*" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1*" />
+                                                    <ColumnDefinition Width="1*" />
+                                                    <ColumnDefinition Width="1*" />
+                                                    <ColumnDefinition Width="1*" />
+                                                    <ColumnDefinition Width="1*" />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Grid.Row="0" TextWrapping="Wrap" Text="" TextAlignment="Center" />
+                                                <TextBlock Grid.Column="1" Grid.Row="0" Text="CPU %" TextWrapping="Wrap" TextAlignment="Center" />
+                                                <TextBlock Grid.Column="2" Grid.Row="0" Text="Mem %" TextWrapping="Wrap" TextAlignment="Center" />
+                                                <TextBlock Grid.Column="3" Grid.Row="0" Text="Hard Disk %" TextWrapping="Wrap" TextAlignment="Center" />
+                                                <TextBlock Grid.Column="4" Grid.Row="0" Text="Uptime %" TextWrapping="Wrap" TextAlignment="Center" />
+                                                <TextBlock Grid.Column="0" Grid.Row="1" Text="1 min" TextWrapping="Wrap" TextAlignment="Center" />
+                                                <TextBlock Grid.Column="0" Grid.Row="2" Text="3 min" TextWrapping="Wrap" TextAlignment="Center" />
+                                                <TextBlock Grid.Column="0" Grid.Row="3" Text="5 min" TextWrapping="Wrap" TextAlignment="Center" />
+
+                                                <TextBlock Grid.Column="1" Grid.Row="1" Text="77" TextWrapping="Wrap" TextAlignment="Center" />
+                                                <TextBlock Grid.Column="1" Grid.Row="2" Text="70" TextWrapping="Wrap" TextAlignment="Center" />
+                                                <TextBlock Grid.Column="1" Grid.Row="3" Text="72" TextWrapping="Wrap" TextAlignment="Center" />
+                                                <TextBlock Grid.Column="2" Grid.Row="1" Text="55" TextWrapping="Wrap" TextAlignment="Center" />
+                                                <TextBlock Grid.Column="2" Grid.Row="2" Text="48" TextWrapping="Wrap" TextAlignment="Center" />
+                                                <TextBlock Grid.Column="2" Grid.Row="3" Text="41" TextWrapping="Wrap" TextAlignment="Center" />
+                                                <TextBlock Grid.Column="3" Grid.Row="1" Text="65" TextWrapping="Wrap" TextAlignment="Center" />
+                                                <TextBlock Grid.Column="3" Grid.Row="2" Text="59" TextWrapping="Wrap" TextAlignment="Center" />
+                                                <TextBlock Grid.Column="3" Grid.Row="3" Text="55" TextWrapping="Wrap" TextAlignment="Center" />
+                                                <TextBlock Grid.Column="4" Grid.Row="1" Text="90" TextWrapping="Wrap" TextAlignment="Center" />
+                                                <TextBlock Grid.Column="4" Grid.Row="2" Text="85" TextWrapping="Wrap" TextAlignment="Center" />
+                                                <TextBlock Grid.Column="4" Grid.Row="3" Text="83" TextWrapping="Wrap" TextAlignment="Center" />
+
+
+
+                                                <Border Grid.Column="0" Grid.Row="0" BorderBrush="Black" BorderThickness=".5"></Border>
+                                                <Border Grid.Column="0" Grid.Row="1" BorderBrush="Black" BorderThickness=".5"></Border>
+                                                <Border Grid.Column="0" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
+                                                <Border Grid.Column="0" Grid.Row="3" BorderBrush="Black" BorderThickness=".5"></Border>
+                                                <Border Grid.Column="1" Grid.Row="0" BorderBrush="Black" BorderThickness=".5"></Border>
+                                                <Border Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness=".5"></Border>
+                                                <Border Grid.Column="1" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
+                                                <Border Grid.Column="1" Grid.Row="3" BorderBrush="Black" BorderThickness=".5"></Border>
+                                                <Border Grid.Column="2" Grid.Row="0" BorderBrush="Black" BorderThickness=".5"></Border>
+                                                <Border Grid.Column="2" Grid.Row="1" BorderBrush="Black" BorderThickness=".5"></Border>
+                                                <Border Grid.Column="2" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
+                                                <Border Grid.Column="2" Grid.Row="3" BorderBrush="Black" BorderThickness=".5"></Border>
+                                                <Border Grid.Column="3" Grid.Row="0" BorderBrush="Black" BorderThickness=".5"></Border>
+                                                <Border Grid.Column="3" Grid.Row="1" BorderBrush="Black" BorderThickness=".5"></Border>
+                                                <Border Grid.Column="3" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
+                                                <Border Grid.Column="3" Grid.Row="3" BorderBrush="Black" BorderThickness=".5"></Border>
+                                                <Border Grid.Column="4" Grid.Row="0" BorderBrush="Black" BorderThickness=".5"></Border>
+                                                <Border Grid.Column="4" Grid.Row="1" BorderBrush="Black" BorderThickness=".5"></Border>
+                                                <Border Grid.Column="4" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
+                                                <Border Grid.Column="4" Grid.Row="3" BorderBrush="Black" BorderThickness=".5"></Border>
+
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                    <Grid x:Name="grid_container_server_current1" HorizontalAlignment="Left" Height="149" Margin="0,46,0,0" VerticalAlignment="Top" Width="198"/>
+                                    <Viewbox HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="198">
+                                        <TextBlock x:Name="server_name_TextBlock" TextWrapping="Wrap" Text="Monster" Width="70"/>
+                                    </Viewbox>
+                                    <TabControl x:Name="tabControl" Height="125" Margin="0,205,0,-0.4" VerticalAlignment="Top" Width="422" HorizontalContentAlignment="Center" HorizontalAlignment="Left">
+                                        <TabItem Name="CPU_tab" Header="CPU%">
+                                            <Grid Background="#FFE5E5E5">
+                                                <Image x:Name="cpu_img" HorizontalAlignment="Left" Height="93" Margin="0,0,0,0" VerticalAlignment="Top" Width="412" IsEnabled="False" Source="pack://siteoforigin:,,,/Resources/CPU Usage.png"/>
+                                            </Grid>
+                                        </TabItem>
+                                        <TabItem Name="mem_tab" Header="Mem %">
+                                            <Grid Background="#FFE5E5E5">
+                                                <Image x:Name="mem_img" HorizontalAlignment="Left" Height="93" Margin="0,0,0,0" VerticalAlignment="Top" Width="413" Source="pack://siteoforigin:,,,/Resources/Mem Usage.png"/>
+                                            </Grid>
+                                        </TabItem>
+                                        <TabItem Name="hard_disk_tab" Header="Hard Disk %">
+                                            <Grid Background="#FFE5E5E5">
+                                                <Image x:Name="disk_usage_1_img" HorizontalAlignment="Left" Height="93" VerticalAlignment="Top" Width="187" Margin="0,0,0,0" Source="pack://siteoforigin:,,,/Resources/Disk Usage pt1.png"/>
+                                                <Image x:Name="disk_usage_2_img" HorizontalAlignment="Right" Height="93" VerticalAlignment="Top" Width="226" Margin="0,0,0,0" Source="pack://siteoforigin:,,,/Resources/Disk Usage pt2.png"/>
+                                            </Grid>
+                                        </TabItem>
+                                        <TabItem Name="uptime_tab" Header="Uptime %">
+                                            <Grid Background="#FFE5E5E5">
+                                                <Image x:Name="uptime_img" HorizontalAlignment="Left" Height="93" Margin="0,0,0,0" VerticalAlignment="Top" Width="413" Source="pack://siteoforigin:,,,/Resources/Mem Usage.png"/>
+                                            </Grid>
+                                        </TabItem>
+                                    </TabControl>
                                 </Grid>
-                                <Grid Name="grid_container_server_history" HorizontalAlignment="Left" Height="195" Margin="198,0,-0.2,0" VerticalAlignment="Top" Width="223">
-                                    <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Height="171" Width="223"/>
-                                    <Label x:Name="label_history" Content="Server History"  HorizontalContentAlignment="Center" HorizontalAlignment="Center" 
-                                           VerticalAlignment="Top" Height="24" Width="223" />
-                                </Grid>
-                                <Grid Name="grid_container_server_current" HorizontalAlignment="Left" Height="149" Margin="0,46,0,0" VerticalAlignment="Top" Width="198"/>
-                                <Viewbox HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="198">
-                                    <TextBlock x:Name="textBlock_server_name" TextWrapping="Wrap" Text="Server1" Width="70"/>
-                                </Viewbox>
                             </Grid>
                         </TabItem>
+                        <TabItem Name="Console_TabItem"  Header="Console">
+                            <Grid Background="#FFE5E5E5">
+                                <Image x:Name="image" HorizontalAlignment="Left" Height="330" Margin="0,0,0,-0.4" VerticalAlignment="Top" Width="422" Source="pack://siteoforigin:,,,/Resources/fake_terminal.png"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Name="Settings_TabItem" Header="Settings">
+                            <Grid Background="#FFE5E5E5">
+                                <Viewbox HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="198">
+                                    <TextBlock x:Name="textBlock_server_name2" TextWrapping="Wrap" Text="Monster" Width="70"/>
+                                </Viewbox>
+                                <Grid HorizontalAlignment="Right" Height="60" Margin="0,0,0.4,0" VerticalAlignment="Top" Width="1*">
+
+                                    <TextBlock x:Name="jar_server_file_text" FontSize="20" TextAlignment="Center" HorizontalAlignment="Center" Margin="0,29,0,0" 
+                                     TextWrapping="Wrap" Text="Minecraftserver-1.8.8.jar" VerticalAlignment="Top" Height="37" Width="219"/>
+                                    <TextBlock x:Name="jar_server_file_heading" FontSize="20" TextAlignment="Center" HorizontalAlignment="Center" 
+                                    	TextWrapping="Wrap" Text="Jar Server File" VerticalAlignment="Top"  Height="29" Width="219"/>
+                                </Grid>
+                                <ComboBox x:Name="cluster_select_combobox" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top" IsEditable="True" Height="23" Width="193"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Name="Schedule_TabItem" Header="Schedule" Margin="0,0,0,0"/>
                     </TabControl>
                 </Grid>
             </TabItem>
