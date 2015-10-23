@@ -22,11 +22,9 @@
                                 <Grid Name="home_overview_data_table_container" HorizontalAlignment="Right" Height="296" Margin="0,40,0,0" VerticalAlignment="Top" Width="428">
                                     <TextBlock x:Name="home_overview_data_table_header" HorizontalAlignment="Left" TextWrapping="Wrap" TextAlignment="Center" FontSize="20" Text="General Server Usage" VerticalAlignment="Top" Height="30" Width="428"/>
                                     <Border BorderBrush="Black" BorderThickness="2">
-                                        <Grid Name="home_overview_data_table" HorizontalAlignment="Left" Height="261" Margin="0,35,0,0" VerticalAlignment="Top" Width="428">
+                                        <Grid Name="home_overview_data_table" HorizontalAlignment="Left" Height="259" Margin="0.4,35.4,-4.4,-2.4" VerticalAlignment="Top" Width="428">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="20" />
-                                                <RowDefinition Height="1*" />
-                                                <RowDefinition Height="1*" />
                                                 <RowDefinition Height="1*" />
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
@@ -34,19 +32,27 @@
                                                 <ColumnDefinition Width="1*" />
                                                 <ColumnDefinition Width="1*" />
                                                 <ColumnDefinition Width="1*" />
-                                                <ColumnDefinition Width="1*" />
                                             </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0" Grid.Row="0" Text="Server Name" TextAlignment="Center" />
-                                            <TextBlock Grid.Column="1" Grid.Row="0" Text="Server Name" TextAlignment="Center" />
+                                            <TextBlock Grid.Column="0" Grid.Row="0" Text="CPU %" TextAlignment="Center" />
+                                            <TextBlock Grid.Column="1" Grid.Row="0" Text="Memory %" TextAlignment="Center" />
+                                            <TextBlock Grid.Column="2" Grid.Row="0" Text="Hard Drive %" TextAlignment="Center" />
+                                            <TextBlock Grid.Column="3" Grid.Row="0" Text="Servers Up" TextAlignment="Center" />
+
+                                            <TextBlock Grid.Column="0" Grid.Row="1" Text="69" TextAlignment="Center" />
+                                            <TextBlock Grid.Column="1" Grid.Row="1" Text="73" TextAlignment="Center" />
+                                            <TextBlock Grid.Column="2" Grid.Row="1" Text="67" TextAlignment="Center" />
+                                            <TextBlock Grid.Column="3" Grid.Row="1" Text="Monster" TextAlignment="Center" />
+
+
 
                                             <Border Grid.Column="0" Grid.Row="0" BorderBrush="Black" BorderThickness=".5"></Border>
-                                            <Border Grid.Column="2" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
-                                            <Border Grid.Column="2" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
-                                            <Border Grid.Column="2" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
-                                            <Border Grid.Column="2" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
-                                            <Border Grid.Column="2" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
-                                            <Border Grid.Column="2" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
-                                            <Border Grid.Column="2" Grid.Row="2" BorderBrush="Black" BorderThickness=".5"></Border>
+                                            <Border Grid.Column="1" Grid.Row="0" BorderBrush="Black" BorderThickness=".5"></Border>
+                                            <Border Grid.Column="2" Grid.Row="0" BorderBrush="Black" BorderThickness=".5"></Border>
+                                            <Border Grid.Column="3" Grid.Row="0" BorderBrush="Black" BorderThickness=".5"></Border>
+                                            <Border Grid.Column="0" Grid.Row="1" BorderBrush="Black" BorderThickness=".5"></Border>
+                                            <Border Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness=".5"></Border>
+                                            <Border Grid.Column="2" Grid.Row="1" BorderBrush="Black" BorderThickness=".5"></Border>
+                                            <Border Grid.Column="3" Grid.Row="1" BorderBrush="Black" BorderThickness=".5"></Border>
 
                                         </Grid>
                                     </Border>
