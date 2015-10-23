@@ -145,6 +145,21 @@
       <Name>MineService Client JSON</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Disk_Usage_pt1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Disk Usage pt1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Disk Usage pt2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fake_terminal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\obref001.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

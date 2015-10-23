@@ -237,7 +237,7 @@
                                 <Viewbox HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="198">
                                     <TextBlock x:Name="textBlock_server_name2" TextWrapping="Wrap" Text="Monster" Width="70"/>
                                 </Viewbox>
-                                <Grid HorizontalAlignment="Right" Height="60" Margin="0,0,0.4,0" VerticalAlignment="Top" Width="1*">
+                                <Grid HorizontalAlignment="Right" Height="60" Margin="0,0,0.4,0" VerticalAlignment="Top" Width="250">
 
                                     <TextBlock x:Name="jar_server_file_text" FontSize="20" TextAlignment="Center" HorizontalAlignment="Center" Margin="0,29,0,0" 
                                      TextWrapping="Wrap" Text="Minecraftserver-1.8.8.jar" VerticalAlignment="Top" Height="37" Width="219"/>
