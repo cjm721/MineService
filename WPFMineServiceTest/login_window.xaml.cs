@@ -20,18 +20,18 @@ namespace WPFMineServiceTest
 
         private void login_button_click(object sender, RoutedEventArgs e)
         {
-            TcpClient client = new TcpClient();
             String temp = cluster_select_combobox.Text.Trim();
             string[] all = temp.Split(':');
             string user = username.Text;
             string pass = password.SecurePassword.ToString();
             try
             {
-                client.Connect(all[0], Convert.ToInt32(all[1]));
-                System.Console.WriteLine("conncetion successfull");
 
-                StreamReader reader = new StreamReader(client.GetStream(), Encoding.ASCII);
-                StreamWriter writer = new StreamWriter(client.GetStream(), Encoding.ASCII);
+                Class1.getClient().Connect(all[0], Convert.ToInt32(all[1]));
+                System.Console.WriteLine("connection successfull");
+              
+                StreamReader reader = new StreamReader(Class1.getClient().GetStream(), Encoding.ASCII);
+                StreamWriter writer = new StreamWriter(Class1.getClient().GetStream(), Encoding.ASCII);
 
                 Login log = new Login(user, pass);
                 String json = JsonConvert.SerializeObject(log);
@@ -41,11 +41,15 @@ namespace WPFMineServiceTest
                 System.Console.WriteLine(js);
                 writer.WriteLine(js);
                 writer.Flush();
+
+                MainWindow mw = new MainWindow();
+                mw.Show();
+                this.Close();
+
             }
             catch (Exception)
             {
                 System.Console.WriteLine("error");
-                client.Close();
             }
 
         }

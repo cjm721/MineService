@@ -197,7 +197,6 @@
                                             </Grid>
                                         </Grid>
                                     </Grid>
-                                    <Grid x:Name="grid_container_server_current1" HorizontalAlignment="Left" Height="149" Margin="0,46,0,0" VerticalAlignment="Top" Width="198"/>
                                     <Viewbox HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="198">
                                         <TextBlock x:Name="server_name_TextBlock" TextWrapping="Wrap" Text="Monster" Width="70"/>
                                     </Viewbox>
@@ -224,6 +223,8 @@
                                             </Grid>
                                         </TabItem>
                                     </TabControl>
+                                    <Button x:Name="button" Content="Start Server" HorizontalAlignment="Left" Margin="23,70,0,0" VerticalAlignment="Top" Width="75"/>
+                                    <Button x:Name="button_Copy" Content="Stop Server" HorizontalAlignment="Left" Margin="23,112,0,0" VerticalAlignment="Top" Width="75" Click="button_Copy_Click"/>
                                 </Grid>
                             </Grid>
                         </TabItem>

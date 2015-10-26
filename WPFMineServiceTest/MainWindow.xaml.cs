@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MineService_Client_JSON;
+using Newtonsoft.Json;
+using System.IO;
+using System.Net.Sockets;
 
 namespace WPFMineServiceTest
 {
@@ -41,28 +45,28 @@ namespace WPFMineServiceTest
             switch (name)
             {
                 case "overview_TabItem":
-                    Console.WriteLine("overview"); //get server info here
+                    System.Console.WriteLine("overview"); //get server info here
                     break;
                 case "FTP_TabItem":
-                    Console.WriteLine("FTP");  //get server info here
+                    System.Console.WriteLine("FTP");  //get server info here
                     break;
                 case "users_TabItem":
-                    Console.WriteLine("users"); //get server info here
+                    System.Console.WriteLine("users"); //get server info here
                     break;
                 case "settings_TabItem":
-                    Console.WriteLine("settings");  //get server info here
+                    System.Console.WriteLine("settings");  //get server info here
                     break;
                 case "Status_TabItem":
-                    Console.WriteLine("Status"); //get server info here
+                    System.Console.WriteLine("Status"); //get server info here
                     break;
                 case "Console_TabItem":
-                    Console.WriteLine("Console");  //get server info here
+                    System.Console.WriteLine("Console");  //get server info here
                     break;
                 case "Settings_TabItem":
-                    Console.WriteLine("Settings"); //get server info here
+                    System.Console.WriteLine("Settings"); //get server info here
                     break;
                 case "Schedule_TabItem":
-                    Console.WriteLine("Schedule");  //get server info here
+                    System.Console.WriteLine("Schedule");  //get server info here
                     break;
             }
         }
@@ -70,6 +74,30 @@ namespace WPFMineServiceTest
         private void tabControl2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void button_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                System.Console.WriteLine("Line 83");
+                TcpClient client = Class1.getClient();
+                System.Console.WriteLine("Line 85, client: " + client.ToString());
+                StreamWriter writer = new StreamWriter(client.GetStream(), Encoding.ASCII);
+                System.Console.WriteLine("line 86");
+
+                MCCommand command = new MCCommand(States.MCCommandTYPE.Stop, "Monster", "");
+                String json = JsonConvert.SerializeObject(command);
+                Message msg = new Message(States.MessageTYPE.MCCommand, json);
+                String js = JsonConvert.SerializeObject(msg);
+                writer.WriteLine(js);
+                System.Console.WriteLine("line 93");
+
+            }
+            catch (Exception)
+            {
+               
+            }
         }
     }
 }

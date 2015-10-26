@@ -8,7 +8,7 @@
             <ColumnDefinition Width="79*"/>
         </Grid.ColumnDefinitions>
         <Grid Name="cluster_select_container" HorizontalAlignment="Center" Height="23" Margin="50,108,20,0" VerticalAlignment="Top" Width="224" Grid.ColumnSpan="2">
-            <ComboBox x:Name="cluster_select_combobox" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" IsEditable="True" Height="23" Width="193"/>
+            <ComboBox Text="localhost:56552" x:Name="cluster_select_combobox" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" IsEditable="True" Height="23" Width="193"/>
             <Button x:Name="add_cluster_button" Content="+" HorizontalAlignment="Right" VerticalAlignment="Top" Width="26" Margin="0,0,0,0"/>
         </Grid>
         <TextBox x:Name="username" HorizontalAlignment="Center" Height="23" Margin="51,148,50,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="193" Grid.ColumnSpan="2"/>
