@@ -9,5 +9,10 @@ namespace MineService_Client_JSON
     public class Console
     {
         public String[] messages;
+
+        public Console(String[] messages)
+        {
+            this.messages = messages;
+        }
     }
 }

@@ -11,5 +11,12 @@ namespace MineService_Client_JSON
         public States.StatusType TYPE;
         public String ServerID;
         public ServerStatus serverStatus;
+
+        public Status(States.StatusType TYPE, String ServerID, ServerStatus serverStatus)
+        {
+            this.TYPE = TYPE;
+            this.ServerID = ServerID;
+            this.serverStatus = serverStatus;
+        }
     }
 }
