@@ -10,7 +10,7 @@ namespace MineService_Client_JSON
     {
         public enum MCCommandTYPE { Start, Stop, Restart, Raw };
         [Flags]
-        public enum MessageTYPE { Command, Login, Status, Console };
+        public enum MessageTYPE { MCCommand, Login, Status, Console };
         [Flags]
         public enum StatusType { Request, Send};
     }
