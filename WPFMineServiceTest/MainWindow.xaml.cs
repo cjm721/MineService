@@ -24,13 +24,18 @@ namespace WPFMineServiceTest
     /// </summary>
     public partial class MainWindow : Window
     {
+        public String currentTabName;
+
         public MainWindow()
         {
             InitializeComponent();
 
+
             home_TabControl.SelectionChanged += (o, e) =>
             {
-                getData(((o as TabControl).SelectedItem as TabItem));
+                TabItem temp = ((o as TabControl).SelectedItem as TabItem);
+                getData(temp);
+                currentTabName = temp.Name;
             };
 
             server_TabControl.SelectionChanged += (o, e) =>
@@ -76,11 +81,20 @@ namespace WPFMineServiceTest
 
         }
 
-        private void button_Copy_Click(object sender, RoutedEventArgs e)
+        private void start_stop_button_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if(currentTabName.Contains("server_Tab_"))
             {
-                MCCommand command = new MCCommand(States.MCCommandTYPE.Stop, "Monster", "");
+                Button button = ((Button)sender);
+                String server = currentTabName.Remove(0,11);
+                States.MCCommandTYPE state = States.MCCommandTYPE.Start;
+
+                if (((Button)sender).Content.ToString().Contains("Stop"))
+                {
+                    state = States.MCCommandTYPE.Stop;
+                }
+
+                MCCommand command = new MCCommand(state, server, "");
                 System.Console.WriteLine("command: " + command.ToString());
                 String json = JsonConvert.SerializeObject(command);
                 Message msg = new Message(States.MessageTYPE.MCCommand, json);
@@ -88,11 +102,11 @@ namespace WPFMineServiceTest
                 System.Console.WriteLine("before sending to server, js: " + js.ToString());
                 CommunicationClient.INSTANCE.sendToServer(js);
                 System.Console.WriteLine("after send to server");
+
+                button.Content = "Pending";
+                button.IsEnabled = false;
             }
-            catch (Exception)
-            {
-               
-            }
+
         }
     }
 }

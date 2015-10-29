@@ -121,15 +121,12 @@
                     </TabControl>
                 </Grid>
             </TabItem>
-            <TabItem Header="Monster">
+            <TabItem Header="Monster" Name="server_Tab_Monster">
                 <Grid Background="#FFE5E5E5">
                     <TabControl x:Name="server_TabControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabStripPlacement="Left" Margin="0,0,0,0" SelectionChanged="tabControl2_SelectionChanged">
                         <TabItem Name="Status_TabItem"  Header="Status">
                             <Grid Background="#FFE5E5E5">
                                 <Grid Background="#FFE5E5E5">
-                                    <Grid HorizontalAlignment="Left" Height="195" VerticalAlignment="Top" Width="421">
-                                        <Grid HorizontalAlignment="Left" Height="100" Margin="142,62,0,0" VerticalAlignment="Top" Width="100"/>
-                                    </Grid>
                                     <Grid x:Name="grid_container_server_history1" HorizontalAlignment="Left" Height="195" 
                                           Margin="198,0,-0.2,0" VerticalAlignment="Top" Width="223">
                                         <Label x:Name="label_history1" Content="Server History" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" 
@@ -223,8 +220,7 @@
                                             </Grid>
                                         </TabItem>
                                     </TabControl>
-                                    <Button x:Name="button" Content="Start Server" HorizontalAlignment="Left" Margin="23,70,0,0" VerticalAlignment="Top" Width="75"/>
-                                    <Button x:Name="button_Copy" Content="Stop Server" HorizontalAlignment="Left" Margin="23,112,0,0" VerticalAlignment="Top" Width="75" Click="button_Copy_Click"/>
+                                    <Button x:Name="start_stop_button" Content="Stop Server" HorizontalAlignment="Left" Margin="24,72,0,0" VerticalAlignment="Top" Width="75" Click="start_stop_button_Click"/>
                                 </Grid>
                             </Grid>
                         </TabItem>
