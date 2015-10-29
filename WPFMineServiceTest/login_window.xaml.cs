@@ -26,12 +26,7 @@ namespace WPFMineServiceTest
             string pass = password.SecurePassword.ToString();
             try
             {
-
-                Class1.getClient().Connect(all[0], Convert.ToInt32(all[1]));
-                System.Console.WriteLine("connection successfull");
-              
-                StreamReader reader = new StreamReader(Class1.getClient().GetStream(), Encoding.ASCII);
-                StreamWriter writer = new StreamWriter(Class1.getClient().GetStream(), Encoding.ASCII);
+                new CommunicationClient(all[0], Convert.ToInt32(all[1]));
 
                 Login log = new Login(user, pass);
                 String json = JsonConvert.SerializeObject(log);
@@ -39,8 +34,9 @@ namespace WPFMineServiceTest
 
                 String js = JsonConvert.SerializeObject(msg);
                 System.Console.WriteLine(js);
-                writer.WriteLine(js);
-                writer.Flush();
+
+                CommunicationClient.INSTANCE.sendToServer(js);
+
 
                 MainWindow mw = new MainWindow();
                 mw.Show();

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +10,7 @@ namespace MineService_Client_JSON
 {
     public class Status
     {
+        [JsonConverter(typeof(StringEnumConverter))]
         public States.StatusType TYPE;
         public String ServerID;
         public ServerStatus serverStatus;

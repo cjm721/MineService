@@ -80,19 +80,14 @@ namespace WPFMineServiceTest
         {
             try
             {
-                System.Console.WriteLine("Line 83");
-                TcpClient client = Class1.getClient();
-                System.Console.WriteLine("Line 85, client: " + client.ToString());
-                StreamWriter writer = new StreamWriter(client.GetStream(), Encoding.ASCII);
-                System.Console.WriteLine("line 86");
-
                 MCCommand command = new MCCommand(States.MCCommandTYPE.Stop, "Monster", "");
+                System.Console.WriteLine("command: " + command.ToString());
                 String json = JsonConvert.SerializeObject(command);
                 Message msg = new Message(States.MessageTYPE.MCCommand, json);
                 String js = JsonConvert.SerializeObject(msg);
-                writer.WriteLine(js);
-                System.Console.WriteLine("line 93");
-
+                System.Console.WriteLine("before sending to server, js: " + js.ToString());
+                CommunicationClient.INSTANCE.sendToServer(js);
+                System.Console.WriteLine("after send to server");
             }
             catch (Exception)
             {
