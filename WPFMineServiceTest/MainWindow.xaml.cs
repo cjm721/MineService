@@ -16,6 +16,8 @@ using MineService_Client_JSON;
 using Newtonsoft.Json;
 using System.IO;
 using System.Net.Sockets;
+using System.Windows.Markup;
+using System.Xml;
 
 namespace WPFMineServiceTest
 {
@@ -30,18 +32,17 @@ namespace WPFMineServiceTest
         {
             InitializeComponent();
 
-
             home_TabControl.SelectionChanged += (o, e) =>
-            {
-                TabItem temp = ((o as TabControl).SelectedItem as TabItem);
-                getData(temp);
-                currentTabName = temp.Name;
-            };
+        {
+            TabItem temp = ((o as TabControl).SelectedItem as TabItem);
+            getData(temp);
+            currentTabName = temp.Name;
+        };
 
             server_TabControl.SelectionChanged += (o, e) =>
             {
                 getData(((o as TabControl).SelectedItem as TabItem));
-            };            
+            };
         }
 
         private void getData(TabItem tabitem)
@@ -83,10 +84,10 @@ namespace WPFMineServiceTest
 
         private void start_stop_button_Click(object sender, RoutedEventArgs e)
         {
-            if(currentTabName.Contains("server_Tab_"))
+            if (!server_name_TextBlock.Name.Equals("cluster_tab"))
             {
                 Button button = ((Button)sender);
-                String server = currentTabName.Remove(0,11);
+                String server = server_name_TextBlock.Text;
                 States.MCCommandTYPE state = States.MCCommandTYPE.Start;
 
                 if (((Button)sender).Content.ToString().Contains("Stop"))
@@ -95,7 +96,7 @@ namespace WPFMineServiceTest
                 }
 
                 MCCommand command = new MCCommand(state, server, "");
-                System.Console.WriteLine("command: " + command.ToString());
+                System.Console.WriteLine("command: " + command.type);
                 String json = JsonConvert.SerializeObject(command);
                 Message msg = new Message(States.MessageTYPE.MCCommand, json);
                 String js = JsonConvert.SerializeObject(msg);
@@ -108,5 +109,58 @@ namespace WPFMineServiceTest
             }
 
         }
+
+        private void add_new_server_button_Click(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(new_server_folder.Text) || String.IsNullOrWhiteSpace(new_server_name.Text))
+            {
+                if(String.IsNullOrWhiteSpace(new_server_name.Text) && String.IsNullOrWhiteSpace(new_server_folder.Text))
+                {
+                    MessageBox.Show("Must enter server name and server file","Required Field Missing",MessageBoxButton.OK, MessageBoxImage.Error);
+                } else if(String.IsNullOrWhiteSpace(new_server_name.Text)) {
+                    MessageBox.Show("Must enter server name", "Required Field Missing", MessageBoxButton.OK, MessageBoxImage.Error);
+                } else
+                {
+                    MessageBox.Show("Must enter server folder","Required Field Missing",MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                return;
+            }
+            TabItem new_tab = TrycloneElement(server_Tab_1);
+            //TabItem new_tab = GetNewServerTabItem();
+            if (new_tab != null)
+            {
+                cluster_TabControl.Items.Add(new_tab);
+                cluster_TabControl.Items.Remove(add_new_server); //These make sure that the add new server tab is always at the bottom
+                cluster_TabControl.Items.Add(add_new_server);
+            }
+        }
+
+        public static T TrycloneElement<T>(T orig)
+        {
+            try
+            {
+                string s = XamlWriter.Save(orig);
+                StringReader stringReader = new StringReader(s);
+                XmlReader xmlReader = XmlTextReader.Create(stringReader, new XmlReaderSettings());
+                XmlReaderSettings sx = new XmlReaderSettings();
+                object x = XamlReader.Load(xmlReader);
+                return (T)x;
+            }
+            catch
+            {
+                return (T)((object)null);
+            }
+        }
+
+        //public static T GetNewServerTabItem<T>()
+        //{
+        //    string s = XamlWriter.Save(File.ReadAllText("newServerTab.xaml.new"));
+        //    StringReader stringReader = new StringReader(s);
+        //    XmlReader xmlReader = XmlTextReader.Create(stringReader, new XmlReaderSettings());
+        //    XmlReaderSettings sx = new XmlReaderSettings();
+        //    object x = XamlReader.Load(xmlReader);
+        //    return (T)x;
+        //    //return  (TabItem) XamlReader.Parse(File.ReadAllText("newServerTab.xaml.new"));
+        //}
     }
 }
