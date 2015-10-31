@@ -11,8 +11,8 @@ namespace MineService_Client_Test
         [TestMethod]
         public void TestLoadingNewServerTabXaml()
         {
-            TabItem item = MainWindow.GetNewServerTabItem();
-            Assert.Equals("Monster", item.Name);
+            object item = MainWindow.GetNewServerTabItem();
+            System.Diagnostics.Debug.WriteLine(item.ToString());
         }
     }
 }

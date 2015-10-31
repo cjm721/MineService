@@ -18,6 +18,7 @@ using System.IO;
 using System.Net.Sockets;
 using System.Windows.Markup;
 using System.Xml;
+using System.Xml.Linq;
 
 
 namespace WPFMineServiceTest
@@ -150,13 +151,16 @@ namespace WPFMineServiceTest
                 }
                 return;
             }
+<<<<<<< Updated upstream
             TabItem new_tab = TrycloneElement(Monster);
             //TabItem new_tab = GetNewServerTabItem();
+=======
+            //TabItem new_tab = TrycloneElement(server_Tab_1);
+            TabItem new_tab = GetNewServerTabItemFromObject();
+>>>>>>> Stashed changes
             if (new_tab != null)
             {
-                cluster_TabControl.Items.Add(new_tab);
-                cluster_TabControl.Items.Remove(add_new_server); //These make sure that the add new server tab is always at the bottom
-                cluster_TabControl.Items.Add(add_new_server);
+                cluster_TabControl.Items.Insert(cluster_TabControl.Items.Count - 1, new_tab);
             }
         }
 
@@ -169,6 +173,14 @@ namespace WPFMineServiceTest
                 XmlReader xmlReader = XmlTextReader.Create(stringReader, new XmlReaderSettings());
                 XmlReaderSettings sx = new XmlReaderSettings();
                 object x = XamlReader.Load(xmlReader);
+
+                //XElement doc = XElement.Load("newServerTab.xaml.new");
+                //may b useful XmlTextWriter write1 = XmlTextWriter.Create("newServerTab.xaml.new");
+                //XmlReader reader = XmlReader.Create("newServerTab.xaml.new");
+                //System.Console.WriteLine(reader.ReadInnerXml());
+
+                //cluster_TabControl.Items.Add(doc);
+
                 return (T)x;
             }
             catch
@@ -177,16 +189,37 @@ namespace WPFMineServiceTest
             }
         }
 
-        //public static T GetNewServerTabItem<T>()
+        public static TabItem GetNewServerTabItem()
+        {
+            //TabItem new_server = new TabItem();
+            //new_server.Header = "new tab";
+            //new_server.Name = "server_tab_2";
+            //new_server.Content = new_server_content();
+
+
+            string s = System.IO.File.ReadAllText("newServer.xaml.cs");
+            StringReader stringReader = new StringReader(s);
+            XmlReader xmlReader = XmlTextReader.Create(stringReader, new XmlReaderSettings());
+            object x = XamlReader.Load(xmlReader);
+            return ((TabItem)x);
+        }
+
+        //private static object new_server_content()
         //{
-        //    string s = XamlWriter.Save(File.ReadAllText("newServerTab.xaml.new"));
-        //    StringReader stringReader = new StringReader(s);
-        //    XmlReader xmlReader = XmlTextReader.Create(stringReader, new XmlReaderSettings());
-        //    XmlReaderSettings sx = new XmlReaderSettings();
-        //    object x = XamlReader.Load(xmlReader);
-        //    return (T)x;
-        //    //return  (TabItem) XamlReader.Parse(File.ReadAllText("newServerTab.xaml.new"));
+        //    Grid grid = new Grid();
+        //    grid.Background = FFE5E5E5;
+
         //}
 
+<<<<<<< Updated upstream
+=======
+        public static TabItem GetNewServerTabItemFromObject()
+        {
+            Window2 w2 = new Window2();
+            TabItem item = w2.server_Tab_1;
+            w2.OverGrid.Children.Remove(item);
+            return TrycloneElement(item);
+        }
+>>>>>>> Stashed changes
     }
 }
