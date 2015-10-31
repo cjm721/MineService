@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.IO;
 using System.Threading;
+using Newtonsoft.Json;
+using MineService_Client_JSON;
 
 namespace WPFMineServiceTest
 {
@@ -15,7 +17,6 @@ namespace WPFMineServiceTest
 
         public TcpClient clientSocket;
         private StreamReader reader;
-        private Boolean Enabled;
         private StreamWriter writer;
 
         public CommunicationClient(String ip, int port)
@@ -42,7 +43,7 @@ namespace WPFMineServiceTest
 
         public async void queueMessageAsync()
         {
-            while (Enabled && clientSocket.Connected)
+            while (clientSocket.Connected)
             {
                 this.reader = new StreamReader(clientSocket.GetStream(), Encoding.UTF8);
                 string line;
@@ -50,14 +51,29 @@ namespace WPFMineServiceTest
                 try
                 {
                     line = await task;
-                    Console.WriteLine("Message: " + line);
+                    System.Diagnostics.Debug.WriteLine("Message: " + line);
+                    processMessage(line);
                 }
                 catch (IOException)
                 {
                     // todo: a pop-up
                 }
             }
-            Enabled = false;
+        }
+
+        public void processMessage(String line)
+        {
+            Message msg = JsonConvert.DeserializeObject<Message>(line);
+
+            switch (msg.type)
+            {
+                case States.MessageTYPE.Status:
+                    Status status = JsonConvert.DeserializeObject<Status>(msg.message);
+
+                    //MainWindow.INSTANCE.start_stop_button.Content = (status.serverStatus.isRunning) ? "Start Server" : "Stop Server";
+                    //MainWindow.INSTANCE.start_stop_button.IsEnabled = true;
+                    break;
+            }
         }
     }
 }

@@ -29,8 +29,11 @@ namespace WPFMineServiceTest
     {
         public String currentTabName;
 
+        public static MainWindow INSTANCE;
+
         public MainWindow()
         {
+            INSTANCE = this;
             InitializeComponent();
 
 
@@ -87,7 +90,7 @@ namespace WPFMineServiceTest
 
         private void start_stop_button_Click(object sender, RoutedEventArgs e)
         {
-            if (server_name_TextBlock.Name.Contains("server_Tab_"))
+            if (server_name_TextBlock.Name.Contains("server_name_"))
             {
                 System.Console.WriteLine("DEBUG: Gets here");
                 Button button = ((Button)sender);
@@ -115,10 +118,9 @@ namespace WPFMineServiceTest
                 button.Content = "Pending";
                 button.IsEnabled = false;
 
-                button.Content = (state == States.MCCommandTYPE.Start) ? "Stop" : "Start";
+
+                button.Content = (state == States.MCCommandTYPE.Stop) ? "Start Server" : "Stop Server";
                 button.IsEnabled = true;
-
-
             }
 
         }

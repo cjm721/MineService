@@ -220,7 +220,7 @@
                                             </Grid>
                                         </TabItem>
                                     </TabControl>
-                                    <Button x:Name="start_stop_button" Content="Stop Server" HorizontalAlignment="Left" Margin="24,72,0,0" VerticalAlignment="Top" Width="75" Click="start_stop_button_Click"/>
+                                    <Button x:Name="start_stop_button" Content="Start Server" HorizontalAlignment="Left" Margin="24,72,0,0" VerticalAlignment="Top" Width="75" Click="start_stop_button_Click"/>
                                 </Grid>
                             </Grid>
                         </TabItem>
