@@ -37,11 +37,12 @@ namespace WPFMineServiceTest
                 getData(temp);
                 currentTabName = temp.Name;
             };
+           
 
             server_TabControl.SelectionChanged += (o, e) =>
             {
                 getData(((o as TabControl).SelectedItem as TabItem));
-            };            
+            };
         }
 
         private void getData(TabItem tabitem)
@@ -83,29 +84,39 @@ namespace WPFMineServiceTest
 
         private void start_stop_button_Click(object sender, RoutedEventArgs e)
         {
-            if(currentTabName.Contains("server_Tab_"))
+            //if(currentTabName.Contains("server_Tab_"))
+            //{
+            System.Console.WriteLine("DEBUG: Gets here");
+            Button button = ((Button)sender);
+            String server = server_name_TextBlock.Text;
+            States.MCCommandTYPE state = States.MCCommandTYPE.Start;
+
+            if (((Button)sender).Content.ToString().Contains("Stop"))
             {
-                Button button = ((Button)sender);
-                String server = currentTabName.Remove(0,11);
-                States.MCCommandTYPE state = States.MCCommandTYPE.Start;
-
-                if (((Button)sender).Content.ToString().Contains("Stop"))
-                {
-                    state = States.MCCommandTYPE.Stop;
-                }
-
-                MCCommand command = new MCCommand(state, server, "");
-                System.Console.WriteLine("command: " + command.ToString());
-                String json = JsonConvert.SerializeObject(command);
-                Message msg = new Message(States.MessageTYPE.MCCommand, json);
-                String js = JsonConvert.SerializeObject(msg);
-                System.Console.WriteLine("before sending to server, js: " + js.ToString());
-                CommunicationClient.INSTANCE.sendToServer(js);
-                System.Console.WriteLine("after send to server");
-
-                button.Content = "Pending";
-                button.IsEnabled = false;
+                state = States.MCCommandTYPE.Stop;
             }
+            else if (((Button)sender).Content.ToString().Contains("Start"))
+            {
+                state = States.MCCommandTYPE.Start;
+            }
+
+            MCCommand command = new MCCommand(state, server, "");
+            System.Console.WriteLine("command: " + command.type);
+            String json = JsonConvert.SerializeObject(command);
+            Message msg = new Message(States.MessageTYPE.MCCommand, json);
+            String js = JsonConvert.SerializeObject(msg);
+            System.Console.WriteLine("before sending to server, js: " + js.ToString());
+            CommunicationClient.INSTANCE.sendToServer(js);
+            System.Console.WriteLine("after send to server");
+
+            button.Content = "Pending";
+            button.IsEnabled = false;
+
+            button.Content = (state == States.MCCommandTYPE.Start) ? "Stop" : "Start";
+            button.IsEnabled = true;
+            
+            
+            //}
 
         }
     }

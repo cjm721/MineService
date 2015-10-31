@@ -12,7 +12,7 @@
             <RowDefinition Height="336*"/>
         </Grid.RowDefinitions>
         <TabControl x:Name="cluster_TabControl" TabStripPlacement="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" Grid.RowSpan="2">
-            <TabItem Header="Home">
+            <TabItem Header="Home" Height="24" VerticalAlignment="Top">
                 <Grid Background="#FFE5E5E5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0">
                     <TabControl x:Name="home_TabControl" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TabStripPlacement="Left">
                         <TabItem Name="overview_TabItem" Header="Overview">
@@ -121,7 +121,7 @@
                     </TabControl>
                 </Grid>
             </TabItem>
-            <TabItem Header="Monster" Name="server_Tab_Monster">
+            <TabItem Header="Monster" Name="server_Tab_Monster" Height="24" VerticalAlignment="Top">
                 <Grid Background="#FFE5E5E5">
                     <TabControl x:Name="server_TabControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabStripPlacement="Left" Margin="0,0,0,0" SelectionChanged="tabControl2_SelectionChanged">
                         <TabItem Name="Status_TabItem"  Header="Status">
