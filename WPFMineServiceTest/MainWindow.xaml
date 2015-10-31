@@ -12,7 +12,7 @@
             <RowDefinition Height="336*"/>
         </Grid.RowDefinitions>
         <TabControl x:Name="cluster_TabControl" TabStripPlacement="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" Grid.RowSpan="2">
-            <TabItem Header="Home" Height="24" VerticalAlignment="Top">
+            <TabItem Header="Home" Name="cluster_tab">
                 <Grid Background="#FFE5E5E5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0">
                     <TabControl x:Name="home_TabControl" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TabStripPlacement="Left">
                         <TabItem Name="overview_TabItem" Header="Overview">
@@ -121,7 +121,7 @@
                     </TabControl>
                 </Grid>
             </TabItem>
-            <TabItem Header="Monster" Name="server_Tab_Monster" Height="24" VerticalAlignment="Top">
+            <TabItem Header="Monster" Name="server_Tab_1">
                 <Grid Background="#FFE5E5E5">
                     <TabControl x:Name="server_TabControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabStripPlacement="Left" Margin="0,0,0,0" SelectionChanged="tabControl2_SelectionChanged">
                         <TabItem Name="Status_TabItem"  Header="Status">
@@ -248,12 +248,16 @@
                     </TabControl>
                 </Grid>
             </TabItem>
-            <TabItem>
+            <TabItem Name="add_new_server">
                 <TabItem.Header>
                     <Image Source="pack://siteoforigin:,,,/Resources/Plus Sign.png" Width="20px"></Image>
                 </TabItem.Header>
                 <Grid Background="#FFE5E5E5">
-                    <Label x:Name="newServerlabel" Content="New Server" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="new_server_name_label" Content="Server Name" HorizontalAlignment="Left" Margin="10,10,0,0" FontSize="14" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="new_server_name" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="163"/>
+                    <Label x:Name="new_server_folder_label" Content="Folder Name" HorizontalAlignment="Left" Margin="221,10,0,0" FontSize="14" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="new_server_folder" HorizontalAlignment="Left" Margin="221,36,0,0" VerticalAlignment="Top" Height="23" Width="193"/>
+                    <Button x:Name="add_new_server_button" Content="Add Server" HorizontalAlignment="Left" Margin="121,256,0,0" VerticalAlignment="Top" Width="166" Height="63" Click="add_new_server_button_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>
