@@ -37,6 +37,12 @@ namespace WPFMineServiceTest
             InitializeComponent();
 
 
+            cluster_TabControl.SelectionChanged += (o, e) =>
+            {
+                TabItem temp = ((o as TabControl).SelectedItem as TabItem);
+                currentTabName = temp.Name;
+            };
+
             home_TabControl.SelectionChanged += (o, e) =>
             {
                 TabItem temp = ((o as TabControl).SelectedItem as TabItem);
@@ -144,7 +150,7 @@ namespace WPFMineServiceTest
                 }
                 return;
             }
-            TabItem new_tab = TrycloneElement(server_Tab_1);
+            TabItem new_tab = TrycloneElement(Monster);
             //TabItem new_tab = GetNewServerTabItem();
             if (new_tab != null)
             {
