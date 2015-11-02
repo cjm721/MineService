@@ -16,7 +16,7 @@
             <TabItem Header="Monster" Name="server_Tab_1">
                 <Grid Background="#FFE5E5E5">
                     <TabControl Name="server_TabControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabStripPlacement="Left" Margin="0,0,0,0">
-                        <TabItem Name="Status_TabItem"  Header="Status">
+                        <TabItem Name="Status_TabItem"  Header="Status" Margin="-2,-2,-1.2,0">
                             <Grid Background="#FFE5E5E5">
                                 <Grid Background="#FFE5E5E5">
                                     <Grid Name="grid_container_server_history1" HorizontalAlignment="Left" Height="195"
@@ -116,12 +116,12 @@
                                 </Grid>
                             </Grid>
                         </TabItem>
-                        <TabItem Name="Console_TabItem"  Header="Console" Height="23" Margin="-2,-2.2,-1.6,-0.8" VerticalAlignment="Bottom">
+                        <TabItem Name="Console_TabItem"  Header="Console" Height="23" Margin="0,0,-0.6,-0.6" VerticalAlignment="Bottom">
                             <Grid Background="#FFE5E5E5">
                                 <Image Name="image" HorizontalAlignment="Left" Height="330" Margin="0,0,0,-0.4" VerticalAlignment="Top" Width="422" Source="pack://siteoforigin:,,,/Resources/fake_terminal.png"/>
                             </Grid>
                         </TabItem>
-                        <TabItem Name="Settings_TabItem" Header="Settings">
+                        <TabItem Name="Settings_TabItem" Header="Settings" Margin="0,-2.4,-1.6,-1.6">
                             <Grid Background="#FFE5E5E5">
                                 <Viewbox HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="198">
                                     <TextBlock Name="textBlock_server_name2" TextWrapping="Wrap" Text="Monster" Width="70"/>
@@ -136,7 +136,7 @@
                                 <ComboBox Name="cluster_select_combobox" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top" IsEditable="True" Height="23" Width="193"/>
                             </Grid>
                         </TabItem>
-                        <TabItem Name="Schedule_TabItem" Header="Schedule" Margin="0,0,0,0"/>
+                        <TabItem Name="Schedule_TabItem" Header="Schedule" Margin="0,-0.4,0.4,0.4"/>
                     </TabControl>
                 </Grid>
             </TabItem>

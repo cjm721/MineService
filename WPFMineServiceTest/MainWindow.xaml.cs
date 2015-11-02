@@ -151,13 +151,9 @@ namespace WPFMineServiceTest
                 }
                 return;
             }
-<<<<<<< Updated upstream
-            TabItem new_tab = TrycloneElement(Monster);
-            //TabItem new_tab = GetNewServerTabItem();
-=======
-            //TabItem new_tab = TrycloneElement(server_Tab_1);
+
             TabItem new_tab = GetNewServerTabItemFromObject();
->>>>>>> Stashed changes
+
             if (new_tab != null)
             {
                 cluster_TabControl.Items.Insert(cluster_TabControl.Items.Count - 1, new_tab);
@@ -174,13 +170,6 @@ namespace WPFMineServiceTest
                 XmlReaderSettings sx = new XmlReaderSettings();
                 object x = XamlReader.Load(xmlReader);
 
-                //XElement doc = XElement.Load("newServerTab.xaml.new");
-                //may b useful XmlTextWriter write1 = XmlTextWriter.Create("newServerTab.xaml.new");
-                //XmlReader reader = XmlReader.Create("newServerTab.xaml.new");
-                //System.Console.WriteLine(reader.ReadInnerXml());
-
-                //cluster_TabControl.Items.Add(doc);
-
                 return (T)x;
             }
             catch
@@ -191,12 +180,6 @@ namespace WPFMineServiceTest
 
         public static TabItem GetNewServerTabItem()
         {
-            //TabItem new_server = new TabItem();
-            //new_server.Header = "new tab";
-            //new_server.Name = "server_tab_2";
-            //new_server.Content = new_server_content();
-
-
             string s = System.IO.File.ReadAllText("newServer.xaml.cs");
             StringReader stringReader = new StringReader(s);
             XmlReader xmlReader = XmlTextReader.Create(stringReader, new XmlReaderSettings());
@@ -204,15 +187,6 @@ namespace WPFMineServiceTest
             return ((TabItem)x);
         }
 
-        //private static object new_server_content()
-        //{
-        //    Grid grid = new Grid();
-        //    grid.Background = FFE5E5E5;
-
-        //}
-
-<<<<<<< Updated upstream
-=======
         public static TabItem GetNewServerTabItemFromObject()
         {
             Window2 w2 = new Window2();
@@ -220,6 +194,5 @@ namespace WPFMineServiceTest
             w2.OverGrid.Children.Remove(item);
             return TrycloneElement(item);
         }
->>>>>>> Stashed changes
     }
 }
