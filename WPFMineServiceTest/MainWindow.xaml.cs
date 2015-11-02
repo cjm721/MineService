@@ -151,14 +151,9 @@ namespace WPFMineServiceTest
                 }
                 return;
             }
-<<<<<<< HEAD
 
             TabItem new_tab = GetNewServerTabItemFromObject();
 
-=======
-            //TabItem new_tab = TrycloneElement(server_Tab_1);
-            TabItem new_tab = GetNewServerTabItemFromObject();
->>>>>>> da9d21f2f2130ae14a7722974afb2d0214fe3b78
             if (new_tab != null)
             {
                 cluster_TabControl.Items.Insert(cluster_TabControl.Items.Count - 1, new_tab);
@@ -192,16 +187,6 @@ namespace WPFMineServiceTest
             return ((TabItem)x);
         }
 
-<<<<<<< HEAD
-=======
-        //private static object new_server_content()
-        //{
-        //    Grid grid = new Grid();
-        //    grid.Background = FFE5E5E5;
-
-        //}
-
->>>>>>> da9d21f2f2130ae14a7722974afb2d0214fe3b78
         public static TabItem GetNewServerTabItemFromObject()
         {
             Window2 w2 = new Window2();
