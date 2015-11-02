@@ -151,13 +151,8 @@ namespace WPFMineServiceTest
                 }
                 return;
             }
-<<<<<<< Updated upstream
-            TabItem new_tab = TrycloneElement(Monster);
-            //TabItem new_tab = GetNewServerTabItem();
-=======
             //TabItem new_tab = TrycloneElement(server_Tab_1);
             TabItem new_tab = GetNewServerTabItemFromObject();
->>>>>>> Stashed changes
             if (new_tab != null)
             {
                 cluster_TabControl.Items.Insert(cluster_TabControl.Items.Count - 1, new_tab);
@@ -211,8 +206,6 @@ namespace WPFMineServiceTest
 
         //}
 
-<<<<<<< Updated upstream
-=======
         public static TabItem GetNewServerTabItemFromObject()
         {
             Window2 w2 = new Window2();
@@ -220,6 +213,5 @@ namespace WPFMineServiceTest
             w2.OverGrid.Children.Remove(item);
             return TrycloneElement(item);
         }
->>>>>>> Stashed changes
     }
 }
