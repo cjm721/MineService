@@ -156,13 +156,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Disk_Usage_pt1.bmp" />
+    <None Include="Resources\Disk Usage pt1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Disk Usage pt1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Disk Usage pt2.png" />
+    <None Include="Resources\Disk Usage pt2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\fake_terminal.png" />
