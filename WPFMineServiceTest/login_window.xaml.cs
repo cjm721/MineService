@@ -23,7 +23,7 @@ namespace WPFMineServiceTest
             String temp = cluster_select_combobox.Text.Trim();
             string[] all = temp.Split(':');
             string user = username.Text;
-            string pass = password.SecurePassword.ToString();
+            string pass = password.Password;
             try
             {
                 new CommunicationClient(all[0], Convert.ToInt32(all[1]));

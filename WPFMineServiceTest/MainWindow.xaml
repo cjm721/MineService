@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFMineServiceTest"
         mc:Ignorable="d"
-        Title="MainWindow" Height="378.194" Width="570.282">
+        Title="MainWindow" Height="398.194" Width="590.282">
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="13*"/>
@@ -261,6 +261,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
+        <Viewbox Margin="0,-30,0,0" Grid.RowSpan="2"/>
 
     </Grid>
 </Window>
