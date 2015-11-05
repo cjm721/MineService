@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFMineServiceTest", "WPFMi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineService Client JSON", "MineService Client JSON\MineService Client JSON.csproj", "{0B5B6C38-8480-4994-A040-527A30C32A07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineService Client Test", "MineService Client Test\MineService Client Test.csproj", "{093B2432-29F1-4CAF-BBE7-D462DAA00A6E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingProject", "TestingProject\TestingProject.csproj", "{CC8A554A-EAB6-4E71-BDF5-3AC7A71BEE3E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{0B5B6C38-8480-4994-A040-527A30C32A07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B5B6C38-8480-4994-A040-527A30C32A07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B5B6C38-8480-4994-A040-527A30C32A07}.Release|Any CPU.Build.0 = Release|Any CPU
-		{093B2432-29F1-4CAF-BBE7-D462DAA00A6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{093B2432-29F1-4CAF-BBE7-D462DAA00A6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{093B2432-29F1-4CAF-BBE7-D462DAA00A6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{093B2432-29F1-4CAF-BBE7-D462DAA00A6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC8A554A-EAB6-4E71-BDF5-3AC7A71BEE3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC8A554A-EAB6-4E71-BDF5-3AC7A71BEE3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC8A554A-EAB6-4E71-BDF5-3AC7A71BEE3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC8A554A-EAB6-4E71-BDF5-3AC7A71BEE3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
