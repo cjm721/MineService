@@ -83,17 +83,14 @@ namespace WPFMineServiceTest
                             new MainWindow().Show();
                             LoginWindow.INSTANCE.Close();
                         }));
-                        //Application.Current.Dispatcher.BeginInvoke(new Action(delegate ()
-                        //{
-                        //}));
                     }
-                    // Status status = JsonConvert.DeserializeObject<Status>(msg.message);
 
-                    //MainWindow.INSTANCE.start_stop_button.Content = (status.serverStatus.isRunning) ? "Start Server" : "Stop Server";
-                    //MainWindow.INSTANCE.start_stop_button.IsEnabled = true;
                     break;
                 case States.MessageTYPE.Error:
                     MessageBox.Show(msg.message,"Error",MessageBoxButton.OK,MessageBoxImage.Error);
+                    break;
+                case States.MessageTYPE.Console:
+                    
                     break;
             }
         }

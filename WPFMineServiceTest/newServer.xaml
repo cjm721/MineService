@@ -183,7 +183,12 @@
                         </TabItem>
                         <TabItem x:Name="Console_TabItem"  Header="Console" Margin="0,1,0,-1" FontSize="12.5" Height="30" d:LayoutOverrides="VerticalAlignment">
                             <Grid Background="#FFE5E5E5">
-                                <Image x:Name="image" HorizontalAlignment="Left" Height="330" Margin="0,0,0,-0.4" VerticalAlignment="Top" Width="422" Source="pack://siteoforigin:,,,/Resources/fake_terminal.png"/>
+                                <RichTextBox x:Name="richTextBox" HorizontalAlignment="Left" Height="383" Margin="10,10,0,0" VerticalAlignment="Top" Width="640">
+                                    <FlowDocument>
+                                    </FlowDocument>
+                                </RichTextBox>
+                                <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,398,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="592"/>
+                                <Button x:Name="consoleSendButton" Content="Send" HorizontalAlignment="Left" Margin="607,400,0,0" VerticalAlignment="Top" Width="43"/>
                             </Grid>
                         </TabItem>
                         <TabItem x:Name="Settings_TabItem" Header="Settings" Margin="0,1.133,0,-1.134" FontSize="12.5" Height="30">

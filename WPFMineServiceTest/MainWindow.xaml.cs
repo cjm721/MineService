@@ -153,47 +153,47 @@ namespace WPFMineServiceTest
                 return;
             }
 
-            TabItem new_tab = GetNewServerTabItemFromObject();
+            TabItem new_Tab = new TabItem();
+            new_Tab.Header = new_server_name.Text;
+            ServerTabItem new_Tab_data = new ServerTabItem(); 
+            new_Tab.Content = new_Tab_data;
 
-            if (new_tab != null)
+            if (new_Tab != null)
             {
-                cluster_TabControl.Items.Insert(cluster_TabControl.Items.Count - 1, new_tab);
+                cluster_TabControl.Items.Insert(cluster_TabControl.Items.Count - 1, new_Tab);
             }
         }
 
-        public static T TrycloneElement<T>(T orig)
-        {
-            try
-            {
-                string s = XamlWriter.Save(orig);
-                StringReader stringReader = new StringReader(s);
-                XmlReader xmlReader = XmlTextReader.Create(stringReader, new XmlReaderSettings());
-                XmlReaderSettings sx = new XmlReaderSettings();
-                object x = XamlReader.Load(xmlReader);
+        //public static T TrycloneElement<T>(T orig)
+        //{
+        //    try
+        //    {
+        //        string s = XamlWriter.Save(orig);
+        //        StringReader stringReader = new StringReader(s);
+        //        XmlReader xmlReader = XmlTextReader.Create(stringReader, new XmlReaderSettings());
+        //        XmlReaderSettings sx = new XmlReaderSettings();
+        //        object x = XamlReader.Load(xmlReader);
 
-                return (T)x;
-            }
-            catch
-            {
-                return (T)((object)null);
-            }
-        }
+        //        return (T)x;
+        //    }
+        //    catch
+        //    {
+        //        return (T)((object)null);
+        //    }
+        //}
 
-        public static TabItem GetNewServerTabItem()
-        {
-            string s = System.IO.File.ReadAllText("newServer.xaml.cs");
-            StringReader stringReader = new StringReader(s);
-            XmlReader xmlReader = XmlTextReader.Create(stringReader, new XmlReaderSettings());
-            object x = XamlReader.Load(xmlReader);
-            return ((TabItem)x);
-        }
+        //public static TabItem GetNewServerTabItem()
+        //{
+        //    string s = System.IO.File.ReadAllText("newServer.xaml.cs");
+        //    StringReader stringReader = new StringReader(s);
+        //    XmlReader xmlReader = XmlTextReader.Create(stringReader, new XmlReaderSettings());
+        //    object x = XamlReader.Load(xmlReader);
+        //    return ((TabItem)x);
+        //}
 
-        public static TabItem GetNewServerTabItemFromObject()
-        {
-            Window2 w2 = new Window2();
-            TabItem item = w2.server_Tab_1;
-            w2.OverGrid.Children.Remove(item);
-            return TrycloneElement(item);
-        }
+        //public static ServerTabItem GetNewServerTabItemFromObject()
+        //{
+        //    return new ServerTabItem();
+        //}
     }
 }
