@@ -53,5 +53,10 @@ namespace WPFMineServiceTest
             }
 
         }
+
+        private void cancel_button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

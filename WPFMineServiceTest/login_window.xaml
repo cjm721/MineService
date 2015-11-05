@@ -17,7 +17,7 @@
         <CheckBox x:Name="remember_login_checkbox" Content="Remember Login" HorizontalAlignment="Center" Margin="94,212,14.329,0" VerticalAlignment="Top"/>
         <Grid Name="button_container_grid" HorizontalAlignment="Center" Height="37" Margin="50,243,50,0" VerticalAlignment="Top" Width="194" Grid.ColumnSpan="2">
             <Button x:Name="login_button" Click="login_button_click" Content="Login" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" Height="37"/>
-            <Button x:Name="cancel_button" Content="Cancel" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" Height="37"/>
+            <Button x:Name="cancel_button" Content="Cancel" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="80" Height="37" Click="cancel_button_Click"/>
         </Grid>
 
     </Grid>
