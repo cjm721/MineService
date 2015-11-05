@@ -36,7 +36,8 @@ namespace WPFMineServiceTest
         {
             INSTANCE = this;
             InitializeComponent();
-
+            this.MinWidth = 750;
+            this.MinHeight = 500;
 
             cluster_TabControl.SelectionChanged += (o, e) =>
             {
