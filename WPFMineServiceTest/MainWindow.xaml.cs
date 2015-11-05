@@ -51,12 +51,6 @@ namespace WPFMineServiceTest
                 getData(temp);
                 currentTabName = temp.Name;
             };
-
-
-            server_TabControl.SelectionChanged += (o, e) =>
-            {
-                getData(((o as TabControl).SelectedItem as TabItem));
-            };
         }
 
         private void getData(TabItem tabitem)
@@ -96,42 +90,42 @@ namespace WPFMineServiceTest
 
         }
 
-        private void start_stop_button_Click(object sender, RoutedEventArgs e)
-        {
-            if (server_name_TextBlock.Name.Contains("server_name_"))
-            {
-                System.Console.WriteLine("DEBUG: Gets here");
-                Button button = ((Button)sender);
-                String server = server_name_TextBlock.Text;
-                States.MCCommandTYPE state = States.MCCommandTYPE.Start;
+        //private void start_stop_button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (server_name_TextBlock.Name.Contains("server_name_"))
+        //    {
+        //        System.Console.WriteLine("DEBUG: Gets here");
+        //        Button button = ((Button)sender);
+        //        String server = server_name_TextBlock.Text;
+        //        States.MCCommandTYPE state = States.MCCommandTYPE.Start;
 
-                if (((Button)sender).Content.ToString().Contains("Stop"))
-                {
-                    state = States.MCCommandTYPE.Stop;
-                }
-                else if (((Button)sender).Content.ToString().Contains("Start"))
-                {
-                    state = States.MCCommandTYPE.Start;
-                }
+        //        if (((Button)sender).Content.ToString().Contains("Stop"))
+        //        {
+        //            state = States.MCCommandTYPE.Stop;
+        //        }
+        //        else if (((Button)sender).Content.ToString().Contains("Start"))
+        //        {
+        //            state = States.MCCommandTYPE.Start;
+        //        }
 
-                MCCommand command = new MCCommand(state, server, "");
-                System.Console.WriteLine("command: " + command.type);
-                String json = JsonConvert.SerializeObject(command);
-                Message msg = new Message(States.MessageTYPE.MCCommand, json);
-                String js = JsonConvert.SerializeObject(msg);
-                System.Console.WriteLine("before sending to server, js: " + js.ToString());
-                CommunicationClient.INSTANCE.sendToServer(js);
-                System.Console.WriteLine("after send to server");
+        //        MCCommand command = new MCCommand(state, server, "");
+        //        System.Console.WriteLine("command: " + command.type);
+        //        String json = JsonConvert.SerializeObject(command);
+        //        Message msg = new Message(States.MessageTYPE.MCCommand, json);
+        //        String js = JsonConvert.SerializeObject(msg);
+        //        System.Console.WriteLine("before sending to server, js: " + js.ToString());
+        //        CommunicationClient.INSTANCE.sendToServer(js);
+        //        System.Console.WriteLine("after send to server");
 
-                button.Content = "Pending";
-                button.IsEnabled = false;
+        //        button.Content = "Pending";
+        //        button.IsEnabled = false;
 
 
-                button.Content = (state == States.MCCommandTYPE.Stop) ? "Start Server" : "Stop Server";
-                button.IsEnabled = true;
-            }
+        //        button.Content = (state == States.MCCommandTYPE.Stop) ? "Start Server" : "Stop Server";
+        //        button.IsEnabled = true;
+        //    }
 
-        }
+        //}
 
 
         private void add_new_server_button_Click(object sender, RoutedEventArgs e)
@@ -155,45 +149,11 @@ namespace WPFMineServiceTest
 
             TabItem new_Tab = new TabItem();
             new_Tab.Header = new_server_name.Text;
-            ServerTabItem new_Tab_data = new ServerTabItem(); 
+            ServerTabItem new_Tab_data = new ServerTabItem(new_server_name.Text); 
             new_Tab.Content = new_Tab_data;
+            cluster_TabControl.Items.Insert(cluster_TabControl.Items.Count - 1, new_Tab);
 
-            if (new_Tab != null)
-            {
-                cluster_TabControl.Items.Insert(cluster_TabControl.Items.Count - 1, new_Tab);
-            }
+            Data.serverTabs.Add(new_server_name.Text, new_Tab_data);
         }
-
-        //public static T TrycloneElement<T>(T orig)
-        //{
-        //    try
-        //    {
-        //        string s = XamlWriter.Save(orig);
-        //        StringReader stringReader = new StringReader(s);
-        //        XmlReader xmlReader = XmlTextReader.Create(stringReader, new XmlReaderSettings());
-        //        XmlReaderSettings sx = new XmlReaderSettings();
-        //        object x = XamlReader.Load(xmlReader);
-
-        //        return (T)x;
-        //    }
-        //    catch
-        //    {
-        //        return (T)((object)null);
-        //    }
-        //}
-
-        //public static TabItem GetNewServerTabItem()
-        //{
-        //    string s = System.IO.File.ReadAllText("newServer.xaml.cs");
-        //    StringReader stringReader = new StringReader(s);
-        //    XmlReader xmlReader = XmlTextReader.Create(stringReader, new XmlReaderSettings());
-        //    object x = XamlReader.Load(xmlReader);
-        //    return ((TabItem)x);
-        //}
-
-        //public static ServerTabItem GetNewServerTabItemFromObject()
-        //{
-        //    return new ServerTabItem();
-        //}
     }
 }

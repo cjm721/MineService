@@ -9,6 +9,7 @@ using System.Threading;
 using Newtonsoft.Json;
 using MineService_Client_JSON;
 using System.Windows;
+using System.Windows.Documents;
 
 namespace WPFMineServiceTest
 {
@@ -85,12 +86,20 @@ namespace WPFMineServiceTest
                         }));
                     }
 
+
+
                     break;
                 case States.MessageTYPE.Error:
                     MessageBox.Show(msg.message,"Error",MessageBoxButton.OK,MessageBoxImage.Error);
                     break;
                 case States.MessageTYPE.Console:
-                    
+                    MineService_Client_JSON.Console console = JsonConvert.DeserializeObject<MineService_Client_JSON.Console>(msg.message);
+                    ServerTabItem tab = Data.serverTabs[console.ServerID];
+
+                    Paragraph pr = new Paragraph();
+                    pr.Inlines.AddRange(console.messages);
+                    tab.consoleRichTextBox.Document.Blocks.Add(pr);
+
                     break;
             }
         }

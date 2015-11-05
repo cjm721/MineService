@@ -8,10 +8,12 @@ namespace MineService_Client_JSON
 {
     public class Console
     {
+        public String ServerID;
         public String[] messages;
 
-        public Console(String[] messages)
+        public Console(String ServerID, String[] messages)
         {
+            this.ServerID = ServerID;
             this.messages = messages;
         }
     }

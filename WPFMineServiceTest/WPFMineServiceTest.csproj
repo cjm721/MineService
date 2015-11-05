@@ -64,6 +64,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CommunicationClient.cs" />
+    <Compile Include="Data.cs" />
     <Compile Include="login_window.xaml.cs">
       <DependentUpon>login_window.xaml</DependentUpon>
     </Compile>
