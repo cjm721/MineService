@@ -8,6 +8,7 @@ using System.IO;
 using System.Threading;
 using Newtonsoft.Json;
 using MineService_Client_JSON;
+using System.Windows;
 
 namespace WPFMineServiceTest
 {
@@ -75,10 +76,24 @@ namespace WPFMineServiceTest
             switch (msg.type)
             {
                 case States.MessageTYPE.Status:
+                    if (MainWindow.INSTANCE == null)
+                    {
+                        LoginWindow.INSTANCE.Dispatcher.BeginInvoke(new Action(delegate ()
+                        {
+                            new MainWindow().Show();
+                            LoginWindow.INSTANCE.Close();
+                        }));
+                        //Application.Current.Dispatcher.BeginInvoke(new Action(delegate ()
+                        //{
+                        //}));
+                    }
                     // Status status = JsonConvert.DeserializeObject<Status>(msg.message);
 
                     //MainWindow.INSTANCE.start_stop_button.Content = (status.serverStatus.isRunning) ? "Start Server" : "Stop Server";
                     //MainWindow.INSTANCE.start_stop_button.IsEnabled = true;
+                    break;
+                case States.MessageTYPE.Error:
+                    MessageBox.Show(msg.message,"Error",MessageBoxButton.OK,MessageBoxImage.Error);
                     break;
             }
         }

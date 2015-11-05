@@ -11,11 +11,14 @@ namespace WPFMineServiceTest
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class LoginWindow : Window
     {
-        public Window1()
+
+        public static LoginWindow INSTANCE;
+        public LoginWindow()
         {
-           // InitializeComponent();
+            InitializeComponent();
+            INSTANCE = this;
         }
 
         private void login_button_click(object sender, RoutedEventArgs e)
@@ -37,10 +40,11 @@ namespace WPFMineServiceTest
 
                 CommunicationClient.INSTANCE.sendToServer(js);
 
-
+                /*
                 MainWindow mw = new MainWindow();
                 mw.Show();
                 this.Close();
+                */
 
             }
             catch (Exception)
