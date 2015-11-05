@@ -51,6 +51,11 @@ namespace WPFMineServiceTest
                 try
                 {
                     line = await task;
+                    if(line == null)
+                    {
+                        return; // TODO: Make Error
+                    }
+
                     System.Diagnostics.Debug.WriteLine("Message: " + line);
                     processMessage(line);
                 }
@@ -63,12 +68,14 @@ namespace WPFMineServiceTest
 
         public void processMessage(String line)
         {
+            if (line == null)
+                return;
             Message msg = JsonConvert.DeserializeObject<Message>(line);
 
             switch (msg.type)
             {
                 case States.MessageTYPE.Status:
-                    Status status = JsonConvert.DeserializeObject<Status>(msg.message);
+                    // Status status = JsonConvert.DeserializeObject<Status>(msg.message);
 
                     //MainWindow.INSTANCE.start_stop_button.Content = (status.serverStatus.isRunning) ? "Start Server" : "Stop Server";
                     //MainWindow.INSTANCE.start_stop_button.IsEnabled = true;

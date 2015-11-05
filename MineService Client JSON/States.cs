@@ -9,9 +9,9 @@ namespace MineService_Client_JSON
     public class States
     {
         [Flags]
-        public enum MCCommandTYPE { Start, Stop, Restart, Raw };
+        public enum MCCommandTYPE { Start, Stop, Restart, Raw, Create, Delete };
         [Flags]
-        public enum MessageTYPE { MCCommand, Login, Status, Console };
+        public enum MessageTYPE { MCCommand, Login, Status, Console, Error };
         [Flags]
         public enum StatusType { Request, Send};
     }
