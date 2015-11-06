@@ -24,12 +24,16 @@ namespace TestingProject
 
             RSACryptoServiceProvider rsa = DecodeX509PublicKey(publicKeyBytes);
             System.Diagnostics.Debug.WriteLine(rsa.ToXmlString(false));
+            String test = "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678911";
 
-            String test = "This is a test Message How did I do?";
-            
+            AesCryptoServiceProvider aes = new AesCryptoServiceProvider();
+            aes.KeySize = 256;
+            aes.GenerateKey();
+            byte[] aesKey = aes.Key;
+
             StreamWriter writer = new StreamWriter(clientSocket.GetStream());
-            
-            byte[] toSend = rsa.Encrypt(Encoding.UTF8.GetBytes(test), true);
+         
+            byte[] toSend = rsa.Encrypt(aesKey, true);
 
             clientSocket.GetStream().Write(toSend, 0, 513);
             writer.Write(toSend);
