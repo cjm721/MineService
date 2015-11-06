@@ -44,6 +44,5 @@ namespace MineService_Client_JSON
         public int max_build_height;
         public string level_seed;
         public string motd;
-        public bool enable_rcon;
     }
 }
