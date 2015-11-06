@@ -147,13 +147,18 @@ namespace WPFMineServiceTest
                 return;
             }
 
-            TabItem new_Tab = new TabItem();
-            new_Tab.Header = new_server_name.Text;
-            ServerTabItem new_Tab_data = new ServerTabItem(new_server_name.Text); 
-            new_Tab.Content = new_Tab_data;
-            cluster_TabControl.Items.Insert(cluster_TabControl.Items.Count - 1, new_Tab);
+            AddServerTab(new ServerTabItem(new_server_name.Text));
+        }
 
-            Data.serverTabs.Add(new_server_name.Text, new_Tab_data);
+        public void AddServerTab(ServerTabItem item)
+        {
+            TabItem newTab = new TabItem();
+            newTab.Header = item.ServerID;
+            newTab.Content = item;
+
+            cluster_TabControl.Items.Insert(cluster_TabControl.Items.Count - 1, newTab);
+
+            Data.serverTabs.Add(item.ServerID, item);
         }
     }
 }

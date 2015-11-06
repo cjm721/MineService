@@ -61,5 +61,11 @@ namespace WPFMineServiceTest
             start_stop_button.Content = "Pending";
             start_stop_button.IsEnabled = false;
         }
+
+        public void UpdateTab(ServerStatus sStatus)
+        {
+            start_stop_button.Content = (sStatus.isRunning) ? "Stop Server" : "Start Server";
+            start_stop_button.IsEnabled = true;
+        }
     }
 }

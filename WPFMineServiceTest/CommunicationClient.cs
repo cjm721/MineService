@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using MineService_Client_JSON;
 using System.Windows;
 using System.Windows.Documents;
+using System.Windows.Controls;
 
 namespace WPFMineServiceTest
 {
@@ -77,16 +78,35 @@ namespace WPFMineServiceTest
             switch (msg.type)
             {
                 case States.MessageTYPE.Status:
+                    Status status = JsonConvert.DeserializeObject<Status>(msg.message);
+
+                    ServerTabItem tab = Data.serverTabs[status.ServerID];
+
+                    tab.Dispatcher.BeginInvoke(new Action(delegate()
+                    {
+                        tab.UpdateTab(status.serverStatus);
+                    }));
+
+                    break;
+                case States.MessageTYPE.StatusArray:
                     if (MainWindow.INSTANCE == null)
                     {
                         LoginWindow.INSTANCE.Dispatcher.BeginInvoke(new Action(delegate ()
                         {
                             new MainWindow().Show();
                             LoginWindow.INSTANCE.Close();
+
+                            Status[] array = JsonConvert.DeserializeObject<Status[]>(msg.message);
+
+                            foreach(Status s in array)
+                            {
+                                ServerTabItem item = new ServerTabItem(s.ServerID);
+
+                                MainWindow.INSTANCE.AddServerTab(item);
+                                
+                            }
                         }));
                     }
-
-
 
                     break;
                 case States.MessageTYPE.Error:
@@ -94,7 +114,7 @@ namespace WPFMineServiceTest
                     break;
                 case States.MessageTYPE.Console:
                     MineService_Client_JSON.Console console = JsonConvert.DeserializeObject<MineService_Client_JSON.Console>(msg.message);
-                    ServerTabItem tab = Data.serverTabs[console.ServerID];
+                    tab = Data.serverTabs[console.ServerID];
 
                     tab.consoleRichTextBox.Document.Dispatcher.BeginInvoke(new Action( delegate ()
                     {
@@ -103,6 +123,7 @@ namespace WPFMineServiceTest
                             pr.Inlines.Add(s);
 
                         tab.consoleRichTextBox.Document.Blocks.Add(pr);
+                        tab.consoleRichTextBox.ScrollToEnd();
                     }));
 
 

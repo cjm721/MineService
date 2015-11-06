@@ -11,7 +11,7 @@ namespace MineService_Client_JSON
         [Flags]
         public enum MCCommandTYPE { Start, Stop, Restart, Raw, Create, Delete };
         [Flags]
-        public enum MessageTYPE { MCCommand, Login, Status, Console, Error };
+        public enum MessageTYPE { MCCommand, Login, Status, Console, Error, StatusArray };
         [Flags]
         public enum StatusType { Request, Send};
     }
