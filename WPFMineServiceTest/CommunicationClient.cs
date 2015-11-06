@@ -96,9 +96,15 @@ namespace WPFMineServiceTest
                     MineService_Client_JSON.Console console = JsonConvert.DeserializeObject<MineService_Client_JSON.Console>(msg.message);
                     ServerTabItem tab = Data.serverTabs[console.ServerID];
 
-                    Paragraph pr = new Paragraph();
-                    pr.Inlines.AddRange(console.messages);
-                    tab.consoleRichTextBox.Document.Blocks.Add(pr);
+                    tab.consoleRichTextBox.Document.Dispatcher.BeginInvoke(new Action( delegate ()
+                    {
+                        Paragraph pr = new Paragraph();
+                        foreach (String s in console.messages)
+                            pr.Inlines.Add(s);
+
+                        tab.consoleRichTextBox.Document.Blocks.Add(pr);
+                    }));
+
 
                     break;
             }
