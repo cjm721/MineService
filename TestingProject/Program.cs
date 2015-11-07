@@ -33,7 +33,7 @@ namespace TestingProject
 
             StreamWriter writer = new StreamWriter(clientSocket.GetStream());
          
-            byte[] toSend = rsa.Encrypt(aesKey, true);
+            byte[] toSend = rsa.Encrypt(aesKey, false);
 
             clientSocket.GetStream().Write(toSend, 0, 513);
             writer.Write(toSend);
