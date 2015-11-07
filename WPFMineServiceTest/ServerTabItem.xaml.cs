@@ -66,6 +66,7 @@ namespace WPFMineServiceTest
         {
             start_stop_button.Content = (sStatus.isRunning) ? "Stop Server" : "Start Server";
             start_stop_button.IsEnabled = true;
+            
         }
     }
 }

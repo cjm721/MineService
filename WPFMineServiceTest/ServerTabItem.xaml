@@ -188,6 +188,12 @@
                     <TextBlock x:Name="textBlock1_Copy17" HorizontalAlignment="Left" Height="18" Margin="300,225,0,0" TextWrapping="Wrap" Text="motd" VerticalAlignment="Top" Width="114"/>
                     <TextBox x:Name="textBox_Copy18" HorizontalAlignment="Left" Height="19.4" Margin="300,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74.6"/>
                     <Button x:Name="button" Content="Submit" Height="20" Margin="0,410,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <Grid HorizontalAlignment="Left" Height="100" Margin="507,172,0,0" VerticalAlignment="Top" Width="100">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="97*"/>
+                        </Grid.RowDefinitions>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem x:Name="Schedule_TabItem" Header="Schedule" Margin="0,1.8,0,-1.8" FontSize="12.5" Height="30" IsTabStop="False"/>

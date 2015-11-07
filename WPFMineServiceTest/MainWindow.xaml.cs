@@ -88,44 +88,7 @@ namespace WPFMineServiceTest
         private void tabControl2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-        }
-
-        //private void start_stop_button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (server_name_TextBlock.Name.Contains("server_name_"))
-        //    {
-        //        System.Console.WriteLine("DEBUG: Gets here");
-        //        Button button = ((Button)sender);
-        //        String server = server_name_TextBlock.Text;
-        //        States.MCCommandTYPE state = States.MCCommandTYPE.Start;
-
-        //        if (((Button)sender).Content.ToString().Contains("Stop"))
-        //        {
-        //            state = States.MCCommandTYPE.Stop;
-        //        }
-        //        else if (((Button)sender).Content.ToString().Contains("Start"))
-        //        {
-        //            state = States.MCCommandTYPE.Start;
-        //        }
-
-        //        MCCommand command = new MCCommand(state, server, "");
-        //        System.Console.WriteLine("command: " + command.type);
-        //        String json = JsonConvert.SerializeObject(command);
-        //        Message msg = new Message(States.MessageTYPE.MCCommand, json);
-        //        String js = JsonConvert.SerializeObject(msg);
-        //        System.Console.WriteLine("before sending to server, js: " + js.ToString());
-        //        CommunicationClient.INSTANCE.sendToServer(js);
-        //        System.Console.WriteLine("after send to server");
-
-        //        button.Content = "Pending";
-        //        button.IsEnabled = false;
-
-
-        //        button.Content = (state == States.MCCommandTYPE.Stop) ? "Start Server" : "Stop Server";
-        //        button.IsEnabled = true;
-        //    }
-
-        //}
+        }       
 
 
         private void add_new_server_button_Click(object sender, RoutedEventArgs e)
