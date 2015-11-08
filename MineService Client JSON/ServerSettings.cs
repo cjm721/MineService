@@ -18,7 +18,7 @@ namespace MineService_Client_JSON
         public int gamemode;
         public bool enable_query;
         public int player_idle_timeout;
-        public int difficult;
+        public int difficulty;
         public bool spawn_monsters;
         public int op_permission_level;
         public string resource_pack_hash;
@@ -37,7 +37,6 @@ namespace MineService_Client_JSON
         public bool allow_flight;
         public string level_name;
         public int view_distance;
-        public string resource_pack;
         public bool spawn_animals;
         public bool generate_structures;
         public bool online_mode;

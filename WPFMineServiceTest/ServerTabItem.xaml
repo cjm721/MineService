@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFMineServiceTest"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="750">
+             d:DesignHeight="420" d:DesignWidth="650">
     <Grid Background="#FFE5E5E5">
         <TabControl x:Name="server_TabControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabStripPlacement="Left" Margin="0,0,0,0" Style="{DynamicResource TabControlStyle1}">
             <TabItem x:Name="Status_TabItem"  Header="Status" Margin="0" Height="30" VerticalAlignment="Top" d:LayoutOverrides="Height">
@@ -79,10 +79,10 @@
                         <Viewbox HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="198">
                             <TextBlock x:Name="server_name_TextBlock" TextWrapping="Wrap" Text="Monster" Width="70"/>
                         </Viewbox>
-                        <TabControl x:Name="tabControl" Height="318.966" Margin="0,109.074,0,0" VerticalAlignment="Top" Width="657.977" HorizontalContentAlignment="Center" HorizontalAlignment="Left">
+                        <TabControl x:Name="tabControl" Height="306.526" Margin="0,109.074,-36,0" VerticalAlignment="Top" Width="610.98" HorizontalContentAlignment="Center" HorizontalAlignment="Left" BorderThickness="0">
                             <TabItem x:Name="CPU_tab" Header="CPU%">
-                                <Grid Background="#FFE5E5E5">
-                                    <Image x:Name="cpu_img" HorizontalAlignment="Left" Height="287.006" Margin="0,0,0,0" VerticalAlignment="Top" Width="647.977" IsEnabled="False" Source="pack://siteoforigin:,,,/Resources/CPU Usage.png"/>
+                                <Grid Background="#FFE5E5E5" Margin="0,0,31.2,0">
+                                    <Image x:Name="cpu_img" HorizontalAlignment="Left" Height="276.566" Margin="0,0,0,0" VerticalAlignment="Top" Width="568.777" IsEnabled="False" Source="pack://siteoforigin:,,,/Resources/CPU Usage.png" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
                                 </Grid>
                             </TabItem>
                             <TabItem x:Name="mem_tab" Header="Mem %">
@@ -107,7 +107,7 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Console_TabItem"  Header="Console" Margin="0,1,0,-1" FontSize="12.5" Height="30" d:LayoutOverrides="VerticalAlignment">
+            <TabItem x:Name="Console_TabItem"  Header="Console" Margin="0" FontSize="12.5" Height="30" d:LayoutOverrides="VerticalAlignment">
                 <Grid Background="#FFE5E5E5">
                     <RichTextBox x:Name="consoleRichTextBox" HorizontalAlignment="Left" Height="383" Margin="10,10,0,0" VerticalAlignment="Top" Width="640" IsReadOnly="True" VerticalScrollBarVisibility="Auto">
                         <RichTextBox.Resources>
@@ -122,40 +122,40 @@
                     <Button x:Name="consoleSendButton" Content="Send" HorizontalAlignment="Left" Margin="607,400,0,0" VerticalAlignment="Top" Width="43"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Settings_TabItem" Header="Settings" Margin="0,1.133,0,-1.134" FontSize="12.5" Height="30">
+            <TabItem x:Name="Settings_TabItem" Header="Settings" Margin="0" FontSize="12.5" Height="30">
                 <Grid Background="#FFE5E5E5">
                     <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Height="18" Margin="140,225,0,0" TextWrapping="Wrap" Text="Spawn-protection" VerticalAlignment="Top" Width="138"/>
-                    <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="19.4" Margin="245,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37.687"/>
-                    <TextBox x:Name="textBox_Copy1" Height="19.4" Margin="275,152,0,0" TextWrapping="Wrap" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBox x:Name="spawn_protection" HorizontalAlignment="Left" Height="19.4" Margin="140,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+                    <TextBox x:Name="max_tick_time" Height="19.4" Margin="275,152,0,0" TextWrapping="Wrap" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <TextBlock x:Name="textBlock1_Copy2" Height="18" Margin="275,90,0,0" TextWrapping="Wrap" Text="generator-settings" Width="114" HorizontalAlignment="Left" d:LayoutOverrides="Width" VerticalAlignment="Top"/>
-                    <TextBox x:Name="textBox_Copy2" Height="19.4" Margin="275,109,0,0" TextWrapping="Wrap" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="checkBox" Content="force-gamemode" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="checkBox_Copy" Content="allow-nether" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="checkBox_Copy1" Content="enable-query" HorizontalAlignment="Left" Margin="10,225,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="checkBox_Copy2" Content="spawn-monsters" HorizontalAlignment="Left" Margin="10,245,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="checkBox_Copy3" Content="announce-player-achievements" HorizontalAlignment="Left" Margin="10,385,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="checkBox_Copy4" Content="pvp" HorizontalAlignment="Left" Margin="10,265,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="checkBox_Copy5" Content="snooper-enabled" HorizontalAlignment="Left" Margin="10,285,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="checkBox_Copy6" Content="hardcore" HorizontalAlignment="Left" Margin="8.596,305,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="checkBox_Copy7" Content="enable-command-block" HorizontalAlignment="Left" Margin="10,405,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="checkBox_Copy8" Content="spawn-npcs" Margin="10,365,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="91.6"/>
-                    <CheckBox x:Name="checkBox_Copy9" Content="allow-flight" Margin="10,145,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="91.6"/>
-                    <CheckBox x:Name="checkBox_Copy10" Content="spawn-animals" Margin="10,165,0,0" d:LayoutOverrides="Width" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <CheckBox x:Name="checkBox_Copy11" Content="white-list" Margin="10,125,0,0" d:LayoutOverrides="Width" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <CheckBox x:Name="checkBox_Copy12" Content="generate-structures" Margin="10,325,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="134.904"/>
-                    <CheckBox x:Name="checkBox_Copy13" Content="online-mode" Margin="10,345,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="91.6"/>
-                    <CheckBox x:Name="checkBox_Copy14" Content="enable-rcon" Margin="10,105,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="91.6"/>
+                    <TextBox x:Name="generator_settings" Height="19.4" Margin="275,109,0,0" TextWrapping="Wrap" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="force_gamemode" Content="force-gamemode" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="allow_nether" Content="allow-nether" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="enable_query" Content="enable-query" HorizontalAlignment="Left" Margin="10,225,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="spawn_monsters" Content="spawn-monsters" HorizontalAlignment="Left" Margin="10,245,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="announce_player_achievements" Content="announce-player-achievements" HorizontalAlignment="Left" Margin="10,385,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="pvp" Content="pvp" HorizontalAlignment="Left" Margin="10,265,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="snooper_enabled" Content="snooper-enabled" HorizontalAlignment="Left" Margin="10,285,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="hardcore" Content="hardcore" HorizontalAlignment="Left" Margin="8.596,305,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="enable_command_block" Content="enable-command-block" HorizontalAlignment="Left" Margin="10,405,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="spawn_npcs" Content="spawn-npcs" Margin="10,365,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="91.6"/>
+                    <CheckBox x:Name="allow_flight" Content="allow-flight" Margin="10,145,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="91.6"/>
+                    <CheckBox x:Name="spawn_animals" Content="spawn-animals" Margin="10,165,0,0" d:LayoutOverrides="Width" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox x:Name="white_list" Content="white-list" Margin="10,125,0,0" d:LayoutOverrides="Width" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox x:Name="generate_structures" Content="generate-structures" Margin="10,325,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="134.904"/>
+                    <CheckBox x:Name="online_mode" Content="online-mode" Margin="10,345,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="91.6"/>
+                    <CheckBox x:Name="enable_rcon" Content="enable-rcon" Margin="10,105,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="91.6"/>
                     <TextBlock x:Name="textBlock1_Copy1" Height="18" Margin="275,135,0,0" TextWrapping="Wrap" Text="max-tick-time" Width="99.6" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <TextBlock x:Name="textBlock1_Copy" HorizontalAlignment="Left" Height="18" Margin="275,0,0,0" TextWrapping="Wrap" Text="gamemode" VerticalAlignment="Top" Width="99.6"/>
-                    <TextBox x:Name="textBox_Copy3" HorizontalAlignment="Left" Height="19.4" Margin="275,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
-                    <TextBlock x:Name="textBlock1_Copy3" Height="18" Margin="140,300,0,0" TextWrapping="Wrap" Text="player-idle-timeout" VerticalAlignment="Top" HorizontalAlignment="Left" Width="114"/>
-                    <TextBox x:Name="textBox_Copy4" Height="19.4" Margin="250,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="33"/>
-                    <TextBlock x:Name="textBlock1_Copy4" Height="18" Margin="10,65,0,0" TextWrapping="Wrap" Text="difficulty" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="textBox_Copy5" Height="19.4" Margin="60,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="1" HorizontalAlignment="Left" Width="52"/>
+                    <TextBox x:Name="gamemode" HorizontalAlignment="Left" Height="19.4" Margin="275,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+                    <TextBlock x:Name="textBlock1_Copy3" Height="18" Margin="275,270,0,0" TextWrapping="Wrap" Text="player-idle-timeout" VerticalAlignment="Top" HorizontalAlignment="Left" Width="114"/>
+                    <TextBox x:Name="player_idle_timeout" Height="19.4" Margin="275,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100"/>
+                    <TextBlock x:Name="ckdsjf" Height="18" Margin="140,0,0,0" TextWrapping="Wrap" Text="difficulty" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="difficulty" Height="19.4" Margin="140,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="4" HorizontalAlignment="Left" Width="100"/>
                     <TextBlock x:Name="textBlock1_Copy5" Height="18" Margin="140,45,0,0" TextWrapping="Wrap" Text="op-permission-level" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="textBox_Copy6" Height="19.4" Margin="140,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100"/>
-                    <TextBlock x:Name="textBlock1_Copy6" Height="18" Margin="140,0,0,0" TextWrapping="Wrap" Text="resource-pack-hash" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="textBox_Copy7" Height="19.4" Margin="140,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" RenderTransformOrigin="0.5,0.5">
+                    <TextBox x:Name="op_permission_level" Height="19.4" Margin="140,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100"/>
+                    <TextBlock x:Name="textBlock1_Copy6" Height="18" Margin="275,405,0,0" TextWrapping="Wrap" Text="resource-pack-hash" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="resource_pack_hash" Height="19.4" Margin="275,423,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" RenderTransformOrigin="0.5,0.5">
                         <TextBox.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -166,37 +166,31 @@
                         </TextBox.RenderTransform>
                     </TextBox>
                     <TextBlock x:Name="textBlock1_Copy7" Height="18" Margin="140,135,0,0" TextWrapping="Wrap" Text="level-type" VerticalAlignment="Top" Width="114" d:LayoutOverrides="Width" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="textBox_Copy8" HorizontalAlignment="Left" Height="19.4" Margin="140,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
-                    <TextBlock x:Name="textBlock1_Copy8" Height="18" Margin="10,40,0,0" TextWrapping="Wrap" Text="max-players" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="textBox_Copy9" Height="19.4" Margin="80,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
-                    <TextBlock x:Name="textBlock1_Copy9" Margin="140,345,0,0" TextWrapping="Wrap" Text="network-compression-threshold" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="textBox_Copy10" HorizontalAlignment="Left" Height="19.4" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" Margin="140,365,0,0"/>
+                    <TextBox x:Name="level_type" HorizontalAlignment="Left" Height="19.4" Margin="140,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+                    <TextBlock x:Name="textBlock1_Copy8" Height="18" Margin="10,45,0,0" TextWrapping="Wrap" Text="max-players" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="max_players" Height="19.4" Margin="10,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100"/>
+                    <TextBlock x:Name="textBlock1_Copy9" Margin="165,315,0,0" TextWrapping="Wrap" Text="network-compression-threshold" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="network_compression_threshold" HorizontalAlignment="Left" Height="19.4" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" Margin="165,333,0,0"/>
                     <TextBlock x:Name="textBlock1_Copy10" HorizontalAlignment="Left" Margin="275,180,0,0" TextWrapping="Wrap" Text="max-world-size" Width="93.177" VerticalAlignment="Top"/>
-                    <TextBox x:Name="textBox_Copy11" HorizontalAlignment="Left" Margin="275,197,0,0" TextWrapping="Wrap" Width="99.6" VerticalAlignment="Top" Height="19.4"/>
+                    <TextBox x:Name="max_world_size" HorizontalAlignment="Left" Margin="275,197,0,0" TextWrapping="Wrap" Width="99.6" VerticalAlignment="Top" Height="19.4"/>
                     <TextBlock x:Name="textBlock1_Copy11" HorizontalAlignment="Left" Height="18" Margin="275,45,0,0" TextWrapping="Wrap" Text="server-port" VerticalAlignment="Top" Width="114" d:LayoutOverrides="VerticalAlignment"/>
-                    <TextBox x:Name="textBox_Copy12" HorizontalAlignment="Left" Height="19.4" Margin="275,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" d:LayoutOverrides="VerticalAlignment"/>
+                    <TextBox x:Name="server_port" HorizontalAlignment="Left" Height="19.4" Margin="275,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" d:LayoutOverrides="VerticalAlignment"/>
                     <TextBlock x:Name="textBlock1_Copy12" Height="18" Margin="140,90,0,0" TextWrapping="Wrap" Text="server-ip" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="textBox_Copy13" Height="19.4" Margin="140,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Width="100"/>
+                    <TextBox x:Name="server_ip" Height="19.4" Margin="140,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Width="100"/>
                     <TextBlock x:Name="textBlock1_Copy13" Height="18" Margin="10,0,0,0" TextWrapping="Wrap" Width="114" d:LayoutOverrides="Width, Height, LeftMargin, RightMargin, TopMargin, BottomMargin" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Text="level-name"/><LineBreak/><Run/></TextBlock>
-                    <TextBox x:Name="textBox_Copy14" Height="19.4" Margin="10,18,0,0" TextWrapping="Wrap" Width="100" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <TextBlock x:Name="textBlock1_Copy14" HorizontalAlignment="Left" Height="18" Margin="140,250,0,0" TextWrapping="Wrap" Text="view-distance" VerticalAlignment="Top" Width="138"/>
-                    <TextBox x:Name="textBox_Copy15" HorizontalAlignment="Left" Height="19.4" Margin="225,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="61.687"/>
-                    <TextBlock x:Name="textBlock1_Copy15" HorizontalAlignment="Left" Height="18" Margin="140,275,0,0" TextWrapping="Wrap" Text="max-build-height" VerticalAlignment="Top" Width="138"/>
-                    <TextBox x:Name="textBox_Copy16" HorizontalAlignment="Left" Height="19.4" Margin="240,275,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46.687"/>
+                    <TextBox x:Name="level_name" Height="19.4" Margin="10,18,0,0" TextWrapping="Wrap" Width="100" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="textBlock1_Copy14" HorizontalAlignment="Left" Height="18" Margin="275,360,0,0" TextWrapping="Wrap" Text="view-distance" VerticalAlignment="Top" Width="138"/>
+                    <TextBox x:Name="view_distance" HorizontalAlignment="Left" Height="19.4" Margin="275,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+                    <TextBlock x:Name="textBlock1_Copy15" HorizontalAlignment="Left" Height="18" Margin="140,270,0,0" TextWrapping="Wrap" Text="max-build-height" VerticalAlignment="Top" Width="138"/>
+                    <TextBox x:Name="max_build_height" HorizontalAlignment="Left" Height="19.4" Margin="140,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
                     <TextBlock x:Name="textBlock1_Copy16" HorizontalAlignment="Left" Height="18" Margin="140,180,0,0" TextWrapping="Wrap" Text="level-seed" VerticalAlignment="Top" Width="114"/>
-                    <TextBox x:Name="textBox_Copy17" HorizontalAlignment="Left" Height="19.4" Margin="140,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
-                    <TextBlock x:Name="textBlock1_Copy17" HorizontalAlignment="Left" Height="18" Margin="300,225,0,0" TextWrapping="Wrap" Text="motd" VerticalAlignment="Top" Width="114"/>
-                    <TextBox x:Name="textBox_Copy18" HorizontalAlignment="Left" Height="19.4" Margin="300,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74.6"/>
-                    <Button x:Name="button" Content="Submit" Height="20" Margin="0,410,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <Grid HorizontalAlignment="Left" Height="100" Margin="507,172,0,0" VerticalAlignment="Top" Width="100">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*"/>
-                            <RowDefinition Height="97*"/>
-                        </Grid.RowDefinitions>
-                    </Grid>
+                    <TextBox x:Name="level_seed" HorizontalAlignment="Left" Height="19.4" Margin="140,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+                    <TextBlock x:Name="textBlock1_Copy17" HorizontalAlignment="Left" Height="18" Margin="275,225,0,0" TextWrapping="Wrap" Text="motd" VerticalAlignment="Top" Width="114"/>
+                    <TextBox x:Name="motd" HorizontalAlignment="Left" Height="19.4" Margin="275,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+                    <Button x:Name="button" Content="Submit" Height="35.2" Margin="283.483,454.8,313.603,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="77.894"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Schedule_TabItem" Header="Schedule" Margin="0,1.8,0,-1.8" FontSize="12.5" Height="30" IsTabStop="False"/>
+            <TabItem x:Name="Schedule_TabItem" Header="Schedule" Margin="0" FontSize="12.5" Height="30" IsTabStop="False" Width="63.02"/>
         </TabControl>
     </Grid>
 </UserControl>

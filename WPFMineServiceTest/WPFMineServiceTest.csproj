@@ -68,10 +68,7 @@
     <Compile Include="login_window.xaml.cs">
       <DependentUpon>login_window.xaml</DependentUpon>
     </Compile>
-    <Compile Include="newServer.xaml.cs">
-      <DependentUpon>newServer.xaml</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
+    <Compile Include="NumericTextBox.cs" />
     <Compile Include="ServerTabItem.xaml.cs">
       <DependentUpon>ServerTabItem.xaml</DependentUpon>
     </Compile>
@@ -92,11 +89,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="newServer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Page>
     <Page Include="ServerTabItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
