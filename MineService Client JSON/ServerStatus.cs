@@ -3,11 +3,13 @@
     public class ServerStatus
     {
         public bool isRunning;
+        public long uptime;
         public ServerSettings settings;
 
-        public ServerStatus(bool isRunning)
+        public ServerStatus(bool isRunning, long uptime)
         {
             this.isRunning = isRunning;
+            this.uptime = uptime;
         }
     }
 }
