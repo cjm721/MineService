@@ -66,9 +66,11 @@ namespace WPFMineServiceTest
         {
             start_stop_button.Content = (sStatus.isRunning) ? "Stop Server" : "Start Server";
             start_stop_button.IsEnabled = true;
-            ServerSettings sSet = sStatus.settings; //For the settings tab, need to display the values
-            if(sStatus.settings != null)
-                populate_settings(sSet);   
+            if (sStatus.settings != null)
+            {
+                ServerSettings sSet = sStatus.settings; //For the settings tab, need to display the values
+                populate_settings(sSet);
+            }
         }
 
         private void populate_settings(ServerSettings sSet)
