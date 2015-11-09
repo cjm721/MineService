@@ -80,6 +80,15 @@ namespace WPFMineServiceTest
                 case States.MessageTYPE.Status:
                     Status status = JsonConvert.DeserializeObject<Status>(msg.message);
 
+                    if(!Data.serverTabs.ContainsKey(status.ServerID))
+                    {
+                        MainWindow.INSTANCE.Dispatcher.Invoke(new Action(delegate ()
+                        {
+                            ServerTabItem item = new ServerTabItem(status.ServerID);
+                            MainWindow.INSTANCE.AddServerTab(item);
+                        }));
+                    }
+
                     ServerTabItem tab = Data.serverTabs[status.ServerID];
 
                     tab.Dispatcher.BeginInvoke(new Action(delegate()

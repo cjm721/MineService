@@ -110,7 +110,11 @@ namespace WPFMineServiceTest
                 return;
             }
 
-            AddServerTab(new ServerTabItem(new_server_name.Text));
+            MCCommand createCommand = new MCCommand(States.MCCommandTYPE.Create, new_server_name.Text, new_server_folder.Text);
+            String createCommandStr = JsonConvert.SerializeObject(createCommand);
+
+            Message toSend = new Message(States.MessageTYPE.MCCommand, createCommandStr);
+            CommunicationClient.INSTANCE.sendToServer(JsonConvert.SerializeObject(toSend));
         }
 
         public void AddServerTab(ServerTabItem item)
