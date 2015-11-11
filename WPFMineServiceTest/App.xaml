@@ -1,7 +1,7 @@
-﻿<Application x:Class="WPFMineServiceTest.App"
+﻿<Application x:Class="MineService.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:WPFMineServiceTest"
+             xmlns:local="clr-namespace:MineService"
              StartupUri="login_window.xaml">
     <Application.Resources>
          

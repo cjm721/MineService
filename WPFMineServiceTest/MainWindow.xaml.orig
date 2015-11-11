@@ -60,9 +60,15 @@
 
                             </Grid>
                         </TabItem>
+<<<<<<< HEAD
                         <TabItem Name="FTP_TabItem" Header="FTP" Margin="0" Height="30">
                             <Grid Background="#FFDEDFE8">
+                                <Image x:Name="image1" HorizontalAlignment="Left" Height="330" Margin="0,0,-0.2,-0.4" VerticalAlignment="Top" Width="421" Source="pack://siteoforigin:,,,/Resources/obref001.gif"/>
+=======
+                        <TabItem Name="FTP_TabItem" Header="FTP">
+                            <Grid Background="#FFE5E5E5">
                                 <Image x:Name="image1" HorizontalAlignment="Left" Height="330" Margin="0,0,-0.2,-0.4" VerticalAlignment="Top" Width="421" Source="/Resources/obref001.gif"/>
+>>>>>>> e6776586844020e7d135e52bd1e0166dbdc061ef
                             </Grid>
                         </TabItem>
                         <TabItem Name="users_TabItem" Header="Users" Margin="0" Height="30">
@@ -122,8 +128,13 @@
                     </TabControl>
                 </Grid>
             </TabItem>
+<<<<<<< HEAD
             <TabItem Header="Servers:" Name="Server_Seperator_TabItem" IsEnabled="False" Height="25" VerticalAlignment="Bottom" Margin="0"></TabItem>
             <TabItem Name="add_new_server" Margin="0" Height="30">
+=======
+            <TabItem Header="Servers:" Name="Server_Seperator_TabItem" IsEnabled="False"></TabItem>
+            <TabItem Name="add_new_server" Margin="-2,-2,0,2">
+>>>>>>> e6776586844020e7d135e52bd1e0166dbdc061ef
                 <TabItem.Header>
                     <Image Source="/Resources/Plus Sign.png" Width="20px"></Image>
                 </TabItem.Header>

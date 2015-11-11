@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPFMineServiceTest
+namespace MineService
 {
     /// <summary>
     /// Interaction logic for ServerTabItem.xaml
@@ -27,6 +27,8 @@ namespace WPFMineServiceTest
         public ServerTabItem(String ServerID) : this()
         {
             this.ServerID = ServerID;
+
+            this.server_name_TextBlock.Text = ServerID;
         }
 
         public ServerTabItem()
