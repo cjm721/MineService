@@ -59,7 +59,7 @@ namespace WPFMineServiceTest
                         return; // TODO: Make Error
                     }
 
-                    System.Diagnostics.Debug.WriteLine("Message: " + line);
+                    System.Diagnostics.Debug.WriteLine( System.DateTime.Now.ToLongTimeString() + " Message: " + line);
                     processMessage(line);
                 }
                 catch (IOException)
@@ -73,7 +73,15 @@ namespace WPFMineServiceTest
         {
             if (line == null)
                 return;
-            Message msg = JsonConvert.DeserializeObject<Message>(line);
+
+            Message msg;
+            try {
+                msg = JsonConvert.DeserializeObject<Message>(line);
+            } catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.ToString());
+                return;
+            }
 
             switch (msg.type)
             {

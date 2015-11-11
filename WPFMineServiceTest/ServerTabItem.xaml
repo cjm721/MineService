@@ -109,7 +109,7 @@
             </TabItem>
             <TabItem x:Name="Console_TabItem"  Header="Console" Margin="0" FontSize="12.5" Height="30" d:LayoutOverrides="VerticalAlignment" Width="63">
                 <Grid Background="#FFE5E5E5">
-                    <RichTextBox x:Name="consoleRichTextBox" HorizontalAlignment="Left" Height="383" Margin="10,10,0,0" VerticalAlignment="Top" Width="640" IsReadOnly="True" VerticalScrollBarVisibility="Auto">
+                    <RichTextBox x:Name="consoleRichTextBox" HorizontalAlignment="Stretch" Margin="10,10,10,45" VerticalAlignment="Stretch" IsReadOnly="True" VerticalScrollBarVisibility="Auto">
                         <RichTextBox.Resources>
                             <Style TargetType="{x:Type Paragraph}">
                                 <Setter Property="Margin" Value="0"/>
@@ -118,8 +118,8 @@
                         <FlowDocument >
                         </FlowDocument>
                     </RichTextBox>
-                    <TextBox x:Name="consoleTextInputBox" HorizontalAlignment="Left" Height="23" Margin="10,398,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="592"/>
-                    <Button x:Name="consoleSendButton" Content="Send" HorizontalAlignment="Left" Margin="607,400,0,0" VerticalAlignment="Top" Width="43"/>
+                    <TextBox x:Name="consoleTextInputBox" HorizontalAlignment="Stretch" Height="23" Margin="10,10,90,10" TextWrapping="Wrap" VerticalAlignment="Bottom" />
+                    <Button x:Name="consoleSendButton" Content="Send" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="62" Height="25"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="Settings_TabItem" Header="Settings" Margin="0" FontSize="12.5" Height="30">
