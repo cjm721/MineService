@@ -6,7 +6,7 @@ using System.Windows;
 using Newtonsoft.Json;
 using MineService_Client_JSON;
 
-namespace WPFMineServiceTest
+namespace MineService
 {
     /// <summary>
     /// Interaction logic for Window1.xaml

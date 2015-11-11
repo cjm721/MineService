@@ -12,7 +12,7 @@ using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Controls;
 
-namespace WPFMineServiceTest
+namespace MineService
 {
     public partial class CommunicationClient
     {

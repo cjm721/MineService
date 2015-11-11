@@ -1,9 +1,9 @@
-﻿<UserControl     x:Class="WPFMineServiceTest.ServerTabItem"
+﻿<UserControl     x:Class="MineService.ServerTabItem"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPFMineServiceTest"
+             xmlns:local="clr-namespace:MineService"
              mc:Ignorable="d" 
              d:DesignHeight="420" d:DesignWidth="650">
     <Grid Background="#FFE5E5E5">
@@ -82,23 +82,23 @@
                         <TabControl x:Name="tabControl" Height="306.526" Margin="0,109.074,-36,0" VerticalAlignment="Top" Width="610.98" HorizontalContentAlignment="Center" HorizontalAlignment="Left" BorderThickness="0">
                             <TabItem x:Name="CPU_tab" Header="CPU%">
                                 <Grid Background="#FFE5E5E5" Margin="0,0,31.2,0">
-                                    <Image x:Name="cpu_img" HorizontalAlignment="Left" Height="276.566" Margin="0,0,0,0" VerticalAlignment="Top" Width="568.777" IsEnabled="False" Source="pack://siteoforigin:,,,/Resources/CPU Usage.png" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
+                                    <Image x:Name="cpu_img" HorizontalAlignment="Left" Height="276.566" Margin="0,0,0,0" VerticalAlignment="Top" Width="568.777" IsEnabled="False" Source="/Resources/CPU Usage.png" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
                                 </Grid>
                             </TabItem>
                             <TabItem x:Name="mem_tab" Header="Mem %">
                                 <Grid Background="#FFE5E5E5">
-                                    <Image x:Name="mem_img" HorizontalAlignment="Left" Margin="0,0,0,39.932" Width="464.377" Source="pack://siteoforigin:,,,/Resources/Mem Usage.png"/>
+                                    <Image x:Name="mem_img" HorizontalAlignment="Left" Margin="0,0,0,39.932" Width="464.377" Source="/Resources/Mem Usage.png"/>
                                 </Grid>
                             </TabItem>
                             <TabItem x:Name="hard_disk_tab" Header="Hard Disk %">
                                 <Grid Background="#FFE5E5E5">
-                                    <Image x:Name="disk_usage_1_img" HorizontalAlignment="Left" Height="93" VerticalAlignment="Top" Width="187" Margin="0,0,0,0" Source="pack://siteoforigin:,,,/Resources/Disk Usage pt1.png"/>
-                                    <Image x:Name="disk_usage_2_img" HorizontalAlignment="Right" Height="93" VerticalAlignment="Top" Width="226" Margin="0,0,0,0" Source="pack://siteoforigin:,,,/Resources/Disk Usage pt2.png"/>
+                                    <Image x:Name="disk_usage_1_img" HorizontalAlignment="Left" Height="93" VerticalAlignment="Top" Width="187" Margin="0,0,0,0" Source="/Resources/Disk Usage pt1.png"/>
+                                    <Image x:Name="disk_usage_2_img" HorizontalAlignment="Right" Height="93" VerticalAlignment="Top" Width="226" Margin="0,0,0,0" Source="/Resources/Disk Usage pt2.png"/>
                                 </Grid>
                             </TabItem>
                             <TabItem x:Name="uptime_tab" Header="Uptime %">
                                 <Grid Background="#FFE5E5E5">
-                                    <Image x:Name="uptime_img" HorizontalAlignment="Left" Margin="0,0,0,46.451" Width="464.377" Source="pack://siteoforigin:,,,/Resources/Mem Usage.png"/>
+                                    <Image x:Name="uptime_img" HorizontalAlignment="Left" Margin="0,0,0,46.451" Width="464.377" Source="/Resources/Mem Usage.png"/>
                                 </Grid>
                             </TabItem>
                         </TabControl>
@@ -187,7 +187,7 @@
                     <TextBox x:Name="level_seed" HorizontalAlignment="Left" Height="19.4" Margin="140,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
                     <TextBlock x:Name="textBlock1_Copy17" HorizontalAlignment="Left" Height="18" Margin="275,225,0,0" TextWrapping="Wrap" Text="motd" VerticalAlignment="Top" Width="114"/>
                     <TextBox x:Name="motd" HorizontalAlignment="Left" Height="19.4" Margin="275,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
-                    <Button x:Name="button" Content="Submit" Height="35.2" Margin="283.483,454.8,313.603,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="77.894"/>
+                    <Button x:Name="button" Content="Submit" Height="35" Margin="394,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="78"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="Schedule_TabItem" Header="Schedule" Margin="0" FontSize="12.5" Height="30" IsTabStop="False" Width="63.02"/>

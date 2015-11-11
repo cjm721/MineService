@@ -21,7 +21,7 @@ using System.Xml;
 using System.Xml.Linq;
 
 
-namespace WPFMineServiceTest
+namespace MineService
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

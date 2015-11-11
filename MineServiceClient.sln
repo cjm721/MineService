@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFMineServiceTest", "WPFMineServiceTest\WPFMineServiceTest.csproj", "{5A2441AF-2136-42D0-9F99-F8EFE320A8E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineService", "WPFMineServiceTest\MineService.csproj", "{5A2441AF-2136-42D0-9F99-F8EFE320A8E5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineService Client JSON", "MineService Client JSON\MineService Client JSON.csproj", "{0B5B6C38-8480-4994-A040-527A30C32A07}"
 EndProject
