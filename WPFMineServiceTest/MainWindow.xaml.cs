@@ -44,7 +44,7 @@ namespace WPFMineServiceTest
                 TabItem temp = ((o as TabControl).SelectedItem as TabItem);
                 currentTabName = temp.Name;
             };
-
+          
             home_TabControl.SelectionChanged += (o, e) =>
             {
                 TabItem temp = ((o as TabControl).SelectedItem as TabItem);

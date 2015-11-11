@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFMineServiceTest"
         mc:Ignorable="d"
-        Title="MainWindow" Height="420" Width="620">
+        Title="MainWindow" Height="420" Width="620" Background="#FFDEDFE8">
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="13*"/>
             <RowDefinition Height="336*"/>
         </Grid.RowDefinitions>
-        <TabControl x:Name="cluster_TabControl" TabStripPlacement="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" Grid.RowSpan="2">
-            <TabItem Header="Home" Name="cluster_tab">
-                <Grid Background="#FFE5E5E5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0">
-                    <TabControl x:Name="home_TabControl" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TabStripPlacement="Left">
-                        <TabItem Name="overview_TabItem" Header="Overview">
-                            <Grid Background="#FFE5E5E5" Margin="-3,-3,-4.2,-3.4">
+        <TabControl x:Name="cluster_TabControl" TabStripPlacement="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" Grid.RowSpan="2" Background="#FFDEDFE8">
+            <TabItem Header="Home" Name="cluster_tab" Margin="0" Width="63" Height="30">
+                <Grid Background="#FFDEDFE8" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0">
+                    <TabControl x:Name="home_TabControl" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TabStripPlacement="Left" Background="#FFDEDDE7">
+                        <TabItem Name="overview_TabItem" Header="Overview" Height="30" VerticalAlignment="Top" Margin="0" Width="63" Background="White">
+                            <Grid Background="#FFDEDFE8" Margin="-3,-3,-4.2,-3.4">
                                 <TextBlock x:Name="cluster_overview_TextBlock" HorizontalAlignment="Center" FontSize="25"  TextWrapping="Wrap" TextAlignment="Center" Text="Cluster Overview" 
                                            VerticalAlignment="Top" Height="40" Margin="0,0,0,0" Width="421" />
                                 <Grid Name="home_overview_data_table_container" HorizontalAlignment="Center" Height="296" Margin="0,40,0,0" VerticalAlignment="Center" Width="428">
@@ -60,13 +60,13 @@
 
                             </Grid>
                         </TabItem>
-                        <TabItem Name="FTP_TabItem" Header="FTP">
-                            <Grid Background="#FFE5E5E5">
+                        <TabItem Name="FTP_TabItem" Header="FTP" Margin="0" Height="30">
+                            <Grid Background="#FFDEDFE8">
                                 <Image x:Name="image1" HorizontalAlignment="Left" Height="330" Margin="0,0,-0.2,-0.4" VerticalAlignment="Top" Width="421" Source="pack://siteoforigin:,,,/Resources/obref001.gif"/>
                             </Grid>
                         </TabItem>
-                        <TabItem Name="users_TabItem" Header="Users">
-                            <Grid Background="#FFE5E5E5">
+                        <TabItem Name="users_TabItem" Header="Users" Margin="0" Height="30">
+                            <Grid Background="#FFDEDFE8">
                                 <Grid Name="users_and_groups_container" HorizontalAlignment="Center" Height="285" Margin="47,10,0,0" VerticalAlignment="Center" Width="320">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="40" />
@@ -110,8 +110,8 @@
                                 </Grid>
                             </Grid>
                         </TabItem>
-                        <TabItem Name="settings_TabItem" Header="Settings">
-                            <Grid Background="#FFE5E5E5" Margin="-4,0,3.8,-0.4">
+                        <TabItem Name="settings_TabItem" Header="Settings" Margin="0" Height="30">
+                            <Grid Background="#FFDEDFE8" Margin="-4,0,3.8,-0.4">
                                 <Grid HorizontalAlignment="Left" Height="55" Margin="21,48,0,0" VerticalAlignment="Top" Width="197"/>
                                 <Grid Margin="82.74,50,165.9,149.2" Width="200" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center">
                                     <TextBlock x:Name="label_cluster_select_combobox_settings" TextAlignment="Center" FontSize="16" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Specify cluster port" VerticalAlignment="Top" Height="23" Width="200"/>
@@ -122,12 +122,12 @@
                     </TabControl>
                 </Grid>
             </TabItem>
-            <TabItem Header="Servers:" Name="Server_Seperator_TabItem" IsEnabled="False"></TabItem>
-            <TabItem Name="add_new_server">
+            <TabItem Header="Servers:" Name="Server_Seperator_TabItem" IsEnabled="False" Height="25" VerticalAlignment="Bottom" Margin="0"></TabItem>
+            <TabItem Name="add_new_server" Margin="0" Height="30">
                 <TabItem.Header>
                     <Image Source="pack://siteoforigin:,,,/Resources/Plus Sign.png" Width="20px"></Image>
                 </TabItem.Header>
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FFDEDFE8">
                     <Label x:Name="new_server_name_label" Content="Server Name" HorizontalAlignment="Left" Margin="200,20,0,0" FontSize="18.667" VerticalAlignment="Top" Width="150"/>
                     <TextBox x:Name="new_server_name" HorizontalAlignment="Left" Height="23" Margin="98.94,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="350"/>
                     <Label x:Name="new_server_folder_label" Content="Folder Name" HorizontalAlignment="Left" Margin="200,115,0,0" FontSize="18.667" VerticalAlignment="Top" Width="150"/>

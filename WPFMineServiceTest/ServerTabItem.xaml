@@ -6,11 +6,11 @@
              xmlns:local="clr-namespace:WPFMineServiceTest"
              mc:Ignorable="d" 
              d:DesignHeight="420" d:DesignWidth="650">
-    <Grid Background="#FFE5E5E5">
-        <TabControl x:Name="server_TabControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabStripPlacement="Left" Margin="0,0,0,0" Style="{DynamicResource TabControlStyle1}">
-            <TabItem x:Name="Status_TabItem"  Header="Status" Margin="0" Height="30" VerticalAlignment="Top" d:LayoutOverrides="Height">
+    <Grid Background="#FFDEDFE8">
+        <TabControl x:Name="server_TabControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabStripPlacement="Left" Margin="0,0,0,0" Style="{DynamicResource TabControlStyle1}" Background="#FFDEDFE8">
+            <TabItem x:Name="Status_TabItem"  Header="Status" Margin="0" Height="30" VerticalAlignment="Top" d:LayoutOverrides="Height" Width="63">
                 <Grid Background="#FFE5E5E5">
-                    <Grid Background="#FFE5E5E5">
+                    <Grid Background="#FFDEDFE8">
                         <Grid x:Name="grid_container_server_history1" HorizontalAlignment="Left" Height="195"
 										Margin="198,0,-0.2,0" VerticalAlignment="Top" Width="223">
                             <Grid x:Name="server_history_data" HorizontalAlignment="Right" Height="79.4" Margin="0,24,-51.2,0" VerticalAlignment="Top" Width="274.2">
@@ -107,7 +107,7 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Console_TabItem"  Header="Console" Margin="0" FontSize="12.5" Height="30" d:LayoutOverrides="VerticalAlignment">
+            <TabItem x:Name="Console_TabItem"  Header="Console" Margin="0" FontSize="12.5" Height="30" d:LayoutOverrides="VerticalAlignment" Width="63">
                 <Grid Background="#FFE5E5E5">
                     <RichTextBox x:Name="consoleRichTextBox" HorizontalAlignment="Left" Height="383" Margin="10,10,0,0" VerticalAlignment="Top" Width="640" IsReadOnly="True" VerticalScrollBarVisibility="Auto">
                         <RichTextBox.Resources>
@@ -123,7 +123,7 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="Settings_TabItem" Header="Settings" Margin="0" FontSize="12.5" Height="30">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FFDEDFE8">
                     <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Height="18" Margin="140,225,0,0" TextWrapping="Wrap" Text="Spawn-protection" VerticalAlignment="Top" Width="138"/>
                     <TextBox x:Name="spawn_protection" HorizontalAlignment="Left" Height="19.4" Margin="140,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
                     <TextBox x:Name="max_tick_time" Height="19.4" Margin="275,152,0,0" TextWrapping="Wrap" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -190,7 +190,7 @@
                     <Button x:Name="button" Content="Submit" Height="35.2" Margin="283.483,454.8,313.603,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="77.894"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Schedule_TabItem" Header="Schedule" Margin="0" FontSize="12.5" Height="30" IsTabStop="False" Width="63.02"/>
+            <TabItem x:Name="Schedule_TabItem" Header="Schedule" Margin="0" FontSize="12.5" Height="30" IsTabStop="False" Width="63"/>
         </TabControl>
     </Grid>
 </UserControl>
