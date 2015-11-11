@@ -77,7 +77,7 @@
                             </Grid>
                         </Grid>
                         <Viewbox HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="198">
-                            <TextBlock x:Name="server_name_TextBlock" TextWrapping="Wrap" Text="Monster" Width="70"/>
+                            <TextBlock x:Name="server_name_TextBlock" TextWrapping="Wrap" Text="SERVER_NAME" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         </Viewbox>
                         <TabControl x:Name="tabControl" Height="306.526" Margin="0,109.074,-36,0" VerticalAlignment="Top" Width="610.98" HorizontalContentAlignment="Center" HorizontalAlignment="Left" BorderThickness="0">
                             <TabItem x:Name="CPU_tab" Header="CPU%">

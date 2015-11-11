@@ -27,6 +27,8 @@ namespace WPFMineServiceTest
         public ServerTabItem(String ServerID) : this()
         {
             this.ServerID = ServerID;
+
+            this.server_name_TextBlock.Text = ServerID;
         }
 
         public ServerTabItem()
