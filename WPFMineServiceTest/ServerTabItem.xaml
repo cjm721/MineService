@@ -119,7 +119,7 @@
                         </FlowDocument>
                     </RichTextBox>
                     <TextBox x:Name="consoleTextInputBox" HorizontalAlignment="Stretch" Height="23" Margin="10,10,90,10" TextWrapping="Wrap" VerticalAlignment="Bottom" />
-                    <Button x:Name="consoleSendButton" Content="Send" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="62" Height="25"/>
+                    <Button x:Name="consoleSendButton" Content="Send" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="62" Height="25" Click="consoleSendButton_Click"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="Settings_TabItem" Header="Settings" Margin="0" FontSize="12.5" Height="30">

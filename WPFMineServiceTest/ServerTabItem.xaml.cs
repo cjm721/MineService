@@ -115,5 +115,18 @@ namespace MineService
             this.level_seed.Text = sSet.level_seed;
             this.motd.Text = sSet.motd;
         }
+
+        private void consoleSendButton_Click(object sender, RoutedEventArgs e)
+        {
+            MCCommand mcCommand = new MCCommand(States.MCCommandTYPE.Raw, this.ServerID, consoleTextInputBox.Text + "\n");
+            consoleTextInputBox.Text = "";
+
+            String jsonCommand = JsonConvert.SerializeObject(mcCommand);
+            Message msg = new Message(States.MessageTYPE.MCCommand, jsonCommand);
+
+            String toSend = JsonConvert.SerializeObject(msg);
+
+            CommunicationClient.INSTANCE.sendToServer(toSend);
+        }
     }
 }
