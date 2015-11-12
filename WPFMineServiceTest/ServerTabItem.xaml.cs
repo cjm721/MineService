@@ -68,6 +68,29 @@ namespace MineService
         {
             start_stop_button.Content = (sStatus.isRunning) ? "Stop Server" : "Start Server";
             start_stop_button.IsEnabled = true;
+
+            if(sStatus.uptime == 0)
+            {
+                if(sStatus.isRunning)
+                {
+                    aliveTimeText.Text = "Starting";
+                }else
+                {
+                    aliveTimeText.Text = "Offline";
+                }
+            } else
+            {
+                if(sStatus.isRunning)
+                {
+                    TimeSpan ts = new TimeSpan(sStatus.uptime * 10000);
+
+                    aliveTimeText.Text = ts.ToString(@"dd\D\ hh\H\ mm\M\ ss\S");
+                } else
+                {
+                    aliveTimeText.Text = "Shutting Down";
+                }
+
+            }
             if (sStatus.settings != null)
             {
                 ServerSettings sSet = sStatus.settings; //For the settings tab, need to display the values

@@ -12,9 +12,10 @@
                 <Grid Background="#FFE5E5E5">
                     <Grid Background="#FFDEDFE8">
                         <Grid x:Name="grid_container_server_history1" HorizontalAlignment="Left" Height="195"
-										Margin="198,0,-0.2,0" VerticalAlignment="Top" Width="223">
+										Margin="300,0,0,0" VerticalAlignment="Top" Width="223">
+                            <TextBlock x:Name="textBlock" Height="19.492" Margin="0,0,0,0" TextWrapping="Wrap" Text="Server Stats" VerticalAlignment="Top" FontWeight="Bold" TextAlignment="Center" FontSize="17" HorizontalAlignment="Left" Width="275"/>
                             <Grid x:Name="server_history_data" HorizontalAlignment="Right" Height="79.4" Margin="0,24,-51.2,0" VerticalAlignment="Top" Width="274.2">
-                                <Grid x:Name="server_history_data_table" HorizontalAlignment="Left" Margin="0,0,-52.519,0" VerticalAlignment="Top" Height="80" Width="275" d:LayoutOverrides="VerticalAlignment">
+                                <Grid x:Name="server_history_data_table" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="80" Width="275" d:LayoutOverrides="VerticalAlignment">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="23" />
                                         <RowDefinition Height="19*" />
@@ -76,7 +77,7 @@
                                 </Grid>
                             </Grid>
                         </Grid>
-                        <Viewbox HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="198">
+                        <Viewbox HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="198" Margin="10,10,0,0">
                             <TextBlock x:Name="server_name_TextBlock" TextWrapping="Wrap" Text="SERVER_NAME" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         </Viewbox>
                         <TabControl x:Name="tabControl" Height="306.526" Margin="0,109.074,-36,0" VerticalAlignment="Top" Width="610.98" HorizontalContentAlignment="Center" HorizontalAlignment="Left" BorderThickness="0">
@@ -103,7 +104,8 @@
                             </TabItem>
                         </TabControl>
                         <Button x:Name="start_stop_button" Content="Start Server" HorizontalAlignment="Left" Margin="24,72,0,0" VerticalAlignment="Top" Width="75"/>
-                        <TextBlock x:Name="textBlock" Height="19.492" Margin="198,0,183.6,0" TextWrapping="Wrap" Text="Server Stats" VerticalAlignment="Top" FontWeight="Bold" TextAlignment="Center" FontSize="17" HorizontalAlignment="Left" Width="275"/>
+                        <TextBlock x:Name="aliveTimeLabel" HorizontalAlignment="Left" Margin="120,74,0,0" TextWrapping="Wrap" Text="Alive Time:" VerticalAlignment="Top"/>
+                        <TextBlock x:Name="aliveTimeText" HorizontalAlignment="Left" Margin="185,74,0,0" TextWrapping="Wrap" Text="Offline" VerticalAlignment="Top"/>
                     </Grid>
                 </Grid>
             </TabItem>
