@@ -87,7 +87,7 @@ namespace MineService
                     aliveTimeText.Text = ts.ToString(@"dd\D\ hh\H\ mm\M\ ss\S");
                 } else
                 {
-                    aliveTimeText.Text = "Shutting Down";
+                    aliveTimeText.Text = "Offline";
                 }
 
             }
