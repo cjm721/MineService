@@ -119,8 +119,9 @@ namespace MineService
                             {
                                 ServerTabItem item = new ServerTabItem(s.ServerID);
 
-                                MainWindow.INSTANCE.AddServerTab(item);
-                                
+                                item.UpdateTab(s.serverStatus);
+
+                                MainWindow.INSTANCE.AddServerTab(item);                                
                             }
                         }));
                     }
