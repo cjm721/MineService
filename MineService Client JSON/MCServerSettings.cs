@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MineService_Client_JSON
 {
-    public class ServerSettings
-    {
+    public class MCServerSettings
+    { 
         public bool enable_rcon;
         public bool white_list;
         public int spawn_protection;
@@ -43,5 +43,8 @@ namespace MineService_Client_JSON
         public int max_build_height;
         public string level_seed;
         public string motd;
+
+
+
     }
 }

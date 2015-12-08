@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{093B2432-29F1-4CAF-BBE7-D462DAA00A6E}</ProjectGuid>
+    <ProjectGuid>{8DBE19B4-F36D-4FFD-ACCD-8136720553D8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MineService_Client_Test</RootNamespace>
-    <AssemblyName>MineService Client Test</AssemblyName>
+    <RootNamespace>UnitTestProject1</RootNamespace>
+    <AssemblyName>UnitTestProject1</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,10 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -57,9 +54,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WPFMineServiceTest\WPFMineServiceTest.csproj">
-      <Project>{5a2441af-2136-42d0-9f99-f8efe320a8e5}</Project>
-      <Name>WPFMineServiceTest</Name>
+    <ProjectReference Include="..\MineService Client JSON\MineService Client JSON.csproj">
+      <Project>{0b5b6c38-8480-4994-a040-527a30c32a07}</Project>
+      <Name>MineService Client JSON</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MineService Server\MineService Server.csproj">
+      <Project>{f574821e-94d8-44c6-b131-b0f2c890f177}</Project>
+      <Name>MineService Server</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

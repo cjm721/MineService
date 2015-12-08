@@ -93,12 +93,12 @@ namespace MineService
             }
             if (sStatus.settings != null)
             {
-                ServerSettings sSet = sStatus.settings; //For the settings tab, need to display the values
+                MCServerSettings sSet = sStatus.settings; //For the settings tab, need to display the values
                 populate_settings(sSet);
             }
         }
 
-        private void populate_settings(ServerSettings sSet)
+        private void populate_settings(MCServerSettings sSet)
         {
             this.enable_rcon.IsChecked = sSet.enable_rcon;
             this.white_list.IsChecked = sSet.white_list;

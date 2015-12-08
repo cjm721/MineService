@@ -4,7 +4,7 @@
     {
         public bool isRunning;
         public long uptime;
-        public ServerSettings settings;
+        public MCServerSettings settings;
 
         public ServerStatus(bool isRunning, long uptime)
         {
