@@ -30,6 +30,7 @@ namespace MineService
             this.clientSocket.Connect(ip, port);
 
             writer = new StreamWriter(this.clientSocket.GetStream(),Encoding.UTF8);
+            reader = new StreamReader(this.clientSocket.GetStream(), Encoding.UTF8);
 
             Thread pmThread = new Thread(queueMessageAsync);
             pmThread.Start();
@@ -44,16 +45,14 @@ namespace MineService
             }
         }
 
-        public async void queueMessageAsync()
+        public void queueMessageAsync()
         {
             while (clientSocket.Connected)
             {
-                this.reader = new StreamReader(clientSocket.GetStream(), Encoding.UTF8);
                 string line;
-                Task<String> task = reader.ReadLineAsync();
                 try
                 {
-                    line = await task;
+                    line = reader.ReadLine(); 
                     if(line == null)
                     {
                         return; // TODO: Make Error
