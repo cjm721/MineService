@@ -14,18 +14,17 @@ namespace MineService_Client
     {
         public static CommunicationClient INSTANCE;
 
-        public TcpClient clientSocket;
+        public Stream stream;
         private IMessageControl control;
         private IDialogService dialogService;
 
-        public CommunicationClient(String ip, int port, IMessageControl control, IDialogService dialogService)
+        public CommunicationClient(IMessageControl control, IDialogService dialogService, Stream stream)
         {
             INSTANCE = this;
             this.control = control;
             this.dialogService = dialogService;
 
-            this.clientSocket = new TcpClient();
-            this.clientSocket.Connect(ip, port);
+            this.stream = stream;
 
             Thread pmThread = new Thread(queueMessageAsync);
             pmThread.Start();
@@ -33,20 +32,23 @@ namespace MineService_Client
 
         public void sendToServer(String msg)
         {
-            if(this.clientSocket.Connected)
+            try {
+                control.sendMessage(this.stream, msg);
+            }
+            catch (IOException)
             {
-                control.sendMessage(clientSocket.GetStream(), msg);
+                //TODO: do something more than swallow this error
             }
         }
 
         public void queueMessageAsync()
         {
-            while (clientSocket.Connected)
+            while (true)
             {
                 string line;
                 try
                 {
-                    line = control.getMessage(clientSocket.GetStream()); 
+                    line = control.getMessage((NetworkStream) this.stream); 
                     if(line == null)
                     {
                         return; // TODO: Make Error
@@ -58,6 +60,7 @@ namespace MineService_Client
                 catch (IOException)
                 {
                     // todo: a pop-up
+                    break;
                 }
             }
         }

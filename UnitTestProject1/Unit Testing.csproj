@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="CommunicationClientTest.cs" />
     <Compile Include="FakeMessageBoxDialogService.cs" />
+    <Compile Include="FakeMessageControl.cs" />
     <Compile Include="MainWindowTest.cs" />
     <Compile Include="MainWindowTest_CT.cs" />
     <Compile Include="UnitTest1.cs" />

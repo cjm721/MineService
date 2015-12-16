@@ -3,6 +3,7 @@ using System.Windows;
 using Newtonsoft.Json;
 using MineService_JSON;
 using MineService_Shared;
+using System.Net.Sockets;
 
 namespace MineService_Client
 {
@@ -13,8 +14,11 @@ namespace MineService_Client
     {
 
         public static LoginWindow INSTANCE;
+        private IDialogService dialogService;
+
         public LoginWindow()
         {
+            this.dialogService = new MessageBoxDialogService();
             InitializeComponent();
             INSTANCE = this;
         }
@@ -28,7 +32,11 @@ namespace MineService_Client
             try
             {
                 IMessageControl control = new DESMessageControl();
-                new CommunicationClient(all[0], Convert.ToInt32(all[1]), control);
+                TcpClient tcpClient = new TcpClient();
+                tcpClient.Connect(all[0], Convert.ToInt32(all[1]));
+                NetworkStream stream = tcpClient.GetStream();
+
+                new CommunicationClient(control, this.dialogService, stream);
 
                 Login log = new Login(user, pass);
                 String json = JsonConvert.SerializeObject(log);

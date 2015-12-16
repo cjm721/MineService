@@ -45,7 +45,7 @@ namespace UnitTestProject1
 
             for (int i = 0; i < names.Length; ++i)
             {
-                MainWindow window = new MainWindow();
+                MainWindow window = new MainWindow(new FakeMessageBoxDialogService());
                 MethodInfo methodInfo = typeof(MainWindow).GetMethod("getData", System.Reflection.BindingFlags.NonPublic | BindingFlags.Instance);
                 TabItem testTab = new TabItem();
                 testTab.Name = names[i];

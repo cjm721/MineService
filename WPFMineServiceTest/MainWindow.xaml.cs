@@ -97,6 +97,11 @@ namespace MineService_Client
                 return;
             }
 
+            createServer(new_server_name.Text, new_server_folder.Text);
+        }
+
+        private void createServer(string name, string folder)
+        {
             MCCommand createCommand = new MCCommand(States.MCCommandTYPE.Create, new_server_name.Text, new_server_folder.Text);
             String createCommandStr = JsonConvert.SerializeObject(createCommand);
 

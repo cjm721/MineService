@@ -45,8 +45,9 @@ namespace MineService_Shared
             return Encoding.ASCII.GetString(info, 0, infosize);
         }
 
-        public void sendMessage(NetworkStream stream, string message)
+        public void sendMessage(Stream stream, string message)
         {
+            stream = (NetworkStream)stream;
             MemoryStream memstrm = new MemoryStream();
 
             byte[] Key = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
