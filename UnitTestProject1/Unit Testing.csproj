@@ -64,6 +64,10 @@
       <Project>{f574821e-94d8-44c6-b131-b0f2c890f177}</Project>
       <Name>Server</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WPFMineServiceTest\Client.csproj">
+      <Project>{5a2441af-2136-42d0-9f99-f8efe320a8e5}</Project>
+      <Name>Client</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
