@@ -16,12 +16,15 @@ namespace MineService_Client
 
         public static MainWindow INSTANCE;
 
-        public MainWindow()
+        private IDialogService dialogService;
+
+        public MainWindow(IDialogService dialogService)
         {
             INSTANCE = this;
             InitializeComponent();
             this.MinWidth = 750;
             this.MinHeight = 500;
+            this.dialogService = dialogService;
 
             cluster_TabControl.SelectionChanged += (o, e) =>
             {
@@ -81,15 +84,15 @@ namespace MineService_Client
             {
                 if (String.IsNullOrWhiteSpace(new_server_name.Text) && String.IsNullOrWhiteSpace(new_server_folder.Text))
                 {
-                    MessageBox.Show("Must enter server name and server file", "Required Field Missing", MessageBoxButton.OK, MessageBoxImage.Error);
+                    dialogService.ShowMessageBox("Must enter server name and server file", "Required Field Missing", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else if (String.IsNullOrWhiteSpace(new_server_name.Text))
                 {
-                    MessageBox.Show("Must enter server name", "Required Field Missing", MessageBoxButton.OK, MessageBoxImage.Error);
+                    dialogService.ShowMessageBox("Must enter server name", "Required Field Missing", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
                 {
-                    MessageBox.Show("Must enter server folder", "Required Field Missing", MessageBoxButton.OK, MessageBoxImage.Error);
+                    dialogService.ShowMessageBox("Must enter server folder", "Required Field Missing", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 return;
             }

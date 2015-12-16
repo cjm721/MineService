@@ -16,11 +16,13 @@ namespace MineService_Client
 
         public TcpClient clientSocket;
         private IMessageControl control;
+        private IDialogService dialogService;
 
-        public CommunicationClient(String ip, int port, IMessageControl control)
+        public CommunicationClient(String ip, int port, IMessageControl control, IDialogService dialogService)
         {
             INSTANCE = this;
             this.control = control;
+            this.dialogService = dialogService;
 
             this.clientSocket = new TcpClient();
             this.clientSocket.Connect(ip, port);
@@ -60,6 +62,60 @@ namespace MineService_Client
             }
         }
 
+        private void handleStatusMessage(Status status)
+        {
+            if (!Data.serverTabs.ContainsKey(status.ServerID))
+            {
+                MainWindow.INSTANCE.Dispatcher.Invoke(new Action(delegate()
+                {
+                    ServerTabItem item = new ServerTabItem(status.ServerID);
+                    MainWindow.INSTANCE.AddServerTab(item);
+                }));
+            }
+
+            ServerTabItem tab = Data.serverTabs[status.ServerID];
+
+            tab.Dispatcher.BeginInvoke(new Action(delegate()
+            {
+                tab.UpdateTab(status.serverStatus);
+            }));
+        }
+
+        private void handleNewWindow(Message msg)
+        {
+            LoginWindow.INSTANCE.Dispatcher.BeginInvoke(new Action(delegate()
+            {
+                new MainWindow(new MessageBoxDialogService()).Show();
+                LoginWindow.INSTANCE.Close();
+
+                Status[] array = JsonConvert.DeserializeObject<Status[]>(msg.message);
+
+                foreach (Status s in array)
+                {
+                    ServerTabItem item = new ServerTabItem(s.ServerID);
+
+                    item.UpdateTab(s.serverStatus);
+
+                    MainWindow.INSTANCE.AddServerTab(item);
+                }
+            }));
+        }
+
+        private void handleConsole(MineService_JSON.Console console)
+        {
+            ServerTabItem tab = Data.serverTabs[console.ServerID];
+
+            tab.consoleRichTextBox.Document.Dispatcher.BeginInvoke(new Action(delegate()
+            {
+                Paragraph pr = new Paragraph();
+                foreach (String s in console.messages)
+                    pr.Inlines.Add(s);
+
+                tab.consoleRichTextBox.Document.Blocks.Add(pr);
+                tab.consoleRichTextBox.ScrollToEnd();
+            }));
+        }
+
         public void processMessage(String line)
         {
             if (line == null)
@@ -78,63 +134,23 @@ namespace MineService_Client
             {
                 case States.MessageTYPE.Status:
                     Status status = JsonConvert.DeserializeObject<Status>(msg.message);
-
-                    if(!Data.serverTabs.ContainsKey(status.ServerID))
-                    {
-                        MainWindow.INSTANCE.Dispatcher.Invoke(new Action(delegate ()
-                        {
-                            ServerTabItem item = new ServerTabItem(status.ServerID);
-                            MainWindow.INSTANCE.AddServerTab(item);
-                        }));
-                    }
-
-                    ServerTabItem tab = Data.serverTabs[status.ServerID];
-
-                    tab.Dispatcher.BeginInvoke(new Action(delegate()
-                    {
-                        tab.UpdateTab(status.serverStatus);
-                    }));
+                    handleStatusMessage(status);
 
                     break;
                 case States.MessageTYPE.StatusArray:
                     if (MainWindow.INSTANCE == null)
                     {
-                        LoginWindow.INSTANCE.Dispatcher.BeginInvoke(new Action(delegate ()
-                        {
-                            new MainWindow().Show();
-                            LoginWindow.INSTANCE.Close();
-
-                            Status[] array = JsonConvert.DeserializeObject<Status[]>(msg.message);
-
-                            foreach(Status s in array)
-                            {
-                                ServerTabItem item = new ServerTabItem(s.ServerID);
-
-                                item.UpdateTab(s.serverStatus);
-
-                                MainWindow.INSTANCE.AddServerTab(item);                                
-                            }
-                        }));
+                        handleNewWindow(msg);
                     }
 
                     break;
                 case States.MessageTYPE.Error:
-                    MessageBox.Show(msg.message,"Error",MessageBoxButton.OK,MessageBoxImage.Error);
+                    dialogService.ShowMessageBox(msg.message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
                     break;
                 case States.MessageTYPE.Console:
                     MineService_JSON.Console console = JsonConvert.DeserializeObject<MineService_JSON.Console>(msg.message);
-                    tab = Data.serverTabs[console.ServerID];
-
-                    tab.consoleRichTextBox.Document.Dispatcher.BeginInvoke(new Action( delegate ()
-                    {
-                        Paragraph pr = new Paragraph();
-                        foreach (String s in console.messages)
-                            pr.Inlines.Add(s);
-
-                        tab.consoleRichTextBox.Document.Blocks.Add(pr);
-                        tab.consoleRichTextBox.ScrollToEnd();
-                    }));
-
+                    handleConsole(console);
 
                     break;
             }
