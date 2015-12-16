@@ -9,6 +9,7 @@ namespace MineService_Server
 
         public static void Main(string[] args)
         {
+            Config.loadConfig();
 
             serverSocket = new TcpListener(System.Net.IPAddress.Any, 56552);
 
@@ -20,9 +21,11 @@ namespace MineService_Server
                 TcpClient clientSocket = serverSocket.AcceptTcpClient();
 
                 Client client = new Client(clientSocket, control);
+                Data.connectedClients.Add(client);
                 client.startProcessing();
             }
 
+            Config.INSTANCE.saveConfig();
         }
     }
 }

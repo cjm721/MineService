@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.Threading;
 
 namespace MineService_Server
@@ -43,6 +44,7 @@ namespace MineService_Server
             }
         }
 
+        [MethodImpl(MethodImplOptions.Synchronized)]
         public void sendMessage(String message)
         {
             if (String.IsNullOrWhiteSpace(message))
@@ -80,17 +82,30 @@ namespace MineService_Server
             switch (msg.type)
             {
                 case States.MessageTYPE.Console:
-
+                    MineService_JSON.Console console = JsonConvert.DeserializeObject<MineService_JSON.Console>(msg.message);
+                    handleConsole(console);
                     break;
                 case States.MessageTYPE.Login:
-
+                    MineService_JSON.Login Login = JsonConvert.DeserializeObject<MineService_JSON.Login>(msg.message);
+                    handleLogin(Login);
                     break;
                 case States.MessageTYPE.MCCommand:
-
+                    MineService_JSON.MCCommand MCCommand = JsonConvert.DeserializeObject<MineService_JSON.MCCommand>(msg.message);
+                    handleMCCommand(MCCommand);
                     break;
                 case States.MessageTYPE.Status:
-
+                    MineService_JSON.Status Status = JsonConvert.DeserializeObject<MineService_JSON.Status>(msg.message);
+                    handleStatus(Status);
                     break;
+            }
+        }
+
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        public static void SendMessageToAll(String msg)
+        {
+            for (int i = Data.connectedClients.Count - 1; i >= 0; i--)
+            {
+                Data.connectedClients[i].sendMessage(msg);
             }
         }
     }
