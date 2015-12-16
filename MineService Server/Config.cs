@@ -45,7 +45,7 @@ namespace MineService_Server
 
             INSTANCE = config;
 
-            for(int i = 0; i < config.ServerIDFolders.Length; i++)
+            for(int i = 0; i < config.ServerIDFolders.GetLength(0); i++)
             {
                 String ID = config.ServerIDFolders[i,0];
                 String Folder = config.ServerIDFolders[i,1];
@@ -57,6 +57,8 @@ namespace MineService_Server
 
         public void saveConfig()
         {
+            updateServerIDFolders();
+
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream(Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar + "config.mineS",
                                      FileMode.Create,
