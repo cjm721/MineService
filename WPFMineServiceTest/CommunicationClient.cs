@@ -9,7 +9,7 @@ using System.Windows.Documents;
 using MineService_JSON;
 using MineService_Shared;
 
-namespace MineService
+namespace MineService_Client
 {
     public partial class CommunicationClient
     {

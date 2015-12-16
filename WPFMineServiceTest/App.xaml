@@ -1,7 +1,7 @@
-﻿<Application x:Class="MineService.App"
+﻿<Application x:Class="MineService_Client.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:MineService"
+             xmlns:local="clr-namespace:MineService_Client"
              StartupUri="login_window.xaml">
     <Application.Resources>
 

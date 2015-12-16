@@ -4,7 +4,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace MineService
+namespace MineService_Client
 {
     /// <summary>
     /// Interaction logic for ServerTabItem.xaml

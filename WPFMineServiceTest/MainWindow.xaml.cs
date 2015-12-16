@@ -5,7 +5,7 @@ using MineService_JSON;
 using Newtonsoft.Json;
 
 
-namespace MineService
+namespace MineService_Client
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
