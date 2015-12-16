@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MineService_Client;
+using System.Reflection;
 
 namespace UnitTestProject1
 {
@@ -12,7 +14,9 @@ namespace UnitTestProject1
         [TestMethod]
         public void TestAddNewServerButton()
         {
-            
+            MainWindow window = new MainWindow();
+            MethodInfo methodInfo = typeof(MainWindow).GetMethod("add_new_server_buttonClick", System.Reflection.BindingFlags.NonPublic);
+            methodInfo.Invoke(window, new Object[] {null, null});
         }
     }
 }
