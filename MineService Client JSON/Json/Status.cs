@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MineService_Client_JSON
+namespace MineService_JSON
 {
     public class Status
     {

@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F574821E-94D8-44C6-B131-B0F2C890F177}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{0B5B6C38-8480-4994-A040-527A30C32A07}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MineService_Server</RootNamespace>
-    <AssemblyName>MineService Server</AssemblyName>
+    <RootNamespace>MineService_Shared</RootNamespace>
+    <AssemblyName>MineService_Shared</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -47,22 +44,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client.cs" />
-    <Compile Include="Client_ProcessMessage.cs" />
-    <Compile Include="Data.cs" />
-    <Compile Include="MCServer.cs" />
-    <Compile Include="ServerMain.cs" />
+    <Compile Include="DESMessageControl.cs" />
+    <Compile Include="IMessageControl.cs" />
+    <Compile Include="Json\Console.cs" />
+    <Compile Include="Json\Login.cs" />
+    <Compile Include="Json\MCCommand.cs" />
+    <Compile Include="Json\MCMSSettings.cs" />
+    <Compile Include="Json\Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Json\MCServerSettings.cs" />
+    <Compile Include="Json\ServerStatus.cs" />
+    <Compile Include="Json\States.cs" />
+    <Compile Include="Json\Status.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MineService Client JSON\MineService Client JSON.csproj">
-      <Project>{0b5b6c38-8480-4994-a040-527a30c32a07}</Project>
-      <Name>MineService Client JSON</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

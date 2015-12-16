@@ -54,13 +54,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MineService Client JSON\MineService Client JSON.csproj">
+    <ProjectReference Include="..\MineService Client JSON\Shared.csproj">
       <Project>{0b5b6c38-8480-4994-a040-527a30c32a07}</Project>
-      <Name>MineService Client JSON</Name>
+      <Name>Shared</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MineService Server\MineService Server.csproj">
+    <ProjectReference Include="..\MineService Server\Server.csproj">
       <Project>{f574821e-94d8-44c6-b131-b0f2c890f177}</Project>
-      <Name>MineService Server</Name>
+      <Name>Server</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

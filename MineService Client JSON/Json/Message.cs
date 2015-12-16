@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace MineService_Client_JSON
+namespace MineService_JSON
 {
     public class Message
     {

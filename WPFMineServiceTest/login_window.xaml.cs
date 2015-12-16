@@ -4,7 +4,8 @@ using System.Net.Sockets;
 using System.Text;
 using System.Windows;
 using Newtonsoft.Json;
-using MineService_Client_JSON;
+using MineService_JSON;
+using MineService_Shared;
 
 namespace MineService
 {
@@ -29,7 +30,8 @@ namespace MineService
             string pass = password.Password;
             try
             {
-                new CommunicationClient(all[0], Convert.ToInt32(all[1]));
+                IMessageControl control = new DESMessageControl();
+                new CommunicationClient(all[0], Convert.ToInt32(all[1]), control);
 
                 Login log = new Login(user, pass);
                 String json = JsonConvert.SerializeObject(log);

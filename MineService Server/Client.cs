@@ -1,4 +1,5 @@
-﻿using MineService_Client_JSON;
+﻿using MineService_JSON;
+using MineService_Shared;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,18 +16,21 @@ namespace MineService_Server
     {
         TcpClient socket;
         Thread incomingMessageThread;
+        IMessageControl control;
+
 
         public bool authenticated;
 
-        public Client(TcpClient socket)
+        public Client(TcpClient socket, IMessageControl control)
         {
             this.socket = socket;
-
+            this.control = control;
         }
 
         public void startProcessing()
         {
             incomingMessageThread = new Thread(delegate () { messageProcessor(); });
+            incomingMessageThread.Start();
         }
 
         public void messageProcessor()
@@ -35,11 +39,36 @@ namespace MineService_Server
 
             while (true)
             {
-                String line = reader.ReadLine();
+                String line = control.getMessage(socket.GetStream());
 
                 System.Console.WriteLine("Message: " + line);
 
                 processMessage(line);
+            }
+        }
+
+        public void sendMessage(String message)
+        {
+            if (String.IsNullOrWhiteSpace(message))
+                return;
+            try
+            {
+                System.Console.WriteLine(message + "\n");
+                control.sendMessage(this.socket.GetStream(), message);
+            }
+            catch (IOException e)
+            {
+                System.Console.WriteLine("Closing Socket");
+                try
+                {
+                    this.socket.Close();
+                }
+                catch (IOException e1)
+                {
+                    // e1.printStackTrace();
+                }
+                System.Console.WriteLine("Removing Client from Active");
+                Data.connectedClients.Remove(this);
             }
         }
 

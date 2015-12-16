@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.IO;
 using System.Threading;
 using Newtonsoft.Json;
-using MineService_Client_JSON;
 using System.Windows;
 using System.Windows.Documents;
-using System.Windows.Controls;
+using MineService_JSON;
+using MineService_Shared;
 
 namespace MineService
 {
@@ -19,18 +16,15 @@ namespace MineService
         public static CommunicationClient INSTANCE;
 
         public TcpClient clientSocket;
-        private StreamReader reader;
-        private StreamWriter writer;
+        private IMessageControl control;
 
-        public CommunicationClient(String ip, int port)
+        public CommunicationClient(String ip, int port, IMessageControl control)
         {
             INSTANCE = this;
+            this.control = control;
 
             this.clientSocket = new TcpClient();
             this.clientSocket.Connect(ip, port);
-
-            writer = new StreamWriter(this.clientSocket.GetStream(),Encoding.UTF8);
-            reader = new StreamReader(this.clientSocket.GetStream(), Encoding.UTF8);
 
             Thread pmThread = new Thread(queueMessageAsync);
             pmThread.Start();
@@ -40,8 +34,7 @@ namespace MineService
         {
             if(this.clientSocket.Connected)
             {
-                writer.WriteLine(msg);
-                writer.Flush();
+                control.sendMessage(clientSocket.GetStream(), msg);
             }
         }
 
@@ -52,7 +45,7 @@ namespace MineService
                 string line;
                 try
                 {
-                    line = reader.ReadLine(); 
+                    line = control.getMessage(clientSocket.GetStream()); 
                     if(line == null)
                     {
                         return; // TODO: Make Error
@@ -130,7 +123,7 @@ namespace MineService
                     MessageBox.Show(msg.message,"Error",MessageBoxButton.OK,MessageBoxImage.Error);
                     break;
                 case States.MessageTYPE.Console:
-                    MineService_Client_JSON.Console console = JsonConvert.DeserializeObject<MineService_Client_JSON.Console>(msg.message);
+                    MineService_JSON.Console console = JsonConvert.DeserializeObject<MineService_JSON.Console>(msg.message);
                     tab = Data.serverTabs[console.ServerID];
 
                     tab.consoleRichTextBox.Document.Dispatcher.BeginInvoke(new Action( delegate ()

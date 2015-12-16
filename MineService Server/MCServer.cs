@@ -1,4 +1,4 @@
-﻿using MineService_Client_JSON;
+﻿using MineService_JSON;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;

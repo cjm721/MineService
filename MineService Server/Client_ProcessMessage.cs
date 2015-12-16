@@ -1,4 +1,4 @@
-﻿using MineService_Client_JSON;
+﻿using MineService_JSON;
 using System;
 using System.Collections.Generic;
 using System.Linq;
