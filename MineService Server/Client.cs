@@ -51,7 +51,7 @@ namespace MineService_Server
                 return;
             try
             {
-                System.Console.WriteLine(message + "\n");
+                System.Console.WriteLine("Sending Message: " + message + "\n");
                 control.sendMessage(this.socket.GetStream(), message);
             }
             catch (IOException e)
