@@ -13,7 +13,8 @@ using System.Net.Sockets;
 
 namespace UnitTestProject1
 {
-    public partial class MainWindowTest
+    [TestClass]
+    public partial class MainWindowTest_cj
     {
         private IDialogService dialogService = new FakeMessageBoxDialogService();
         private MainWindow window;
