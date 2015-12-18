@@ -48,7 +48,7 @@ namespace MineService_Client
                 string line;
                 try
                 {
-                    line = control.getMessage((NetworkStream) this.stream); 
+                    line = control.getMessage(this.stream); 
                     if(line == null)
                     {
                         return; // TODO: Make Error
