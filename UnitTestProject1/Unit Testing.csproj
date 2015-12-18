@@ -59,7 +59,7 @@
     <Compile Include="FakeMessageControl.cs" />
     <Compile Include="MainWindowTest.cs" />
     <Compile Include="MainWindowTest_CT.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Server\MCServerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

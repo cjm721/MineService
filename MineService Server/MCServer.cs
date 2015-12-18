@@ -21,6 +21,7 @@ namespace MineService_Server
         public ConcurrentQueue<String> consoleLines;
 
         public Process pross;
+        public int processID;
 
         public MCMSSettings msSettings;
 
@@ -58,6 +59,7 @@ namespace MineService_Server
             pross.StartInfo.RedirectStandardInput = true;
 
             pross.Start();
+            processID = pross.Id;
 
             pross.Exited += onServerStoped;
             pross.OutputDataReceived += onConsoleMessage;
@@ -67,7 +69,14 @@ namespace MineService_Server
 
         public void stop()
         {
-            pross.Close();
+            if(pross != null && !pross.HasExited)
+                pross.Close();
+        }
+
+        public void kill()
+        {
+            if (pross != null)
+                pross.Kill();
         }
 
         private void onConsoleMessage(object sender, DataReceivedEventArgs e)
@@ -115,14 +124,14 @@ namespace MineService_Server
             start();
         }
 
-        public void rawCommand(String command)
+        public void rawCommand(string command)
         {
             ServerInput.WriteLine(command);
         }
 
         public void delete(bool filesAlso)
         {
-            if(!pross.HasExited)
+            if(pross != null && !pross.HasExited)
             {
                 pross.Kill();
             }
@@ -131,7 +140,7 @@ namespace MineService_Server
 
             if(filesAlso)
             {
-                Directory.Delete(this.FolderDir);
+                Directory.Delete(this.FolderDir, true);
             }
         }
 
@@ -143,9 +152,15 @@ namespace MineService_Server
             return status;
         }
 
-        internal bool isRunning()
+        public bool isRunning()
         {
-            return !(pross == null || pross.HasExited);
+            try {
+                Process process = Process.GetProcessById(processID);
+                return process != null;
+            } catch
+            {
+                return false;
+            }
         }
 
         public MCServerSettings getServerSettings()
