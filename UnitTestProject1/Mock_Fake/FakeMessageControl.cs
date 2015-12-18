@@ -19,7 +19,7 @@ namespace UnitTestProject1
             this.stream = stream;
         }
 
-        public string getMessage(System.Net.Sockets.NetworkStream stream)
+        public string getMessage(Stream stream)
         {
             return "hello";
             //TODO: implement this

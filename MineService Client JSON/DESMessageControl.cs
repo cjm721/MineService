@@ -11,7 +11,7 @@ namespace MineService_Shared
 {
     public class DESMessageControl : IMessageControl
     {
-        public string getMessage(NetworkStream stream)
+        public string getMessage(Stream stream)
         {
             MemoryStream memstrm = new MemoryStream();
 
@@ -47,7 +47,6 @@ namespace MineService_Shared
 
         public void sendMessage(Stream stream, string message)
         {
-            stream = (NetworkStream)stream;
             MemoryStream memstrm = new MemoryStream();
 
             byte[] Key = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,

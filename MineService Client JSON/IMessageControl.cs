@@ -11,6 +11,6 @@ namespace MineService_Shared
     public interface IMessageControl
     {
         void sendMessage(Stream stream, String message);
-        String getMessage(NetworkStream stream);
+        String getMessage(Stream stream);
     }
 }
