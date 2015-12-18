@@ -54,11 +54,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="CommunicationClientTest.cs" />
-    <Compile Include="FakeMessageBoxDialogService.cs" />
-    <Compile Include="FakeMessageControl.cs" />
-    <Compile Include="MainWindowTest.cs" />
-    <Compile Include="MainWindowTest_CT.cs" />
+    <Compile Include="Client\CommunicationClientTest.cs" />
+    <Compile Include="Mock_Fake\FakeMessageBoxDialogService.cs" />
+    <Compile Include="Mock_Fake\FakeMessageControl.cs" />
+    <Compile Include="Client\MainWindowTest.cs" />
+    <Compile Include="Client\MainWindowTest_CT.cs" />
     <Compile Include="Server\MCServerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
