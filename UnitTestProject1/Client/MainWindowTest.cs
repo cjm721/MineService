@@ -13,7 +13,7 @@ using System.IO;
 namespace UnitTestProject1
 {
     [TestClass]
-    public partial class MainWindowTest
+    public class MainWindowTest
     {
         [TestMethod]
         public void getDataTest()
