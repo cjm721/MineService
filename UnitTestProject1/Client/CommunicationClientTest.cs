@@ -25,7 +25,7 @@ namespace UnitTestProject1
         {
             window = new MainWindow(new FakeMessageBoxDialogService());
 
-            client = new CommunicationClient(new DESMessageControl(), new FakeMessageBoxDialogService(), new MemoryStream());
+            client = new CommunicationClient(new FakeMessageControl(), new FakeMessageBoxDialogService(), new MemoryStream());
             Data.serverTabs = new Dictionary<string, ServerTabItem>();
         }
 
