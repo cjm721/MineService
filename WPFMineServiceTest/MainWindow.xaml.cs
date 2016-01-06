@@ -77,27 +77,35 @@ namespace MineService_Client
 
         }       
 
-
         private void add_new_server_button_Click(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(new_server_folder.Text) || String.IsNullOrWhiteSpace(new_server_name.Text))
+            String msg = String.Empty;
+
+            switch (getCreateServerError())
             {
-                if (String.IsNullOrWhiteSpace(new_server_name.Text) && String.IsNullOrWhiteSpace(new_server_folder.Text))
-                {
-                    dialogService.ShowMessageBox("Must enter server name and server file", "Required Field Missing", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                else if (String.IsNullOrWhiteSpace(new_server_name.Text))
-                {
-                    dialogService.ShowMessageBox("Must enter server name", "Required Field Missing", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                else
-                {
-                    dialogService.ShowMessageBox("Must enter server folder", "Required Field Missing", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                return;
+                case 0:
+                    createServer(new_server_name.Text, new_server_folder.Text);
+                    return;
+                case 1:
+                    msg = "Must enter server folder";
+                    break;
+                case 2:
+                    msg = "Must enter server name";
+                    break;
+                case 3:
+                    msg = "Must enter server name and server file";
+                    break;
             }
 
-            createServer(new_server_name.Text, new_server_folder.Text);
+            dialogService.ShowMessageBox(msg, "Required Field Missing", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        private int getCreateServerError()
+        {
+            bool isFolderNull = String.IsNullOrWhiteSpace(new_server_folder.Text);
+            bool isNameNull = String.IsNullOrWhiteSpace(new_server_name.Text);
+
+            return Convert.ToInt32(isFolderNull) | ((Convert.ToInt32(isNameNull)) << 1);
         }
 
         private void createServer(string name, string folder)

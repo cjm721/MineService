@@ -116,6 +116,58 @@ namespace UnitTestProject1
             Assert.AreNotEqual(null, fakeMessageControl.messageSent);
         }
 
+        [TestMethod]
+        public void TestGetServerErrorCode0()
+        {
+            FieldInfo folderInfo = typeof(MainWindow).GetField("new_server_folder", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+            TextBox box = new TextBox();
+            box.Text = "testing";
+            folderInfo.SetValue(window, box);
+
+            MethodInfo methodInfo = typeof(MainWindow).GetMethod("getCreateServerError", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            var val = methodInfo.Invoke(window, null);
+            Assert.AreEqual(2, (int)val);
+        }
+
+        [TestMethod]
+        public void TestGetServerErrorCode1()
+        {
+            FieldInfo nameInfo = typeof(MainWindow).GetField("new_server_name", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+            TextBox box = new TextBox();
+            box.Text = "testing";
+            nameInfo.SetValue(window, box);
+
+            MethodInfo methodInfo = typeof(MainWindow).GetMethod("getCreateServerError", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            var val = methodInfo.Invoke(window, null);
+            Assert.AreEqual(1, (int)val);
+        }
+
+        [TestMethod]
+        public void TestGetServerErrorCode2()
+        {
+            MethodInfo methodInfo = typeof(MainWindow).GetMethod("getCreateServerError", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            var val = methodInfo.Invoke(window, null);
+            Assert.AreEqual(3, (int)val);
+        }
+
+        [TestMethod]
+        public void TestGetServerErrorCode3()
+        {
+            FieldInfo folderInfo = typeof(MainWindow).GetField("new_server_folder", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            FieldInfo nameInfo = typeof(MainWindow).GetField("new_server_name", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+            TextBox box = new TextBox();
+            box.Text = "testing";
+            folderInfo.SetValue(window, box);
+            nameInfo.SetValue(window, box);
+
+            MethodInfo methodInfo = typeof(MainWindow).GetMethod("getCreateServerError", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            var val = methodInfo.Invoke(window, null);
+            Assert.AreEqual(0, (int)val);
+        }
+
         [TestCleanup]
         public void tearDown()
         {
