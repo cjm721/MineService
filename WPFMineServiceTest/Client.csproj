@@ -99,10 +99,12 @@
     <Compile Include="CommunicationClient.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="IDialogService.cs" />
+    <Compile Include="IMessageHandler.cs" />
     <Compile Include="login_window.xaml.cs">
       <DependentUpon>login_window.xaml</DependentUpon>
     </Compile>
     <Compile Include="MessageBoxDialogService.cs" />
+    <Compile Include="MessageHandler.cs" />
     <Compile Include="ServerTabItem.xaml.cs">
       <DependentUpon>ServerTabItem.xaml</DependentUpon>
     </Compile>
