@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using MineService_JSON;
 using Newtonsoft.Json;
-
+using MineService_Client.Tabs;
 
 namespace MineService_Client
 {
@@ -43,33 +43,15 @@ namespace MineService_Client
         private void getData(TabItem tabitem)
         {
             String name = tabitem.Name;
-            switch (name)
-            {
-                case "overview_TabItem":
-                    System.Console.WriteLine("overview"); //get server info here
-                    break;
-                case "FTP_TabItem":
-                    System.Console.WriteLine("FTP");  //get server info here
-                    break;
-                case "users_TabItem":
-                    System.Console.WriteLine("users"); //get server info here
-                    break;
-                case "settings_TabItem":
-                    System.Console.WriteLine("settings");  //get server info here
-                    break;
-                case "Status_TabItem":
-                    System.Console.WriteLine("Status"); //get server info here
-                    break;
-                case "Console_TabItem":
-                    System.Console.WriteLine("Console");  //get server info here
-                    break;
-                case "Settings_TabItem":
-                    System.Console.WriteLine("Settings"); //get server info here
-                    break;
-                case "Schedule_TabItem":
-                    System.Console.WriteLine("Schedule");  //get server info here
-                    break;
-            }
+
+            TabFactory factory = new TabFactory();
+            TabData tabData = factory.createTabData(name);
+            States.MessageTYPE messageType = tabData.getMessageType();
+            String message = tabData.getMessage();
+
+            Message msg = new Message(messageType, message);
+            String js = JsonConvert.SerializeObject(msg);
+            CommunicationClient.INSTANCE.sendToServer(js);
         }
 
         private void tabControl2_SelectionChanged(object sender, SelectionChangedEventArgs e)
