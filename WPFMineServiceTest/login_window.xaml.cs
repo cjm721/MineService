@@ -15,10 +15,12 @@ namespace MineService_Client
 
         public static LoginWindow INSTANCE;
         private IDialogService dialogService;
+        private IMessageHandler messageHandler;
 
         public LoginWindow()
         {
             this.dialogService = new MessageBoxDialogService();
+            this.messageHandler = new MessageHandler(this.dialogService);
             InitializeComponent();
             INSTANCE = this;
         }
@@ -36,7 +38,7 @@ namespace MineService_Client
                 tcpClient.Connect(all[0], Convert.ToInt32(all[1]));
                 NetworkStream stream = tcpClient.GetStream();
 
-                new CommunicationClient(control, this.dialogService, stream);
+                new CommunicationClient(control, this.dialogService, this.messageHandler, stream);
 
                 Login log = new Login(user, pass);
                 String json = JsonConvert.SerializeObject(log);

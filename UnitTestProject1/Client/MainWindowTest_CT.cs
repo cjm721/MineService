@@ -106,7 +106,7 @@ namespace UnitTestProject1
         public void TestCreateNewServer()
         {
             FakeMessageControl fakeMessageControl = new FakeMessageControl();
-            CommunicationClient.INSTANCE = new CommunicationClient(fakeMessageControl, new FakeMessageBoxDialogService(), new MemoryStream());
+            CommunicationClient.INSTANCE = new CommunicationClient(fakeMessageControl, dialogService, new MessageHandler(dialogService), new MemoryStream());
 
             Assert.AreEqual(null, fakeMessageControl.messageSent);
 

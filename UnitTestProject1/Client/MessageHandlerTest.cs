@@ -15,17 +15,17 @@ using System.IO;
 namespace UnitTestProject1
 {
     [TestClass]
-    public class CommunicationClientTest
+    public class MessageHandlerTest
     {
         private MainWindow window;
-        private CommunicationClient client;
+        private MessageHandler handler;
 
         [TestInitialize]
         public void setUp()
         {
             window = new MainWindow(new FakeMessageBoxDialogService());
-
-            client = new CommunicationClient(new FakeMessageControl(), new FakeMessageBoxDialogService(), new MemoryStream());
+            IDialogService fakeDialogService = new FakeMessageBoxDialogService();
+            handler = new MessageHandler(fakeDialogService);
             Data.serverTabs = new Dictionary<string, ServerTabItem>();
         }
 
@@ -38,12 +38,12 @@ namespace UnitTestProject1
             int tabCount = control.Items.Count;
             Assert.AreEqual(3, tabCount);
 
-            MethodInfo methodInfo = typeof(CommunicationClient).GetMethod("handleStatusMessage", BindingFlags.NonPublic | BindingFlags.Instance);
+            MethodInfo methodInfo = typeof(MessageHandler).GetMethod("handleStatusMessage", BindingFlags.NonPublic | BindingFlags.Instance);
             
             ServerStatus serverStatus = new ServerStatus(true, 1000);
             Status status = new Status(States.StatusType.Send, "0", serverStatus);
 
-            methodInfo.Invoke(client, new Object[] {status});
+            methodInfo.Invoke(handler, new Object[] {status});
 
             tabCount = control.Items.Count;
 
@@ -57,12 +57,12 @@ namespace UnitTestProject1
             FieldInfo fieldInfo = typeof(MainWindow).GetField("cluster_TabControl", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             TabControl control = (TabControl)fieldInfo.GetValue(window);
 
-            MethodInfo methodInfo = typeof(CommunicationClient).GetMethod("handleStatusMessage", BindingFlags.NonPublic | BindingFlags.Instance);
+            MethodInfo methodInfo = typeof(MessageHandler).GetMethod("handleStatusMessage", BindingFlags.NonPublic | BindingFlags.Instance);
 
             ServerStatus serverStatus = new ServerStatus(true, 1000);
             Status status = new Status(States.StatusType.Send, "0", serverStatus);
 
-            methodInfo.Invoke(client, new Object[] { status });
+            methodInfo.Invoke(handler, new Object[] { status });
 
             int tabCount = control.Items.Count;
 
@@ -70,7 +70,7 @@ namespace UnitTestProject1
             Assert.AreEqual(1, Data.serverTabs.Count);
 
             status.ServerID = "21";
-            methodInfo.Invoke(client, new Object[] { status });
+            methodInfo.Invoke(handler, new Object[] { status });
 
             tabCount = control.Items.Count;
 
@@ -96,7 +96,7 @@ namespace UnitTestProject1
         [TestCleanup]
         public void tearDown()
         {
-            client = null;
+            handler = null;
             window = null;
         }
     }
