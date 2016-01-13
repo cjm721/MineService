@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using MineService_JSON;
 using Newtonsoft.Json;
-
+using MineService_Client.Tabs;
 
 namespace MineService_Client
 {
@@ -43,33 +43,15 @@ namespace MineService_Client
         private void getData(TabItem tabitem)
         {
             String name = tabitem.Name;
-            switch (name)
-            {
-                case "overview_TabItem":
-                    System.Console.WriteLine("overview"); //get server info here
-                    break;
-                case "FTP_TabItem":
-                    System.Console.WriteLine("FTP");  //get server info here
-                    break;
-                case "users_TabItem":
-                    System.Console.WriteLine("users"); //get server info here
-                    break;
-                case "settings_TabItem":
-                    System.Console.WriteLine("settings");  //get server info here
-                    break;
-                case "Status_TabItem":
-                    System.Console.WriteLine("Status"); //get server info here
-                    break;
-                case "Console_TabItem":
-                    System.Console.WriteLine("Console");  //get server info here
-                    break;
-                case "Settings_TabItem":
-                    System.Console.WriteLine("Settings"); //get server info here
-                    break;
-                case "Schedule_TabItem":
-                    System.Console.WriteLine("Schedule");  //get server info here
-                    break;
-            }
+
+            TabFactory factory = new TabFactory();
+            TabData tabData = factory.createTabData(name);
+            States.MessageTYPE messageType = tabData.getMessageType();
+            String message = tabData.getMessage();
+
+            Message msg = new Message(messageType, message);
+            String js = JsonConvert.SerializeObject(msg);
+            CommunicationClient.INSTANCE.sendToServer(js);
         }
 
         private void tabControl2_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -77,27 +59,35 @@ namespace MineService_Client
 
         }       
 
-
         private void add_new_server_button_Click(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(new_server_folder.Text) || String.IsNullOrWhiteSpace(new_server_name.Text))
+            String msg = String.Empty;
+
+            switch (getCreateServerError())
             {
-                if (String.IsNullOrWhiteSpace(new_server_name.Text) && String.IsNullOrWhiteSpace(new_server_folder.Text))
-                {
-                    dialogService.ShowMessageBox("Must enter server name and server file", "Required Field Missing", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                else if (String.IsNullOrWhiteSpace(new_server_name.Text))
-                {
-                    dialogService.ShowMessageBox("Must enter server name", "Required Field Missing", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                else
-                {
-                    dialogService.ShowMessageBox("Must enter server folder", "Required Field Missing", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                return;
+                case 0:
+                    createServer(new_server_name.Text, new_server_folder.Text);
+                    return;
+                case 1:
+                    msg = "Must enter server folder";
+                    break;
+                case 2:
+                    msg = "Must enter server name";
+                    break;
+                case 3:
+                    msg = "Must enter server name and server file";
+                    break;
             }
 
-            createServer(new_server_name.Text, new_server_folder.Text);
+            dialogService.ShowMessageBox(msg, "Required Field Missing", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        private int getCreateServerError()
+        {
+            bool isFolderNull = String.IsNullOrWhiteSpace(new_server_folder.Text);
+            bool isNameNull = String.IsNullOrWhiteSpace(new_server_name.Text);
+
+            return Convert.ToInt32(isFolderNull) | ((Convert.ToInt32(isNameNull)) << 1);
         }
 
         private void createServer(string name, string folder)

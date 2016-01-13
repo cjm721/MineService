@@ -99,10 +99,12 @@
     <Compile Include="CommunicationClient.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="IDialogService.cs" />
+    <Compile Include="IMessageHandler.cs" />
     <Compile Include="login_window.xaml.cs">
       <DependentUpon>login_window.xaml</DependentUpon>
     </Compile>
     <Compile Include="MessageBoxDialogService.cs" />
+    <Compile Include="MessageHandler.cs" />
     <Compile Include="ServerTabItem.xaml.cs">
       <DependentUpon>ServerTabItem.xaml</DependentUpon>
     </Compile>
@@ -110,6 +112,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Tabs\ConsoleTabData.cs" />
+    <Compile Include="Tabs\FTPTabData.cs" />
+    <Compile Include="Tabs\OverviewTabData.cs" />
+    <Compile Include="Tabs\ScheduleTabData.cs" />
+    <Compile Include="Tabs\SettingsTabData.cs" />
+    <Compile Include="Tabs\StatusTabData.cs" />
+    <Compile Include="Tabs\TabFactory.cs" />
+    <Compile Include="Tabs\TabData.cs" />
+    <Compile Include="Tabs\UsersTabData.cs" />
     <Page Include="login_window.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
