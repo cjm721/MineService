@@ -25,5 +25,10 @@ namespace UnitTestProject1
             //TODO: implement this
             //FIXME: what should i do for this?
         }
+
+        public string getSentMessage()
+        {
+            return messageSent;
+        }
     }
 }

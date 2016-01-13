@@ -47,10 +47,14 @@
     <Compile Include="DESMessageControl.cs" />
     <Compile Include="IMessageControl.cs" />
     <Compile Include="Json\Console.cs" />
+    <Compile Include="Json\FTPData.cs" />
     <Compile Include="Json\Login.cs" />
     <Compile Include="Json\MCCommand.cs" />
     <Compile Include="Json\MCMSSettings.cs" />
     <Compile Include="Json\Message.cs" />
+    <Compile Include="Json\OverviewData.cs" />
+    <Compile Include="Json\Settings.cs" />
+    <Compile Include="Json\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Json\MCServerSettings.cs" />
     <Compile Include="Json\ServerStatus.cs" />
