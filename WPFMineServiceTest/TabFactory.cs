@@ -11,6 +11,8 @@ namespace MineService_Client.Tabs
 
         public TabFactory()
         {
+            map = new Dictionary<string, string>();
+
             OverviewData overview = new OverviewData(null, States.StatusType.Request);
             Message msg = new Message(States.MessageTYPE.OverviewData, JsonConvert.SerializeObject(overview));
             map.Add("overview_TabItem", JsonConvert.SerializeObject(msg));
