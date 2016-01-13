@@ -25,9 +25,10 @@ namespace MineService_Shared
             CryptoStream csw = new CryptoStream(memstrm, tdes.CreateDecryptor(Key, IV),
                 CryptoStreamMode.Write);
 
-            byte[] data = new byte[1024];
+            byte[] data = new byte[4];
             int recv = stream.Read(data, 0, 4);
             int size = BitConverter.ToInt32(data, 0);
+            data = new byte[size];
             int offset = 0;
             while (size > 0)
             {
