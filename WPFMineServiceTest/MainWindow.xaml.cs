@@ -45,13 +45,9 @@ namespace MineService_Client
             String name = tabitem.Name;
 
             TabFactory factory = new TabFactory();
-            TabData tabData = factory.createTabData(name);
-            States.MessageTYPE messageType = tabData.getMessageType();
-            String message = tabData.getMessage();
+            String message = factory.createRequestDataMsg(name);
 
-            Message msg = new Message(messageType, message);
-            String js = JsonConvert.SerializeObject(msg);
-            CommunicationClient.INSTANCE.sendToServer(js);
+            CommunicationClient.INSTANCE.sendToServer(message);
         }
 
         private void tabControl2_SelectionChanged(object sender, SelectionChangedEventArgs e)
