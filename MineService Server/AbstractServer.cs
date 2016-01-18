@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MineService_Server
 {
-    public class AbstractServer : IServer
+    public abstract class AbstractServer : IServer
     {
-        Process pross;
-        String folderDir;
-        String serverID;
+        public Process pross;
+        public String folderDir;
+        public String serverID;
+
+        public int processID;
+        public StreamWriter ServerInput;
 
         public String ServerID
         {
@@ -76,9 +80,18 @@ namespace MineService_Server
             start();
         }
 
+        [MethodImpl(MethodImplOptions.Synchronized)]
         public void start()
         {
-            throw new NotImplementedException();
+            pross = getStartProcess();
+
+            pross.Exited += onServerStoped;
+            pross.OutputDataReceived += onConsoleMessage;
+
+            pross.Start();
+            processID = pross.Id;
+
+            ServerInput = pross.StandardInput;
         }
 
         public void stop()
@@ -86,5 +99,9 @@ namespace MineService_Server
             if (pross != null && !pross.HasExited)
                 pross.Close();
         }
+
+        public abstract Process getStartProcess();
+        public abstract void onConsoleMessage(object sender, DataReceivedEventArgs e);
+        public abstract void onServerStoped(object sender, EventArgs e);
     }
 }

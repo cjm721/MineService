@@ -17,12 +17,9 @@ namespace MineService_Server
     {
         public ConcurrentQueue<String> consoleLines;
 
-        public Process pross;
-        public int processID;
 
         public MCMSSettings msSettings;
 
-        public StreamWriter ServerInput;
         public long uptime;
 
         public MCServer(String ServerID, String FolderDir) : base(ServerID, FolderDir)
@@ -36,32 +33,7 @@ namespace MineService_Server
             this.msSettings.saveSetting(this.FolderDir);
         }
 
-        [MethodImpl(MethodImplOptions.Synchronized)]
-        public new void start()
-        {
-            if(!File.Exists(this.FolderDir + Path.DirectorySeparatorChar + msSettings.SERVER_JAR))
-            {
-                throw new FileNotFoundException("The server jar was not found.", this.FolderDir + Path.DirectorySeparatorChar + msSettings.SERVER_JAR);
-            }
-
-            Directory.SetCurrentDirectory(this.FolderDir);
-            pross = new Process();
-            pross.StartInfo.UseShellExecute = false;
-            pross.StartInfo.FileName = msSettings.JAVA_PATH;
-            pross.StartInfo.Arguments = msSettings.getStartArgs();
-            pross.StartInfo.RedirectStandardOutput = true;
-            pross.StartInfo.RedirectStandardInput = true;
-
-            pross.Start();
-            processID = pross.Id;
-
-            pross.Exited += onServerStoped;
-            pross.OutputDataReceived += onConsoleMessage;
-
-            ServerInput = this.pross.StandardInput;
-        }
-
-        private void onConsoleMessage(object sender, DataReceivedEventArgs e)
+        public override void onConsoleMessage(object sender, DataReceivedEventArgs e)
         {
             if(this.consoleLines.Count >= 100)
             {
@@ -77,7 +49,7 @@ namespace MineService_Server
 
         }
 
-        private void onServerStoped(object sender, EventArgs e)
+        public override void onServerStoped(object sender, EventArgs e)
         {
             // TODO: Send Update Message to Client
 
@@ -111,17 +83,6 @@ namespace MineService_Server
             Status status = new Status(States.StatusType.Send, this.ServerID, serverStatus);
 
             return status;
-        }
-
-        public bool isRunning()
-        {
-            try {
-                Process process = Process.GetProcessById(processID);
-                return process != null;
-            } catch
-            {
-                return false;
-            }
         }
 
         public MCServerSettings getServerSettings()
@@ -184,6 +145,24 @@ namespace MineService_Server
 
             return toReturn;
             */
+        }
+
+        public override Process getStartProcess()
+        {
+            if (!File.Exists(this.FolderDir + Path.DirectorySeparatorChar + msSettings.SERVER_JAR))
+            {
+                throw new FileNotFoundException("The server jar was not found.", this.FolderDir + Path.DirectorySeparatorChar + msSettings.SERVER_JAR);
+            }
+
+            Process pross = new Process();
+            pross.StartInfo.WorkingDirectory = this.FolderDir;
+            pross.StartInfo.UseShellExecute = false;
+            pross.StartInfo.FileName = msSettings.JAVA_PATH;
+            pross.StartInfo.Arguments = msSettings.getStartArgs();
+            pross.StartInfo.RedirectStandardOutput = true;
+            pross.StartInfo.RedirectStandardInput = true;
+
+            return pross;
         }
     } 
 }
