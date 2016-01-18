@@ -47,10 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractServer.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Client_ProcessMessage.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Data.cs" />
+    <Compile Include="IServer.cs" />
     <Compile Include="MCServer.cs" />
     <Compile Include="MCServerConfig.cs" />
     <Compile Include="ServerMain.cs" />

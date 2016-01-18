@@ -13,11 +13,8 @@ using System.Threading.Tasks;
 
 namespace MineService_Server
 {
-    public class MCServer
+    public class MCServer : AbstractServer
     {
-        public String ServerID;
-        public String FolderDir;
-
         public ConcurrentQueue<String> consoleLines;
 
         public Process pross;
@@ -28,11 +25,8 @@ namespace MineService_Server
         public StreamWriter ServerInput;
         public long uptime;
 
-        public MCServer(String ServerID, String FolderDir)
+        public MCServer(String ServerID, String FolderDir) : base(ServerID, FolderDir)
         {
-            this.ServerID = ServerID;
-            this.FolderDir = FolderDir;
-
             consoleLines = new ConcurrentQueue<String>();
 
 
@@ -43,7 +37,7 @@ namespace MineService_Server
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]
-        public void start()
+        public new void start()
         {
             if(!File.Exists(this.FolderDir + Path.DirectorySeparatorChar + msSettings.SERVER_JAR))
             {
@@ -65,18 +59,6 @@ namespace MineService_Server
             pross.OutputDataReceived += onConsoleMessage;
 
             ServerInput = this.pross.StandardInput;
-        }
-
-        public void stop()
-        {
-            if(pross != null && !pross.HasExited)
-                pross.Close();
-        }
-
-        public void kill()
-        {
-            if (pross != null)
-                pross.Kill();
         }
 
         private void onConsoleMessage(object sender, DataReceivedEventArgs e)
@@ -118,30 +100,9 @@ namespace MineService_Server
             return JsonConvert.DeserializeObject<MCMSSettings>(json);
         }
 
-        public void restart()
-        {
-            stop();
-            start();
-        }
-
         public void rawCommand(string command)
         {
             ServerInput.WriteLine(command);
-        }
-
-        public void delete(bool filesAlso)
-        {
-            if(pross != null && !pross.HasExited)
-            {
-                pross.Kill();
-            }
-
-            Data.mcServers.Remove(this.ServerID);
-
-            if(filesAlso)
-            {
-                Directory.Delete(this.FolderDir, true);
-            }
         }
 
         public Status getBaseStatus()
