@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Windows.Controls;
 using MineService_JSON;
-using Newtonsoft.Json;
 using MineService_Client.Tabs;
 
 namespace MineService_Client
@@ -89,10 +88,7 @@ namespace MineService_Client
         private void createServer(string name, string folder)
         {
             MCCommand createCommand = new MCCommand(States.MCCommandTYPE.Create, new_server_name.Text, new_server_folder.Text);
-            String createCommandStr = JsonConvert.SerializeObject(createCommand);
-
-            Message toSend = new Message(States.MessageTYPE.MCCommand, createCommandStr);
-            CommunicationClient.INSTANCE.sendToServer(JsonConvert.SerializeObject(toSend));
+            CommunicationClient.INSTANCE.sendToServer(createCommand.toJsonString());
         }
 
         public void AddServerTab(ServerTabItem item)

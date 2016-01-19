@@ -1,6 +1,5 @@
 ﻿using MineService_JSON;
 using MineService_Shared;
-using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Net.Sockets;
@@ -54,14 +53,14 @@ namespace MineService_Server
                 System.Console.WriteLine("Sending Message: " + message + "\n");
                 control.sendMessage(this.socket.GetStream(), message);
             }
-            catch (IOException e)
+            catch (IOException)
             {
                 System.Console.WriteLine("Closing Socket");
                 try
                 {
                     this.socket.Close();
                 }
-                catch (IOException e1)
+                catch (IOException)
                 {
                     // e1.printStackTrace();
                 }
@@ -72,31 +71,24 @@ namespace MineService_Server
 
         public void processMessage(String message)
         {
-            Message msg = JsonConvert.DeserializeObject<Message>(message);
+            Message msg = Message.fromJsonString(message);
 
-            if (!authenticated && msg.type != States.MessageTYPE.Login)
+            if (!authenticated && !(msg is Login))
             {
                 return;
             }
 
-            switch (msg.type)
+            if (msg is MineService_JSON.Console) { 
+                handleConsole((MineService_JSON.Console)msg);
+            } else if (msg is Login)
             {
-                case States.MessageTYPE.Console:
-                    MineService_JSON.Console console = JsonConvert.DeserializeObject<MineService_JSON.Console>(msg.message);
-                    handleConsole(console);
-                    break;
-                case States.MessageTYPE.Login:
-                    MineService_JSON.Login Login = JsonConvert.DeserializeObject<MineService_JSON.Login>(msg.message);
-                    handleLogin(Login);
-                    break;
-                case States.MessageTYPE.MCCommand:
-                    MineService_JSON.MCCommand MCCommand = JsonConvert.DeserializeObject<MineService_JSON.MCCommand>(msg.message);
-                    handleMCCommand(MCCommand);
-                    break;
-                case States.MessageTYPE.Status:
-                    MineService_JSON.Status Status = JsonConvert.DeserializeObject<MineService_JSON.Status>(msg.message);
-                    handleStatus(Status);
-                    break;
+                    handleLogin((Login)msg);
+            } else if (msg is MCCommand)
+            {
+                    handleMCCommand((MCCommand)msg);
+            } else if (msg is Status)
+            {
+                    handleStatus((Status)msg);
             }
         }
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows;
-using Newtonsoft.Json;
 using MineService_JSON;
 using MineService_Shared;
 using System.Net.Sockets;
@@ -41,13 +40,10 @@ namespace MineService_Client
                 new CommunicationClient(control, this.dialogService, this.messageHandler, stream);
 
                 Login log = new Login(user, pass);
-                String json = JsonConvert.SerializeObject(log);
-                Message msg = new Message(States.MessageTYPE.Login, json);
 
-                String js = JsonConvert.SerializeObject(msg);
-                System.Console.WriteLine(js);
+                System.Console.WriteLine(log.toJsonString());
 
-                CommunicationClient.INSTANCE.sendToServer(js);
+                CommunicationClient.INSTANCE.sendToServer(log.toJsonString());
 
                 /*
                 MainWindow mw = new MainWindow();

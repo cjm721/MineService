@@ -24,8 +24,6 @@ namespace MineService_Server
                 Data.connectedClients.Add(client);
                 client.startProcessing();
             }
-
-            Config.INSTANCE.saveConfig();
         }
     }
 }

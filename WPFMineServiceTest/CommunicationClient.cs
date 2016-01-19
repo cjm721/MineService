@@ -2,7 +2,6 @@
 using System.Net.Sockets;
 using System.IO;
 using System.Threading;
-using Newtonsoft.Json;
 using System.Windows;
 using System.Windows.Documents;
 using MineService_JSON;

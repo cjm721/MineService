@@ -23,8 +23,6 @@ namespace UnitTestProject1.Shared
             TcpClient serverClient = server.AcceptTcpClient();
 
 
-
-
             String testMessage = "This is a test message to send though the encrypter";
             IMessageControl control = new DESMessageControl();
 

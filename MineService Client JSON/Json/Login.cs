@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MineService_JSON
 {
-    public class Login
+    public class Login : Message
     {
         public String Username;
         public String Password;

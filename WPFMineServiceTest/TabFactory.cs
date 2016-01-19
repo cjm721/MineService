@@ -1,5 +1,4 @@
 ﻿using MineService_JSON;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -14,20 +13,16 @@ namespace MineService_Client.Tabs
             map = new Dictionary<string, string>();
 
             OverviewData overview = new OverviewData(null, States.StatusType.Request);
-            Message msg = new Message(States.MessageTYPE.OverviewData, JsonConvert.SerializeObject(overview));
-            map.Add("overview_TabItem", JsonConvert.SerializeObject(msg));
+            map.Add("overview_TabItem", overview.toJsonString());
 
             FTPData FTP = new FTPData(States.StatusType.Request);
-            msg = new Message(States.MessageTYPE.FTPData, JsonConvert.SerializeObject(overview));
-            map.Add("FTP_TabItem", JsonConvert.SerializeObject(msg));
+            map.Add("FTP_TabItem", FTP.toJsonString());
 
             Settings settings = new Settings(States.StatusType.Request);
-            msg = new Message(States.MessageTYPE.Settings, JsonConvert.SerializeObject(overview));
-            map.Add("settings_TabItem", JsonConvert.SerializeObject(msg));
+            map.Add("settings_TabItem", settings.toJsonString());
 
             Users users = new Users(States.StatusType.Request);
-            msg = new Message(States.MessageTYPE.Users, JsonConvert.SerializeObject(overview));
-            map.Add("users_TabItem", JsonConvert.SerializeObject(msg));
+            map.Add("users_TabItem", users.toJsonString());
         }
 
         public String createRequestDataMsg(String name)

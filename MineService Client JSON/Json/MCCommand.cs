@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace MineService_JSON
 {
-    public class MCCommand
+    public class MCCommand : Message
     {
         [JsonConverter(typeof(StringEnumConverter))]
-        public States.MCCommandTYPE type;
+        public States.MCCommandTYPE commandType;
         public String Server;
         public String args;
 
         public MCCommand(States.MCCommandTYPE type, String Server, String args)
         {
-            this.type = type;
+            this.commandType = type;
             this.Server = Server;
             this.args = args;
         }

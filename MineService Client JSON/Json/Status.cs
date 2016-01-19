@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MineService_JSON
 {
-    public class Status
+    public class Status : Message
     {
         [JsonConverter(typeof(StringEnumConverter))]
         public States.StatusType TYPE;

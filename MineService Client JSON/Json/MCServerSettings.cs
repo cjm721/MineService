@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MineService_JSON
 {
-    public class MCServerSettings
+    public class MCServerSettings : Message
     { 
         public bool enable_rcon;
         public bool white_list;
@@ -43,8 +43,6 @@ namespace MineService_JSON
         public int max_build_height;
         public string level_seed;
         public string motd;
-
-
 
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MineService_JSON
 {
-    public class Console
+    public class Console : Message
     {
         public String ServerID;
         public String[] messages;

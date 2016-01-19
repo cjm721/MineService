@@ -1,5 +1,4 @@
 ﻿using MineService_JSON;
-using Newtonsoft.Json;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -41,10 +40,8 @@ namespace MineService_Client
             }
 
             MCCommand command = new MCCommand(state, this.ServerID, "");
-            System.Console.WriteLine("command: " + command.type);
-            String json = JsonConvert.SerializeObject(command);
-            Message msg = new Message(States.MessageTYPE.MCCommand, json);
-            String js = JsonConvert.SerializeObject(msg);
+            System.Console.WriteLine("command: " + command.commandType);
+            String js = command.toJsonString();
             System.Console.WriteLine("before sending to server, js: " + js.ToString());
             CommunicationClient.INSTANCE.sendToServer(js);
             System.Console.WriteLine("after send to server");
@@ -80,9 +77,9 @@ namespace MineService_Client
                 }
 
             }
-            if (sStatus.settings != null)
+            if (sStatus.serverSettings != null)
             {
-                MCServerSettings sSet = sStatus.settings; //For the settings tab, need to display the values
+                MCServerSettings sSet = sStatus.serverSettings; //For the settings tab, need to display the values
                 populate_settings(sSet);
             }
         }
@@ -133,12 +130,7 @@ namespace MineService_Client
             MCCommand mcCommand = new MCCommand(States.MCCommandTYPE.Raw, this.ServerID, consoleTextInputBox.Text + "\n");
             consoleTextInputBox.Text = "";
 
-            String jsonCommand = JsonConvert.SerializeObject(mcCommand);
-            Message msg = new Message(States.MessageTYPE.MCCommand, jsonCommand);
-
-            String toSend = JsonConvert.SerializeObject(msg);
-
-            CommunicationClient.INSTANCE.sendToServer(toSend);
+            CommunicationClient.INSTANCE.sendToServer(mcCommand.toJsonString());
         }
     }
 }

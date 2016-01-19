@@ -1,5 +1,4 @@
 ﻿using MineService_JSON;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -69,7 +68,7 @@ namespace MineService_Server
 
             String json = File.ReadAllText(path);
 
-            return JsonConvert.DeserializeObject<MCMSSettings>(json);
+            return (MCMSSettings) Message.fromJsonString(json);
         }
 
         public void rawCommand(string command)

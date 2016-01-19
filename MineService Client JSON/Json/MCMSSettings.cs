@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MineService_JSON
 {
-    public class MCMSSettings
+    public class MCMSSettings : Message
     {
         public String JAVA_PATH = "java";
         public String HEAP_MAX = "1G";
@@ -16,7 +16,6 @@ namespace MineService_JSON
         public String SERVER_JAR = "minecraft_server.jar";
         public String ADDITIONAL_ARGS = "";
         public bool RESTART_ON_CRASH = true;
-
 
         public String getStartArgs()
         {

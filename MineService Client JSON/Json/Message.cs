@@ -10,15 +10,16 @@ namespace MineService_JSON
 {
     public class Message
     {
-        [JsonConverter(typeof(StringEnumConverter))]
-        public States.MessageTYPE type;
-        public String message;
+        public static readonly JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
 
-        public Message(States.MessageTYPE type, String message)
-        {
-            this.type = type;
-            this.message = message;
+        public String toJsonString()
+        {   
+            return JsonConvert.SerializeObject(this, settings);
         }
 
+        public static Message fromJsonString(String msg)
+        {
+            return JsonConvert.DeserializeObject<Message>(msg, settings);
+        }
     }
 }

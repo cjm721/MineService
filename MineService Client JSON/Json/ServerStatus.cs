@@ -1,10 +1,10 @@
 ﻿namespace MineService_JSON
 {
-    public class ServerStatus
+    public class ServerStatus : Message
     {
         public bool isRunning;
         public long uptime;
-        public MCServerSettings settings;
+        public MCServerSettings serverSettings;
 
         public ServerStatus(bool isRunning, long uptime)
         {

@@ -1,5 +1,5 @@
 ﻿using MineService_JSON;
-using Newtonsoft.Json;
+using MineService_Shared.Json;
 using System.IO;
 
 namespace MineService_Server
@@ -10,7 +10,7 @@ namespace MineService_Server
         {
             MCServer server = Data.mcServers.ContainsKey(command.Server) ? Data.mcServers[command.Server] : null;
 
-            switch (command.type)
+            switch (command.commandType)
             {
                 case States.MCCommandTYPE.Start:
                     if (server != null)
@@ -19,12 +19,12 @@ namespace MineService_Server
 
                         if (!File.Exists(server.FolderDir + Path.DirectorySeparatorChar + server.msSettings.SERVER_JAR))
                         {
-                            Message msg = new Message(States.MessageTYPE.Error, "Server jar file missing.");
-                            sendMessage(JsonConvert.SerializeObject(msg));
+                            Message msg = new Error("Server jar file missing.");
+                            sendMessage(msg.toJsonString());
 
 
-                            Message toReply = new Message(States.MessageTYPE.Status, JsonConvert.SerializeObject(server.getBaseStatus()));
-                            sendMessage(JsonConvert.SerializeObject(toReply));
+                            Message toReply = server.getBaseStatus();
+                            sendMessage(toReply.toJsonString());
                         }
                         else
                         {
@@ -53,8 +53,8 @@ namespace MineService_Server
                 case States.MCCommandTYPE.Create:
                     if (server != null)
                     {
-                        Message msg = new Message(States.MessageTYPE.Error, "Server already Exists");
-                        sendMessage(JsonConvert.SerializeObject(msg));
+                        Message msg = new Error("Server already Exists");
+                        sendMessage(msg.toJsonString());
                     }
                     else
                     {
@@ -66,19 +66,19 @@ namespace MineService_Server
                                 Data.mcServers.Add(command.Server, newServer);
                                 Config.INSTANCE.saveConfig();
 
-                                Message newServerMsg = new Message(States.MessageTYPE.Status, JsonConvert.SerializeObject(newServer.getBaseStatus()));
-                                SendMessageToAll(JsonConvert.SerializeObject(newServerMsg));
+                                Message newServerMsg = newServer.getBaseStatus();
+                                SendMessageToAll(newServerMsg.toJsonString());
                             }
                             else
                             {
-                                Message msg = new Message(States.MessageTYPE.Error, "Need folder name");
-                                sendMessage(JsonConvert.SerializeObject(msg));
+                                Message msg = new Error("Need folder name");
+                                sendMessage(msg.toJsonString());
                             }
                         }
                         else
                         {
-                            Message msg = new Message(States.MessageTYPE.Error, "Need server name");
-                            sendMessage(JsonConvert.SerializeObject(msg));
+                            Message msg = new Error("Need server name");
+                            sendMessage(msg.toJsonString());
                         }
                     }
                     break;
@@ -92,8 +92,8 @@ namespace MineService_Server
                     else
                     {
                         // (Should never be able to hit this from the program unless two people delete at same time.
-                        Message msg = new Message(States.MessageTYPE.Error, "Cannot delete server does not exist");
-                        sendMessage(JsonConvert.SerializeObject(msg));
+                        Message msg = new Error("Cannot delete server does not exist");
+                        sendMessage(msg.toJsonString());
                     }
                     break;
 
@@ -110,9 +110,7 @@ namespace MineService_Server
             if (server != null)
             {
                 Console toSend = new Console(console.ServerID, server.consoleLines.ToArray());
-                Message msg = new Message(States.MessageTYPE.Console, JsonConvert.SerializeObject(toSend));
-
-                sendMessage(JsonConvert.SerializeObject(msg));
+                sendMessage(toSend.toJsonString());
             }
         }
 
@@ -126,15 +124,14 @@ namespace MineService_Server
             foreach (string key in Data.mcServers.Keys)
             {
                 ServerStatus sStatus = new ServerStatus(Data.mcServers[key].isRunning(), Data.mcServers[key].uptime);
-                sStatus.settings = Data.mcServers[key].getServerSettings();
+                sStatus.serverSettings = Data.mcServers[key].getServerSettings();
                 Status stat = new Status(States.StatusType.Send, key, sStatus);
                 statArray[count] = stat;
                 count++;
             }
-            string msg = JsonConvert.SerializeObject(statArray);
-            Message toSend = new Message(States.MessageTYPE.StatusArray, msg);
             this.authenticated = true;
-            sendMessage(JsonConvert.SerializeObject(toSend));
+            StatusArray sArray = new StatusArray(statArray);
+            sendMessage(sArray.toJsonString());
 
             //bool exists = Data.database.checkForUser(login.Username, login.Password);
             //if (exists)

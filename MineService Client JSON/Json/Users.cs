@@ -4,14 +4,14 @@ using Newtonsoft.Json;
 
 namespace MineService_Client.Tabs
 {
-    public class Users
+    public class Users : Message
     {
-        [JsonConverter(typeof(StringEnumConverter))]
-        public States.StatusType type;
+        public States.StatusType statusType;
 
-        public Users(States.StatusType typ)
+
+        public Users(States.StatusType statusType)
         {
-            type = typ;
+            this.statusType = statusType;
         }
     }
 }

@@ -4,14 +4,14 @@ using Newtonsoft.Json;
 
 namespace MineService_Client.Tabs
 {
-    public class FTPData
+    public class FTPData : Message
     {
         [JsonConverter(typeof(StringEnumConverter))]
-        public States.StatusType type;
+        public States.StatusType statysType;
 
         public FTPData(States.StatusType typ)
         {
-            type = typ;
+            statysType = typ;
         }
     }
 }

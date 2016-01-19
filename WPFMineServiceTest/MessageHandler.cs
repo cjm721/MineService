@@ -1,5 +1,5 @@
 ﻿using MineService_JSON;
-using Newtonsoft.Json;
+using MineService_Shared.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +27,7 @@ namespace MineService_Client
             Message msg;
             try
             {
-                msg = JsonConvert.DeserializeObject<Message>(line);
+                msg = Message.fromJsonString(line);
             }
             catch (Exception e)
             {
@@ -35,29 +35,28 @@ namespace MineService_Client
                 return;
             }
 
-            switch (msg.type)
+            if (msg is MineService_JSON.Console)
             {
-                case States.MessageTYPE.Status:
-                    Status status = JsonConvert.DeserializeObject<Status>(msg.message);
-                    handleStatusMessage(status);
-
-                    break;
-                case States.MessageTYPE.StatusArray:
-                    if (MainWindow.INSTANCE == null)
-                    {
-                        handleNewWindow(msg);
-                    }
-
-                    break;
-                case States.MessageTYPE.Error:
-                    dialogService.ShowMessageBox(msg.message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-
-                    break;
-                case States.MessageTYPE.Console:
-                    MineService_JSON.Console console = JsonConvert.DeserializeObject<MineService_JSON.Console>(msg.message);
-                    handleConsole(console);
-
-                    break;
+                    handleConsole((MineService_JSON.Console)msg);
+            }
+            else if (msg is Login)
+            {
+            }
+            else if (msg is MCCommand)
+            {
+            }
+            else if (msg is Status)
+            {
+                    handleStatusMessage((Status)msg);
+            } else if (msg is Error)
+            {
+                dialogService.ShowMessageBox(((Error)msg).errorMessage, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            } else if (msg is StatusArray)
+            {
+                if (MainWindow.INSTANCE == null)
+                {
+                    handleNewWindow((StatusArray)msg);
+                }
             }
         }
 
@@ -80,16 +79,14 @@ namespace MineService_Client
             }));
         }
 
-        private void handleNewWindow(Message msg)
+        private void handleNewWindow(StatusArray sArray)
         {
             LoginWindow.INSTANCE.Dispatcher.BeginInvoke(new Action(delegate()
             {
                 new MainWindow(new MessageBoxDialogService()).Show();
                 LoginWindow.INSTANCE.Close();
 
-                Status[] array = JsonConvert.DeserializeObject<Status[]>(msg.message);
-
-                foreach (Status s in array)
+                foreach (Status s in sArray.array)
                 {
                     ServerTabItem item = new ServerTabItem(s.ServerID);
 
