@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "WPFMineServiceTest\Client.csproj", "{5A2441AF-2136-42D0-9F99-F8EFE320A8E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{5A2441AF-2136-42D0-9F99-F8EFE320A8E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "MineService Client JSON\Shared.csproj", "{0B5B6C38-8480-4994-A040-527A30C32A07}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{0B5B6C38-8480-4994-A040-527A30C32A07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "MineService Server\Server.csproj", "{F574821E-94D8-44C6-B131-B0F2C890F177}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{F574821E-94D8-44C6-B131-B0F2C890F177}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit Testing", "UnitTestProject1\Unit Testing.csproj", "{8DBE19B4-F36D-4FFD-ACCD-8136720553D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit Testing", "Testing\Unit Testing.csproj", "{8DBE19B4-F36D-4FFD-ACCD-8136720553D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
