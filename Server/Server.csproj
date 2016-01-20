@@ -59,7 +59,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MineService Client JSON\Shared.csproj">
+    <ProjectReference Include="..\Shared\Shared.csproj">
       <Project>{0b5b6c38-8480-4994-a040-527a30c32a07}</Project>
       <Name>Shared</Name>
     </ProjectReference>
