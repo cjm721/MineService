@@ -33,7 +33,7 @@ namespace MineService_JSON
 
         public void saveSetting(String folder)
         {
-            File.WriteAllText(folder + Path.DirectorySeparatorChar + "MSMC.json", JsonConvert.SerializeObject(this));
+            File.WriteAllText(folder + Path.DirectorySeparatorChar + "MSMC.json", this.toJsonString());
         }
     }
 }
