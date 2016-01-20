@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
 
-namespace MineService_Client.Tabs
+namespace MineService_JSON
 {
     public class Users : Message
     {

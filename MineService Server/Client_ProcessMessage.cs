@@ -13,24 +13,7 @@ namespace MineService_Server
             switch (command.commandType)
             {
                 case States.MCCommandTYPE.Start:
-                    if (server != null)
-                    {
-                        // Check if server jar does not exist
-
-                        if (!File.Exists(server.FolderDir + Path.DirectorySeparatorChar + server.msSettings.SERVER_JAR))
-                        {
-                            Message msg = new Error("Server jar file missing.");
-                            sendMessage(msg.toJsonString());
-
-
-                            Message toReply = server.getBaseStatus();
-                            sendMessage(toReply.toJsonString());
-                        }
-                        else
-                        {
-                            server.start();
-                        }
-                    }
+                    start(server);
                     break;
                 case States.MCCommandTYPE.Restart:
                     if (server != null)
@@ -51,50 +34,10 @@ namespace MineService_Server
                     }
                     break;
                 case States.MCCommandTYPE.Create:
-                    if (server != null)
-                    {
-                        Message msg = new Error("Server already Exists");
-                        sendMessage(msg.toJsonString());
-                    }
-                    else
-                    {
-                        if (!string.IsNullOrWhiteSpace(command.Server))
-                        {
-                            if (!string.IsNullOrWhiteSpace(command.args))
-                            {
-                                MCServer newServer = new MCServer(command.Server, command.args);
-                                Data.mcServers.Add(command.Server, newServer);
-                                Config.INSTANCE.saveConfig();
-
-                                Message newServerMsg = newServer.getBaseStatus();
-                                SendMessageToAll(newServerMsg.toJsonString());
-                            }
-                            else
-                            {
-                                Message msg = new Error("Need folder name");
-                                sendMessage(msg.toJsonString());
-                            }
-                        }
-                        else
-                        {
-                            Message msg = new Error("Need server name");
-                            sendMessage(msg.toJsonString());
-                        }
-                    }
+                    create(server, command);
                     break;
                 case States.MCCommandTYPE.Delete:
-                    if (server != null)
-                    {
-                        // TODO: Delete server, args is if to remove files also.
-                        server.delete(false);
-                        Config.INSTANCE.saveConfig();
-                    }
-                    else
-                    {
-                        // (Should never be able to hit this from the program unless two people delete at same time.
-                        Message msg = new Error("Cannot delete server does not exist");
-                        sendMessage(msg.toJsonString());
-                    }
+                    delete(server);
                     break;
 
             }
@@ -176,5 +119,76 @@ namespace MineService_Server
             // TODO if it is a status request send info back.
         }
 
+        private void start(MCServer server)
+        {
+            if (server != null)
+            {
+                // Check if server jar does not exist
+
+                if (!File.Exists(server.FolderDir + Path.DirectorySeparatorChar + server.msSettings.SERVER_JAR))
+                {
+                    Message msg = new Error("Server jar file missing.");
+                    sendMessage(msg.toJsonString());
+
+
+                    Message toReply = server.getBaseStatus();
+                    sendMessage(toReply.toJsonString());
+                }
+                else
+                {
+                    server.start();
+                }
+            }
+        }
+
+        private void create(MCServer server, MCCommand command)
+        {
+            if (server != null)
+            {
+                Message msg = new Error("Server already Exists");
+                sendMessage(msg.toJsonString());
+            }
+            else
+            {
+                if (!string.IsNullOrWhiteSpace(command.Server))
+                {
+                    if (!string.IsNullOrWhiteSpace(command.args))
+                    {
+                        MCServer newServer = new MCServer(command.Server, command.args);
+                        Data.mcServers.Add(command.Server, newServer);
+                        Config.INSTANCE.saveConfig();
+
+                        Message newServerMsg = newServer.getBaseStatus();
+                        SendMessageToAll(newServerMsg.toJsonString());
+                    }
+                    else
+                    {
+                        Message msg = new Error("Need folder name");
+                        sendMessage(msg.toJsonString());
+                    }
+                }
+                else
+                {
+                    Message msg = new Error("Need server name");
+                    sendMessage(msg.toJsonString());
+                }
+            }
+        }
+
+        private void delete(MCServer server)
+        {
+            if (server != null)
+            {
+                // TODO: Delete server, args is if to remove files also.
+                server.delete(false);
+                Config.INSTANCE.saveConfig();
+            }
+            else
+            {
+                // (Should never be able to hit this from the program unless two people delete at same time.
+                Message msg = new Error("Cannot delete server does not exist");
+                sendMessage(msg.toJsonString());
+            }
+        }
     }
 }
