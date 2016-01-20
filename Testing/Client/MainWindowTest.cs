@@ -14,6 +14,9 @@ namespace UnitTestProject1
     {
         private IDialogService dialogService = new FakeMessageBoxDialogService();
 
+        /// <summary>
+        /// Tests the getData method of MainWindow to ensure that the proper messages are being sent to the server.
+        /// </summary>
         [TestMethod]
         public void getDataTest()
         {
