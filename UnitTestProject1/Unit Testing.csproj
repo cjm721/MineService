@@ -59,6 +59,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Client\MessageHandlerTest.cs" />
+    <Compile Include="Client\ServerTabItemTest.cs" />
     <Compile Include="Mock_Fake\FakeMessageBoxDialogService.cs" />
     <Compile Include="Mock_Fake\FakeMessageControl.cs" />
     <Compile Include="Client\MainWindowTest.cs" />
