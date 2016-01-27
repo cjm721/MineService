@@ -94,7 +94,7 @@ namespace MineService_Server
                 {
                     properties.Load(new FileStream(file, FileMode.Open, FileAccess.Read));
                 }
-                catch (IOException e)
+                catch (IOException)
                 {
                     System.Console.WriteLine("Unable to load " + this.serverID + "'s server.properties.");
                 }
