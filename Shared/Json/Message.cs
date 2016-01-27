@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+using System.IO;
 
 namespace MineService_JSON
 {
@@ -20,6 +16,16 @@ namespace MineService_JSON
         public static Message fromJsonString(String msg)
         {
             return JsonConvert.DeserializeObject<Message>(msg, settings);
+        }
+
+        public void saveToFile(String s)
+        {
+            File.WriteAllText(s, this.toJsonString());
+        }
+
+        public static Message loadFromFile(String s)
+        {
+            return JsonConvert.DeserializeObject<Message>(File.ReadAllText(s), settings);
         }
     }
 }
