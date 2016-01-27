@@ -77,6 +77,11 @@ namespace MineService_Client
             dialogService.ShowMessageBox(msg, "Required Field Missing", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
+        /**
+         * This method checks if the folder and/or name field are null.
+         * Bit shifts one of the values to the left and then performs bitwise or.
+         * Returns 0, 1, 2, or 3 since only 2 bits are involved.
+        */
         private int getCreateServerError()
         {
             bool isFolderNull = String.IsNullOrWhiteSpace(new_server_folder.Text);
