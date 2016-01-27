@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MineService_Server
 {
@@ -14,8 +10,8 @@ namespace MineService_Server
     {
         public static Config INSTANCE;
 
-        const String fromEmail = "noreplymineservice@gmail.com";
-        const String password = "juniorproject";
+        public String fromEmail = "noreplymineservice@gmail.com";
+        public String password = "juniorproject";
 
         private const long serialVersionUID = -1551183367719668451L;
 
