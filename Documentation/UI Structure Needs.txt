@@ -1,0 +1,39 @@
+Home:
+	Overview:
+		CPU
+		Memory
+		Disk
+		Servers Up
+	FTP:
+		FTP applet integration
+	Settings:
+		Port
+	Users:
+		User Search
+		Create
+		Permissions
+Server:
+	Status:
+		CPU
+		Memory
+		Uptime
+		Disk
+	Console:
+		Console
+	Settings:
+		Name of Server
+		Name of Jar Server File
+			Dropdown select
+		+(look at server.properties)
+	Schedual:
+		Restart Type
+			At Time
+				Time
+			Every
+				Time Period
+		Wait for Empty (Or Wait for less then amount)
+New Server Screen:
+	Name
+	Folder Name
+	Generate Folder Checkbox
+		If true minecraft version
