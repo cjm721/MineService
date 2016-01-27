@@ -44,13 +44,6 @@ namespace MineService_Client
                 System.Console.WriteLine(log.toJsonString());
 
                 CommunicationClient.INSTANCE.sendToServer(log.toJsonString());
-
-                /*
-                MainWindow mw = new MainWindow();
-                mw.Show();
-                this.Close();
-                */
-
             }
             catch (Exception)
             {

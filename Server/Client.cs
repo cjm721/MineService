@@ -60,10 +60,7 @@ namespace MineService_Server
                 {
                     this.socket.Close();
                 }
-                catch (IOException)
-                {
-                    // e1.printStackTrace();
-                }
+                catch (IOException) { }
                 System.Console.WriteLine("Removing Client from Active");
                 Data.connectedClients.Remove(this);
             }

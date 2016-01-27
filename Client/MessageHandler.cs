@@ -39,12 +39,12 @@ namespace MineService_Client
             {
                     handleConsole((MineService_JSON.Console)msg);
             }
-            else if (msg is Login)
-            {
-            }
-            else if (msg is MCCommand)
-            {
-            }
+            //else if (msg is Login)
+            //{
+            //}
+            //else if (msg is MCCommand)
+            //{
+            //}
             else if (msg is Status)
             {
                     handleStatusMessage((Status)msg);

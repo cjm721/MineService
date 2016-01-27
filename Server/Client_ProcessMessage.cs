@@ -41,9 +41,6 @@ namespace MineService_Server
                     break;
 
             }
-
-
-
         }
 
         private void handleConsole(Console console)
