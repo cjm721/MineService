@@ -53,6 +53,7 @@
     <Compile Include="Json\MCCommand.cs" />
     <Compile Include="Json\MCMSSettings.cs" />
     <Compile Include="Json\Message.cs" />
+    <Compile Include="Json\MSConfig.cs" />
     <Compile Include="Json\OverviewData.cs" />
     <Compile Include="Json\Settings.cs" />
     <Compile Include="Json\StatusArray.cs" />

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Net.Sockets;
 using System.IO;
 using System.Threading;
-using System.Windows;
-using System.Windows.Documents;
-using MineService_JSON;
 using MineService_Shared;
 
 namespace MineService_Client
