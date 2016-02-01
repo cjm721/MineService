@@ -1,5 +1,6 @@
 ﻿using MineService_JSON;
 using MineService_Shared.Json;
+using System;
 using System.IO;
 
 namespace MineService_Server
@@ -43,13 +44,13 @@ namespace MineService_Server
             }
         }
 
-        private void handleConsole(Console console)
+        private void handleConsole(MineService_JSON.Console console)
         {
             MCServer server = Data.mcServers[console.ServerID];
 
             if (server != null)
             {
-                Console toSend = new Console(console.ServerID, server.consoleLines.ToArray());
+                MineService_JSON.Console toSend = new MineService_JSON.Console(console.ServerID, server.consoleLines.ToArray());
                 sendMessage(toSend.toJsonString());
             }
         }
@@ -147,29 +148,44 @@ namespace MineService_Server
             }
             else
             {
-                if (!string.IsNullOrWhiteSpace(command.Server))
+                Message msg = null;
+
+                switch (getMCCommandError(command))
                 {
-                    if (!string.IsNullOrWhiteSpace(command.args))
-                    {
+                    case 0:
                         MCServer newServer = new MCServer(command.Server, command.args);
                         Data.mcServers.Add(command.Server, newServer);
                         Config.INSTANCE.saveConfig();
 
                         Message newServerMsg = newServer.getBaseStatus();
                         SendMessageToAll(newServerMsg.toJsonString());
-                    }
-                    else
-                    {
-                        Message msg = new Error("Need folder name");
-                        sendMessage(msg.toJsonString());
-                    }
+                        return;
+                    case 1:
+                        msg = new Error("Need server name");
+                        break;
+                    case 2:
+                        msg = new Error("Need folder name");
+                        break;
+                    case 3:
+                        msg = new Error("Need server and folder name");
+                        break;
                 }
-                else
-                {
-                    Message msg = new Error("Need server name");
-                    sendMessage(msg.toJsonString());
-                }
+
+                sendMessage(msg.toJsonString());
             }
+        }
+
+        /**
+         * This method checks if the command server or args are null.
+         * Bit shifts one of the values to the left and then performs bitwise or.
+         * Returns 0, 1, 2, or 3 since only 2 bits are involved.
+        */
+        private int getMCCommandError(MCCommand cmd)
+        {
+            bool isServerNull = String.IsNullOrWhiteSpace(cmd.Server);
+            bool isArgNull = String.IsNullOrWhiteSpace(cmd.args);
+
+            return Convert.ToInt32(isServerNull) | ((Convert.ToInt32(isArgNull)) << 1);
         }
 
         private void delete(MCServer server)

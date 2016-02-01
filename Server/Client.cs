@@ -44,7 +44,7 @@ namespace MineService_Server
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]
-        public void sendMessage(String message)
+        public virtual void sendMessage(String message)
         {
             if (String.IsNullOrWhiteSpace(message))
                 return;

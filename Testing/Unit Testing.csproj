@@ -60,10 +60,12 @@
   <ItemGroup>
     <Compile Include="Client\MessageHandlerTest.cs" />
     <Compile Include="Client\ServerTabItemTest.cs" />
+    <Compile Include="Mock_Fake\FakeClient.cs" />
     <Compile Include="Mock_Fake\FakeMessageBoxDialogService.cs" />
     <Compile Include="Mock_Fake\FakeMessageControl.cs" />
     <Compile Include="Client\MainWindowTest.cs" />
     <Compile Include="Client\MainWindowTest_CT.cs" />
+    <Compile Include="Server\Client_ProcessMessageTest.cs" />
     <Compile Include="Server\MCServerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\DESEncryptionTest.cs" />
@@ -108,8 +110,12 @@
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>copy  "$(ProjectDir)TestFolder\*.jar" "$(TargetDir)TestFolder\"
-</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy  "$(ProjectDir)TestFolder\*.jar" "$(TargetDir)TestFolder\"
+</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
