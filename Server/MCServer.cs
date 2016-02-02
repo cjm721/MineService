@@ -4,6 +4,7 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.IO;
 using Kajabity.Tools.Java;
+using System.Timers;
 
 namespace MineService_Server
 {
@@ -14,7 +15,18 @@ namespace MineService_Server
 
         public MCMSSettings msSettings;
 
-        public long uptime;
+        public TimeSpan uptime
+        {
+            get
+            {
+                if (isRunning())
+                    return DateTime.Now - pross.StartTime;
+                else
+                {
+                    return TimeSpan.Zero;
+                }
+            }
+        }
 
         public MCServer(String ServerID, String FolderDir) : base(ServerID, FolderDir)
         {
@@ -36,18 +48,24 @@ namespace MineService_Server
             }
 
             this.consoleLines.Enqueue(e.Data);
-            System.Diagnostics.Debug.WriteLine(e.Data);
+            System.Diagnostics.Debug.WriteLine("Console Output: " + e.Data);
 
             // TODO: Send to Clients
+            MineService_JSON.Console toSend = new MineService_JSON.Console(this.serverID, new String[] { e.Data } );
 
-
+            Client.SendMessageToAll(toSend.toJsonString());
         }
 
         public override void onServerStoped(object sender, EventArgs e)
         {
-            // TODO: Send Update Message to Client
+            base.onServerStoped(sender, e);
 
-            if(msSettings.RESTART_ON_CRASH)
+            // TODO: Send Update Message to Client
+            Status status = new Status(States.StatusType.Send, ServerID, new ServerStatus(false, TimeSpan.Zero));
+            Client.SendMessageToAll(status.toJsonString());
+
+
+            if(!forcedStop && msSettings.RESTART_ON_CRASH)
             {
                 start();
             }
@@ -68,7 +86,8 @@ namespace MineService_Server
 
         public void rawCommand(string command)
         {
-            ServerInput.WriteLine(command);
+            if(isRunning())
+                pross.StandardInput.Write(command);
         }
 
         public Status getBaseStatus()
@@ -92,7 +111,9 @@ namespace MineService_Server
             {
                 try
                 {
-                    properties.Load(new FileStream(file, FileMode.Open, FileAccess.Read));
+                    FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read);
+                    properties.Load(fs);
+                    fs.Close();
                 }
                 catch (IOException)
                 {
@@ -154,8 +175,23 @@ namespace MineService_Server
             pross.StartInfo.Arguments = msSettings.getStartArgs();
             pross.StartInfo.RedirectStandardOutput = true;
             pross.StartInfo.RedirectStandardInput = true;
+            pross.EnableRaisingEvents = true;
+          //  pross.StandardOutput = new StreamReader();
 
             return pross;
+        }
+
+        public override void timerElapsed(object source, ElapsedEventArgs e)
+        {
+            TimeSpan difference = TimeSpan.Zero;
+            if (isRunning())
+            {
+                difference = DateTime.Now - pross.StartTime;
+            }
+
+            Status stauts = new Status(States.StatusType.Send, ServerID, new ServerStatus(true, difference));
+
+            Client.SendMessageToAll(stauts.toJsonString());
         }
     } 
 }

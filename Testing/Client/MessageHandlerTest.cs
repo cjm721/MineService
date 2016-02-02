@@ -45,7 +45,7 @@ namespace UnitTestProject1
 
             MethodInfo methodInfo = typeof(MessageHandler).GetMethod("handleStatusMessage", BindingFlags.NonPublic | BindingFlags.Instance);
             
-            ServerStatus serverStatus = new ServerStatus(true, 1000);
+            ServerStatus serverStatus = new ServerStatus(true, new TimeSpan(1000));
             Status status = new Status(States.StatusType.Send, "0", serverStatus);
 
             methodInfo.Invoke(handler, new Object[] {status});
@@ -64,7 +64,7 @@ namespace UnitTestProject1
 
             MethodInfo methodInfo = typeof(MessageHandler).GetMethod("handleStatusMessage", BindingFlags.NonPublic | BindingFlags.Instance);
 
-            ServerStatus serverStatus = new ServerStatus(true, 1000);
+            ServerStatus serverStatus = new ServerStatus(true, new TimeSpan(1000));
             Status status = new Status(States.StatusType.Send, "0", serverStatus);
 
             methodInfo.Invoke(handler, new Object[] { status });
@@ -87,8 +87,8 @@ namespace UnitTestProject1
         public void TestHandleNewWindow()
         {
             Status[] status = new Status[] {
-                new Status(States.StatusType.Send, "999", new ServerStatus(true, 1000)),
-                new Status(States.StatusType.Send, "21", new ServerStatus(false, 1000))
+                new Status(States.StatusType.Send, "999", new ServerStatus(true, new TimeSpan(1000))),
+                new Status(States.StatusType.Send, "21", new ServerStatus(false, new TimeSpan(1000)))
             };
             StatusArray statuses = new StatusArray(status);
 

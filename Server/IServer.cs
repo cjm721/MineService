@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Timers;
 
 namespace MineService_Server
 {
@@ -14,5 +15,6 @@ namespace MineService_Server
         Process getStartProcess();
         void onConsoleMessage(object sender, DataReceivedEventArgs e);
         void onServerStoped(object sender, EventArgs e);
+        void timerElapsed(Object source, ElapsedEventArgs e);
     }
 }

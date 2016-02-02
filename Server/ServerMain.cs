@@ -21,8 +21,8 @@ namespace MineService_Server
                 TcpClient clientSocket = serverSocket.AcceptTcpClient();
 
                 Client client = new Client(clientSocket, control);
-                Data.connectedClients.Add(client);
                 client.startProcessing();
+                Data.connectedClients.Add(client);
             }
         }
     }
