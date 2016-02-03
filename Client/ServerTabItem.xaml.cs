@@ -57,15 +57,14 @@ namespace MineService_Client
 
             if (sStatus.isRunning)
             {
-                if (sStatus.uptime == 0)
+                if (sStatus.uptime.Equals(TimeSpan.Zero))
                 {
                     aliveTimeText.Text = "Starting";
                 }
                 else
                 {
-                    TimeSpan ts = new TimeSpan(sStatus.uptime * 10000);
-
-                    aliveTimeText.Text = ts.ToString(@"dd\D\ hh\H\ mm\M\ ss\S");
+                    // @"dd\D\ hh\H\ mm\M\ ss\S"
+                    aliveTimeText.Text = sStatus.uptime.ToString(@"dd\D\ hh\H\ mm\M\ ss\S");
                 }
             }
             else

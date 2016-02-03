@@ -1,12 +1,14 @@
-﻿namespace MineService_JSON
+﻿using System;
+
+namespace MineService_JSON
 {
     public class ServerStatus : Message
     {
         public bool isRunning;
-        public long uptime;
+        public TimeSpan uptime;
         public MCServerSettings serverSettings;
 
-        public ServerStatus(bool isRunning, long uptime)
+        public ServerStatus(bool isRunning, TimeSpan uptime)
         {
             this.isRunning = isRunning;
             this.uptime = uptime;

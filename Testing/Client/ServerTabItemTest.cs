@@ -24,7 +24,7 @@ namespace UnitTestProject1.Client
 
         [TestMethod]
         public void TestUpdateTabNewRunning() {
-            ServerStatus status = new ServerStatus(true, 0);
+            ServerStatus status = new ServerStatus(true, TimeSpan.Zero);
 
             FieldInfo fieldInfo = typeof(ServerTabItem).GetField("aliveTimeText", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             TextBlock aliveTimeBlock = (TextBlock) fieldInfo.GetValue(tabItem);
@@ -41,7 +41,7 @@ namespace UnitTestProject1.Client
         [TestMethod]
         public void TestUpdateTabOffline()
         {
-            ServerStatus status = new ServerStatus(false, 0);
+            ServerStatus status = new ServerStatus(false, TimeSpan.Zero);
 
             FieldInfo fieldInfo = typeof(ServerTabItem).GetField("aliveTimeText", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             TextBlock aliveTimeBlock = (TextBlock)fieldInfo.GetValue(tabItem);
@@ -56,7 +56,7 @@ namespace UnitTestProject1.Client
         [TestMethod]
         public void TestUpdateTabOfflineWithTimeRunning()
         {
-            ServerStatus status = new ServerStatus(false, 100);
+            ServerStatus status = new ServerStatus(false, new TimeSpan(100));
 
             FieldInfo fieldInfo = typeof(ServerTabItem).GetField("aliveTimeText", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             TextBlock aliveTimeBlock = (TextBlock)fieldInfo.GetValue(tabItem);
@@ -71,7 +71,7 @@ namespace UnitTestProject1.Client
         [TestMethod]
         public void TestUpdateTabOnlineWithTimeString()
         {
-            long uptime = 100;
+            TimeSpan uptime = new TimeSpan(100);
             ServerStatus status = new ServerStatus(true, uptime);
 
             FieldInfo fieldInfo = typeof(ServerTabItem).GetField("aliveTimeText", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
@@ -82,7 +82,7 @@ namespace UnitTestProject1.Client
             
             tabItem.UpdateTab(status);
 
-            TimeSpan ts = new TimeSpan(uptime * 10000);
+            TimeSpan ts = new TimeSpan(uptime.Ticks);
             expected = ts.ToString(@"dd\D\ hh\H\ mm\M\ ss\S");
 
             Assert.AreEqual(expected, aliveTimeBlock.Text);

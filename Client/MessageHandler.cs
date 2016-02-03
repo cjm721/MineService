@@ -101,7 +101,10 @@ namespace MineService_Client
             {
                 Paragraph pr = new Paragraph();
                 foreach (String s in console.messages)
-                    pr.Inlines.Add(s);
+                {
+                    if(s != null)
+                        pr.Inlines.Add(s);
+                }
                 System.Diagnostics.Debug.WriteLine("testing " + pr.ToString());
 
                 tab.consoleRichTextBox.Document.Blocks.Add(pr);
