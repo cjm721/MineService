@@ -36,12 +36,12 @@ namespace UnitTestProject1.Server
             MCServer server = new MCServer("UnitTestServer", "TestFolder");
 
             server.start();
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
 
             Assert.IsTrue(server.isRunning());
 
             server.kill();
-            Thread.Sleep(500);
+            server.pross.WaitForExit();
             Assert.IsFalse(server.isRunning());
         }
 

@@ -73,7 +73,10 @@ namespace MineService_Server
         public void kill()
         {
             if (pross != null)
+            {
+                forcedStop = true;
                 pross.Kill();
+            }
         }
 
         public void restart()
