@@ -44,5 +44,6 @@ namespace MineService_JSON
         public string level_seed;
         public string motd;
 
+
     }
 }

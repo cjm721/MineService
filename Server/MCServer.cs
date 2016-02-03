@@ -121,41 +121,46 @@ namespace MineService_Server
                 }
             }
 
-            toReturn.spawn_protection = int.Parse(properties.GetProperty("spawn-protection", "16"));
-            toReturn.max_tick_time = int.Parse(properties.GetProperty("max-tick-time", "60000"));
+            // Int Properties:
+            toReturn.spawn_protection = parseInt(properties, "spawn-protection", "16");
+            toReturn.max_tick_time = parseInt(properties, "max-tick-time", "60000");
+            toReturn.gamemode = parseInt(properties, "gamemode", "0");
+            toReturn.player_idle_timeout = parseInt(properties, "player-idle-timeout", "0");
+            toReturn.difficulty = parseInt(properties, "difficulty", "1");
+            toReturn.op_permission_level = parseInt(properties, "op-permission-level", "4");
+            toReturn.max_players = parseInt(properties, "max-players", "20");
+            toReturn.network_compression_threshold = parseInt(properties, "network-compression-threshold", "256");
+            toReturn.max_world_size = parseInt(properties, "max-world-size", "29999984");
+            toReturn.server_port = parseInt(properties, "server-port", "25565");
+            toReturn.view_distance = parseInt(properties, "view-distance", "10");
+            toReturn.max_build_height = parseInt(properties, "max-build-height", "256");
+
+            // Boolean Properties:
+            toReturn.force_gamemode = parseBoolean(properties, "force-gamemode", "false");
+            toReturn.allow_nether = parseBoolean(properties, "allow-nether", "true");
+            toReturn.enable_query = parseBoolean(properties, "enable-query", "false");
+            toReturn.spawn_monsters = parseBoolean(properties, "spawn-monsters", "true");
+            toReturn.announce_player_achievements = parseBoolean(properties, "announce-player-achievements", "true");
+            toReturn.pvp = parseBoolean(properties, "pvp", "true");
+            toReturn.snooper_enabled = parseBoolean(properties, "snooper-enabled", "true");
+            toReturn.hardcore = parseBoolean(properties, "hardcore", "false");
+            toReturn.enable_command_block = parseBoolean(properties, "enable-command-block", "false");
+            toReturn.spawn_npcs = parseBoolean(properties, "spawn-npcs", "true");
+            toReturn.allow_flight = parseBoolean(properties, "allow-flight", "false");
+            toReturn.spawn_animals = parseBoolean(properties, "spawn-animals", "true");
+            toReturn.white_list = parseBoolean(properties, "white-list", "false");
+            toReturn.generate_structures = parseBoolean(properties, "generate-structures", "true");
+            toReturn.online_mode = parseBoolean(properties, "online-mode", "true");
+            toReturn.enable_rcon = parseBoolean(properties, "enable-rcon", "false");
+
+            // String Properties:
             toReturn.generator_settings = properties.GetProperty("generator-settings", "");
-            toReturn.force_gamemode = Boolean.Parse(properties.GetProperty("force-gamemode", "false"));
-            toReturn.allow_nether = Boolean.Parse(properties.GetProperty("allow-nether", "true"));
-            toReturn.gamemode = int.Parse(properties.GetProperty("gamemode", "0"));
-            toReturn.enable_query = Boolean.Parse(properties.GetProperty("enable-query", "false"));
-            toReturn.player_idle_timeout = int.Parse(properties.GetProperty("player-idle-timeout", "0"));
-            toReturn.difficulty = int.Parse(properties.GetProperty("difficulty", "1"));
-            toReturn.spawn_monsters = Boolean.Parse(properties.GetProperty("spawn-monsters", "true"));
-            toReturn.op_permission_level = int.Parse(properties.GetProperty("op-permission-level", "4"));
             toReturn.resource_pack_hash = properties.GetProperty("resource-pack-hash", "");
-            toReturn.announce_player_achievements = Boolean.Parse(properties.GetProperty("announce-player-achievements", "true"));
-            toReturn.pvp = Boolean.Parse(properties.GetProperty("pvp", "true"));
-            toReturn.snooper_enabled = Boolean.Parse(properties.GetProperty("snooper-enabled", "true"));
             toReturn.level_type = properties.GetProperty("level-type", "DEFAULT");
-            toReturn.hardcore = Boolean.Parse(properties.GetProperty("hardcore", "false"));
-            toReturn.enable_command_block = Boolean.Parse(properties.GetProperty("enable-command-block", "false"));
-            toReturn.max_players = int.Parse(properties.GetProperty("max-players", "20"));
-            toReturn.network_compression_threshold = int.Parse(properties.GetProperty("network-compression-threshold", "256"));
-            toReturn.max_world_size = int.Parse(properties.GetProperty("max-world-size", "29999984"));
-            toReturn.server_port = int.Parse(properties.GetProperty("server-port", "25565"));
             toReturn.server_ip = properties.GetProperty("server-ip", "");
-            toReturn.spawn_npcs = Boolean.Parse(properties.GetProperty("spawn-npcs", "true"));
-            toReturn.allow_flight = Boolean.Parse(properties.GetProperty("allow-flight", "false"));
             toReturn.level_name = properties.GetProperty("level-name", "world");
-            toReturn.view_distance = int.Parse(properties.GetProperty("view-distance", "10"));
             toReturn.resource_pack_hash = properties.GetProperty("resource-pack", "");
-            toReturn.spawn_animals = Boolean.Parse(properties.GetProperty("spawn-animals", "true"));
-            toReturn.white_list = Boolean.Parse(properties.GetProperty("white-list", "false"));
-            toReturn.generate_structures = Boolean.Parse(properties.GetProperty("generate-structures", "true"));
-            toReturn.online_mode = Boolean.Parse(properties.GetProperty("online-mode", "true"));
-            toReturn.max_build_height = int.Parse(properties.GetProperty("max-build-height", "256"));
             toReturn.level_seed = properties.GetProperty("level-seed", "");
-            toReturn.enable_rcon = Boolean.Parse(properties.GetProperty("enable-rcon", "false"));
             toReturn.motd = properties.GetProperty("motd", "A Minecraft Server");
 
             return toReturn;
@@ -192,6 +197,16 @@ namespace MineService_Server
             Status stauts = new Status(States.StatusType.Send, ServerID, new ServerStatus(true, difference));
 
             Client.SendMessageToAll(stauts.toJsonString());
+        }
+
+        private int parseInt(JavaProperties properties, String key, String defaultValue)
+        {
+            return int.Parse(properties.GetProperty(key, defaultValue));
+        }
+
+        private Boolean parseBoolean(JavaProperties properties, String key, String defaultValue)
+        {
+            return Boolean.Parse(properties.GetProperty(key, defaultValue));
         }
     } 
 }
