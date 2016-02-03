@@ -83,6 +83,9 @@ namespace UnitTestProject1
             Assert.AreEqual(2, Data.serverTabs.Count);
         }
         
+        /// <summary>
+        /// This test is in progress. Currently not passing because of threads.
+        /// </summary>
         [TestMethod]
         public void TestHandleNewWindow()
         {
@@ -104,7 +107,6 @@ namespace UnitTestProject1
             Thread thread = new Thread(delegate() { methodInfo.Invoke(handler, new Object[] { statuses }); });
             thread.Start();
             thread.Join();
-
             
             LoginWindow.INSTANCE.Dispatcher.Invoke(new Action(delegate()
             {
