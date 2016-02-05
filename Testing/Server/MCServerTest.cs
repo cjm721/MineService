@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MineService_JSON;
 using MineService_Server;
 using System;
 using System.Collections.Generic;
@@ -81,11 +82,53 @@ namespace UnitTestProject1.Server
         public void testGetServerSettings()
         {
             MCServer server = new MCServer("UnitTestServer", "UnitTestFolderFail");
-            Assert.IsNotNull(server.getServerSettings());
+            MCServerSettings settings = server.getServerSettings();
+            Assert.IsNotNull(settings);
+
+            // Int Properties:
+            Assert.AreEqual(settings.spawn_protection, 16);
+            Assert.AreEqual(settings.max_tick_time, 60000);
+            Assert.AreEqual(settings.gamemode, 0);
+            Assert.AreEqual(settings.player_idle_timeout, 0);
+            Assert.AreEqual(settings.difficulty, 1);
+            Assert.AreEqual(settings.op_permission_level, 4);
+            Assert.AreEqual(settings.max_players, 20);
+            Assert.AreEqual(settings.network_compression_threshold, 256);
+            Assert.AreEqual(settings.max_world_size, 29999984);
+            Assert.AreEqual(settings.server_port, 25565);
+            Assert.AreEqual(settings.view_distance, 10);
+            Assert.AreEqual(settings.max_build_height, 256);
+
+            // Boolean Properties:
+            Assert.AreEqual(settings.force_gamemode, false);
+            Assert.AreEqual(settings.allow_nether, true);
+            Assert.AreEqual(settings.enable_query, false);
+            Assert.AreEqual(settings.spawn_monsters, true);
+            Assert.AreEqual(settings.announce_player_achievements, true);
+            Assert.AreEqual(settings.pvp, true);
+            Assert.AreEqual(settings.snooper_enabled, true);
+            Assert.AreEqual(settings.hardcore, false);
+            Assert.AreEqual(settings.enable_command_block, false);
+            Assert.AreEqual(settings.spawn_npcs, true);
+            Assert.AreEqual(settings.allow_flight, false);
+            Assert.AreEqual(settings.spawn_animals, true);
+            Assert.AreEqual(settings.white_list, false);
+            Assert.AreEqual(settings.generate_structures, true);
+            Assert.AreEqual(settings.online_mode, true);
+            Assert.AreEqual(settings.enable_rcon, false);
+
+            // String Properties:
+            Assert.AreEqual(settings.generator_settings, "");
+            Assert.AreEqual(settings.resource_pack_hash, "");
+            Assert.AreEqual(settings.level_type, "DEFAULT");
+            Assert.AreEqual(settings.server_ip, "");
+            Assert.AreEqual(settings.level_name, "world");
+            Assert.AreEqual(settings.level_seed, "");
+            Assert.AreEqual(settings.motd, "A Minecraft Server");
         }
 
         [TestMethod]
-        public void testGetBastStatus()
+        public void testGetBaseStatus()
         {
             MCServer server = new MCServer("UnitTestServer", "UnitTestFolderFail");
             Assert.IsNotNull(server.getBaseStatus());
