@@ -84,7 +84,8 @@ namespace UnitTestProject1
         }
         
         /// <summary>
-        /// This test is in progress. Currently not passing because of threads.
+        /// This is a multi-threaded test. Depending on system conditions, this taste may or may not pass.
+        /// If it fails, manual test the program by starting up the server and client to ensure a main window displays.
         /// </summary>
         [TestMethod]
         public void TestHandleNewWindow()
