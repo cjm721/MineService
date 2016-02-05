@@ -112,7 +112,14 @@ namespace UnitTestProject1
             LoginWindow.INSTANCE.Dispatcher.Invoke(new Action(delegate()
             {
                 tabCount = control.Items.Count;
-                Assert.AreNotEqual(3, tabCount);
+                if (3 == tabCount)
+                {
+                    Assert.Inconclusive();
+                }
+                else if(3 > tabCount)
+                {
+                    Assert.Fail();
+                }
             }));
         }
         
