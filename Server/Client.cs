@@ -31,15 +31,22 @@ namespace MineService_Server
 
         public void messageProcessor()
         {
-            StreamReader reader = new StreamReader(socket.GetStream());
-
-            while (true)
+            try
             {
-                String line = control.getMessage(socket.GetStream());
+                StreamReader reader = new StreamReader(socket.GetStream());
+                while (true)
+                {
+                    String line = control.getMessage(socket.GetStream());
 
-                System.Console.WriteLine("Message: " + line);
+                    System.Console.WriteLine("Message: " + line);
 
-                processMessage(line);
+                    processMessage(line);
+                }
+            } catch (Exception)
+            {
+                Data.connectedClients.Remove(this);
+                socket.Close();
+                System.Console.WriteLine("Disconnecting Client");
             }
         }
 
